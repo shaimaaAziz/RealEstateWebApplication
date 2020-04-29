@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cities extends Model
+class type extends Model
 {
     public  function property(){
         return $this->hasMany('App\properties');

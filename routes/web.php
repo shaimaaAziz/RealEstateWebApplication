@@ -19,6 +19,9 @@ Route::group(['middleware'=>['web','admin']],function(){
 
     // @users
     Route::resource('/Adminpanel/users','UsersController');
+    Route::resource('/Adminpanel/Property','propertyController');
+
+
 
 });
 Auth::routes();

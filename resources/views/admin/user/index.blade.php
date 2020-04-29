@@ -14,7 +14,6 @@
 @section('content')
 
 
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -27,8 +26,8 @@
               <li class="breadcrumb-item active"><a href="{{ url('/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
             </ol>
           </div>
-      
-      </div><!-- /.container-fluid -->
+        </div>
+      </div>
     </section>
 
     <!-- Main content -->

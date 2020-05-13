@@ -5,11 +5,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/ShowAllBullding' , 'propertyController@showAllEnabel');
+Route::get('/ForRent' , 'propertyController@ForRent');
+Route::get('/ForBuy' , 'propertyController@ForBuy');
+Route::get('/type/{type}' , 'propertyController@showByType');
 
+Route::post('/search', 'BuController@search');
 
+Route::get('/', 'propertyController@welcome');
 
 Route::group(['middleware'=>['web','admin']],function(){
  // @datatable

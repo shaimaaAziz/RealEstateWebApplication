@@ -8,7 +8,11 @@ use http\Client\Curl\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use League\CommonMark\Inline\Element\Image;
-
+use yajra\Datatables\Datables;
+use Illuminate\Support\Arr;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 class propertyController extends Controller
 {
     /**
@@ -23,6 +27,13 @@ class propertyController extends Controller
         $type=type::all();
 
         return view('admin/property/index',compact('property','city','type'));
+    }
+
+    public function welcome(){
+        $property= properties::all();
+
+
+        return view('welcome',compact('property'));
     }
 
 
@@ -192,4 +203,36 @@ class propertyController extends Controller
 
 
     }
+    public function showAllEnabel(properties $pro){
+        $property= properties::all();
+
+        $proAll = $pro->where('status' , 0)->orderBy('id' , 'desc')->paginate(15);
+        return view('welcome' , compact('proAll','property'));
+    }
+
+    public function ForRent(properties $pro){
+        $property= properties::all();
+
+        $proAll = $pro->where('status' , 0)->where('state' ,0)->orderBy('id' , 'desc')->paginate(15);
+        return view('welcome' , compact('proAll','property'));
+    }
+
+    public function ForBuy(properties $pro){
+        $property= properties::all();
+
+        $proAll = $pro->where('status' , 0)->where('state' ,1)->orderBy('id' , 'desc')->paginate(15);
+        return view('welcome' , compact('proAll','property'));
+    }
+
+    public function showByType($type , properties $pro){
+        $property= properties::all();
+
+        if(in_array($type, ['0' , '1' , '2', '3'])){
+            $proAll = $pro->where('status' , 0)->where('type' , $type)->orderBy('id' , 'desc')->paginate(15);
+            return view('welcome' , compact('proAll','property'));
+        }else{
+            return Redirect::back();
+        }
+    }
+
 }

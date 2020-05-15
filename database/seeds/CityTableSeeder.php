@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CitiesTableSeeder extends Seeder
+class CityTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,11 +16,8 @@ class CitiesTableSeeder extends Seeder
             [ 'name' => 'غزة'],
             [ 'name' => 'رفح'],
             [ 'name' => 'خانيونس'],
-            [ 'name' => 'أريحا'],
-            [ 'name' => 'القدس'],
-            [ 'name' => 'بيت لحم'],
-            [ 'name' => 'الخليل'],
-            [ 'name' => 'عسقلان']
+            [ 'name' => 'دير البلح '],
+       
      ]);
     }
 }

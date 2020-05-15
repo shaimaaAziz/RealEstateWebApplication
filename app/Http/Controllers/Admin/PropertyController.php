@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\cities;
-use App\properties;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use App\City;
 use App\type;
 use http\Client\Curl\User;
 use Illuminate\Contracts\Session\Session;
-use Illuminate\Http\Request;
 use League\CommonMark\Inline\Element\Image;
 use yajra\Datatables\Datables;
 use Illuminate\Support\Arr;
 use App\Http\Requests;
+use App\Property;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-class propertyController extends Controller
+
+class PropertyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,20 +26,14 @@ class propertyController extends Controller
      */
     public function index()
     {
-        $property= properties::all();
-        $city=cities::all();
+        $property= Property::all();
+        $city=City::all();
         $type=type::all();
 
         return view('admin/property/index',compact('property','city','type'));
     }
 
-    public function welcome(){
-        $property= properties::all();
-
-
-        return view('welcome',compact('property'));
-    }
-
+   
 
     /**
      * Show the form for creating a new resource.
@@ -43,8 +41,8 @@ class propertyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-       $city=cities::all();
-        $property= properties::all();
+       $city=City::all();
+        $property= Property::all();
         $type=type::all();
 
 //        $city=cities::lists('name', 'id');
@@ -74,11 +72,11 @@ class propertyController extends Controller
 
         ]);
 
-        $property = new properties();
+        $property = new Property();
         $photoName = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images',$photoName);
 
-        $selectCity = cities::all();
+        $selectCity = City::all();
         $city = $selectCity->find($request->city);
         $selectType = type::all();
         $type = $selectType->find($request->type);
@@ -97,7 +95,7 @@ class propertyController extends Controller
             'adminId' => $request->adminId
 
         ]);
-        Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
+        // Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
 
         return redirect('/Adminpanel/Property')->withFlashMessage('تمت اضافة العضو بنجاح');
 
@@ -114,7 +112,7 @@ class propertyController extends Controller
      */
     public function show($id)
     {
-        $property= properties::find($id);
+        $property= Property::find($id);
 
         return view('admin/property/show',compact('property'));    }
 
@@ -126,8 +124,8 @@ class propertyController extends Controller
      */
     public function edit($id)
     {
-        $property= properties::find($id);
-        $city=cities::all();
+        $property= Property::find($id);
+        $city=City::all();
         $type=type::all();
         return view('admin/property/edit',compact('property','city','type'));
     }
@@ -142,7 +140,7 @@ class propertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $property= properties::find($id);
+        $property= Property::find($id);
 //        $property->fill($request->all())->save();
         $this->validate($request, [
             'type'=>'required',
@@ -163,7 +161,7 @@ class propertyController extends Controller
 //        $photoName = $request->file('image')->getClientOriginalName();
 //        $request->file('image')->storeAs('public/images',$photoName);
 
-        $selectCity = cities::all();
+        $selectCity = City::all();
         $city = $selectCity->find($request->city);
         $selectType = type::all();
         $type = $selectType->find($request->type);
@@ -196,36 +194,36 @@ class propertyController extends Controller
      */
     public function destroy($id)
     {
-        $property= properties::find($id);
+        $property= Property::find($id);
         $property->delete();
 
         return redirect()->route('Property.index')->withFlashMessage('user  deleted successfully' );
 
 
     }
-    public function showAllEnabel(properties $pro){
-        $property= properties::all();
+    public function showAllEnabel(Property $pro){
+        $property= Property::all();
 
         $proAll = $pro->where('status' , 0)->orderBy('id' , 'desc')->paginate(15);
         return view('welcome' , compact('proAll','property'));
     }
 
-    public function ForRent(properties $pro){
-        $property= properties::all();
+    public function ForRent(Property $pro){
+        $property= Property::all();
 
         $proAll = $pro->where('status' , 0)->where('state' ,0)->orderBy('id' , 'desc')->paginate(15);
         return view('welcome' , compact('proAll','property'));
     }
 
-    public function ForBuy(properties $pro){
-        $property= properties::all();
+    public function ForBuy(Property $pro){
+        $property= Property::all();
 
         $proAll = $pro->where('status' , 0)->where('state' ,1)->orderBy('id' , 'desc')->paginate(15);
         return view('welcome' , compact('proAll','property'));
     }
 
-    public function showByType($type , properties $pro){
-        $property= properties::all();
+    public function showByType($type , Property $pro){
+        $property= Property::all();
 
         if(in_array($type, ['0' , '1' , '2', '3'])){
             $proAll = $pro->where('status' , 0)->where('type' , $type)->orderBy('id' , 'desc')->paginate(15);

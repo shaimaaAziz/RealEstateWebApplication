@@ -20,9 +20,9 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ url('/Adminpanel')}}">الرئيسية</a></li>
-              <li class="breadcrumb-item "><a href="{{ url('/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
-              <li class="breadcrumb-item active"><a href="{{ url('/Adminpanel/users/create')}}">اضافة عضو </a></li>
+              <li class="breadcrumb-item"><a href="{{ url('/admin/Adminpanel')}}">الرئيسية</a></li>
+              <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
+              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/users/create')}}">اضافة عضو </a></li>
             </ol>         
         </div>
       </div><!-- /.container-fluid -->
@@ -37,7 +37,7 @@
               <h3 class="card-title">اضافة عضو</h3>
               </div>
               <div class="card-body">
-              <form method="POST" action="{{ url('/Adminpanel/users') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
+              <form method="POST" action="{{ url('/admin/Adminpanel/users') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
               @include('admin.user.form')
               </form>
             </div>

@@ -22,8 +22,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ url('/Adminpanel')}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active"><a href="{{ url('/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('/admin/Adminpanel')}}">الرئيسية</a></li>
+              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
             </ol>
           </div>
         </div>
@@ -68,7 +68,7 @@
                             <td>{{$alluser->city}}</td>
 
                             <td>
-                                <a href="{{ url('/Adminpanel/users/'.$alluser->id.'/edit')}}"
+                                <a href="{{ url('/admin/Adminpanel/users/'.$alluser->id.'/edit')}}"
                                 class="btn btn-info btn-sm"><i class="material-icons">تعديل </i></a>
 
 

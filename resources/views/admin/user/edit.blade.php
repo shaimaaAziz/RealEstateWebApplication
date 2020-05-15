@@ -22,9 +22,9 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ url('/Adminpanel')}}">الرئيسية</a></li>
-              <li class="breadcrumb-item "><a href="{{ url('/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
-              <li class="breadcrumb-item active"><a href="{{ url('/Adminpanel/users/'.$user->id.'edit')}}">تعديل العضو {{$user->name}} </a></li>
+              <li class="breadcrumb-item"><a href="{{ url('/admin/Adminpanel')}}">الرئيسية</a></li>
+              <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
+              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/users/'.$user->id.'edit')}}">تعديل العضو {{$user->name}} </a></li>
             </ol>         
         </div>
       </div><!-- /.container-fluid -->

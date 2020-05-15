@@ -22,9 +22,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ url('/Adminpanel')}}">الرئيسية</a></li>
-                        <li class="breadcrumb-item "><a href="{{ url('/Adminpanel/property')}}">التحكم في العقارات</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ url('/Adminpanel/property/'.$property->id.'edit')}}">تعديل العقار {{$property->type}} </a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/admin/Adminpanel')}}">الرئيسية</a></li>
+                        <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/property')}}">التحكم في العقارات</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/property/'.$property->id.'edit')}}">تعديل العقار {{$property->type}} </a></li>
                     </ol>
                 </div>
             </div>

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\cities;
+namespace App\Http\Controllers\Admin;
+use App\City;
 use app\User;
 use Faker\Provider\ar_JO\Company;
-use Illuminate\Http\Request;
+
 use Yajra\DataTables\Facades\DataTables;
 // use Yajra\DataTables\DataTables as DataTables;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -19,7 +20,7 @@ class UsersController extends Controller
     public function index()
     {
          $user= User::all();
-         $city=cities::all();
+         $city=City::all();
         return view('admin/user/index',compact('user','city'));
     }
 
@@ -29,7 +30,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $city=cities::all();
+    {   $city=City::all();
         return view('admin/user/add',compact('city'));
     }
 

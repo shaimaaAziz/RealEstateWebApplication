@@ -44,7 +44,7 @@
                                 @endforeach
                             </div>
                         @endif
-                        <form method="POST" action="{{ url('/Adminpanel/Property') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
+                        <form method="POST" action="{{ url('/admin/Adminpanel/Property') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
                             @include('admin.property.form')
                         </form>
                     </div>

@@ -18,4 +18,9 @@ class Property extends Model
     public  function type(){
         return $this->belongsTo('App\type');
     }
+
+    public function favorite_to_users(){
+        return $this->belongsToMany('App\User')->withTimestamps();
+     }
+
 }

@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use toastr;
 
-use Illuminate\Http\Request;
 use App\City;
 use App\type;
-use http\Client\Curl\User;
-use Illuminate\Contracts\Session\Session;
-use League\CommonMark\Inline\Element\Image;
-use yajra\Datatables\Datables;
-use Illuminate\Support\Arr;
-use App\Http\Requests;
 use App\Property;
+use App\Http\Requests;
+use http\Client\Curl\User;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use yajra\Datatables\Datables;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Contracts\Session\Session;
+use League\CommonMark\Inline\Element\Image;
 
 class PropertyController extends Controller
 {
@@ -95,9 +96,9 @@ class PropertyController extends Controller
             'adminId' => $request->adminId
 
         ]);
-        // Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
+        // toastr()->success('تمت اضافة العضو بنجاح');
 
-        return redirect('/Adminpanel/Property')->withFlashMessage('تمت اضافة العضو بنجاح');
+        return redirect('/Adminpanel/Property');
 
 
 

@@ -12,16 +12,24 @@
     <link href="{{ Request::root() }}/website/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ Request::root() }}/website/css/flexslider.css" rel="stylesheet" />
     <link href="{{ Request::root() }}/website/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ Request::root() }}/website/css/font-awesome.min.css">
+    {{-- <link rel="stylesheet" href="{{ Request::root() }}/website/css/font-awesome.min.css"> --}}
     <script src="{{ Request::root() }}/website/js/jquery.min.js"></script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+   
+
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    @toastr_css
     <title>موقع عقارات
 {{-- {{ config('app.name', 'موقع عقارات') }} --}}
-    |
+    |@stack('css')
+
+  
     @yield('title')</title>
 
     @yield('header')
@@ -95,4 +103,7 @@
         </main>
     </div>
 </body>
+@jquery
+@toastr_js
+@toastr_render
 </html>

@@ -1,4 +1,4 @@
-{{--@extends('layouts.app')--}}
+@extends('layouts.app')
 {{--@section('title')--}}
 {{--    اهلا بك زائرنا الكريم--}}
 {{--@endsection--}}
@@ -12,7 +12,7 @@
 {{--@endsection--}}
 {{--@section('content')--}}
 
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 @section('title')
     كل العقارات
 @endsection
@@ -21,24 +21,68 @@
     {!! Html::style('cus/buall.css') !!}
 @endsection
 
+@push('css')
+     <style>
+        .favorite_properties{
+            color: blue;
+        }
+    </style>
+@endpush
 @section('content')
     <div class="container">
         <div class="row profile">
             <div class="col-md-9">
                 <div class="profile-content">
 @if( count($property) > 0)
-    @foreach($property as $key => $p)
+    @foreach($property as $key => $properties)
         @if($key % 3 == 0 && $key!= 0 )
             <div class="clearfix"></div>
         @endif
         <div class="col-md-4 pull-right">
             <div class="productbox">
                 <img src="http://lorempixel.com/468/258" class="img-responsive">
-                <div class="producttitle">{{ $p->type }}</div>
-                <p class="text-justify">{{Str::limit($p->description, 80)}}</p>
+                <div class="producttitle">{{ $properties->type }}</div>
+                <p class="text-justify">{{Str::limit($properties->description, 80)}}</p>
                 <div class="productprice"><div class="pull-left"> <a href="#" class="btn btn-primary btn-sm" role="button">اظهر التفاصيل
                             <span class="glyphicon glyphicon-shopping-cart"> </span></a></div>
-                    <div class="pricetext">{{$p->maxPrice}}</div></div>
+                    <div class="pricetext">{{$properties->maxPrice}}</div></div>
+
+                      <div> 
+
+        
+                        <ul class="post-footer">
+                            <li>
+                                @guest
+                                    <a href="javascript:void(0);" 
+                                    onclick="toastr.info('يجب عليك تسجيل الدخول قبل القيام باضافة العقار الي المفضلة .',
+                                    '',{
+                                        closeButton: true,
+                                        progressBar: true,
+                                    }
+                                    )"><i class="fas fa-heart" style="color:#485f5a;"></i></a>
+                                       {{ $properties->favorite_to_users->count() }}
+                                @else
+                                    <a href="javascript:void(0);" 
+                                    onclick="document.getElementById('favorite-form-{{ $properties->id }}')
+                                    .submit();"  class="{{ !Auth::user()->favorite_properties->
+                                    where('pivot.property_id',$properties->id)->count()  == 0 ?'favorite_properties' : ''}}">
+                                    <i class="fas fa-heart" style="color:#485f5a;"></i>
+                                    {{ $properties->favorite_to_users->count() }}
+                                   </a> 
+        
+                                    <form id="favorite-form-{{ $properties->id }}" method="POST" 
+                                    action="{{ route('property.favorite', $properties->id) }}
+                                        " style="display: none;">
+                                        @csrf
+                                    </form>
+                                @endguest
+        
+                            </li>   
+                        </ul>
+                    </div>
+                   
+
+
             </div>
         </div>
     @endforeach
@@ -96,37 +140,37 @@
                     <div class="profile-usermenu">
                         <ul class="nav" style="margin-right: 0px; padding-right: 0px;">
                             <li class="active">
-                                <a href="{{url('/ShowAllBullding')}}">
+                                <a href="{{url('/admin/ShowAllBullding')}}">
                                     <i class="glyphicon glyphicon-home"></i>
                                     كل العقارات </a>
                             </li>
                             <li>
-                                <a href="{{url('/ForRent')}}">
+                                <a href="{{url('/admin/ForRent')}}">
                                     <i class="glyphicon glyphicon-user"></i>
                                     ايجار </a>
                             </li>
                             <li>
-                                <a href="{{url('/ForBuy')}}">
+                                <a href="{{url('/admin/ForBuy')}}">
                                     <i class="glyphicon glyphicon-user"></i>
                                     تمليك </a>
                             </li>
                             <li>
-                                <a href="{{url('/type/0')}}">
+                                <a href="{{url('/admin/type/0')}}">
                                     <i class="glyphicon glyphicon-flag"></i>
                                     الشقق </a>
                             </li>
                             <li>
-                                <a href="{{url('/type/1')}}">
+                                <a href="{{url('/admin/type/1')}}">
                                     <i class="glyphicon glyphicon-flag"></i>
                                     الفلل </a>
                             </li>
                             <li>
-                                <a href="{{url('/type/2')}}">
+                                <a href="{{url('/admin/type/2')}}">
                                     <i class="glyphicon glyphicon-flag"></i>
                                     الشاليهات </a>
                             </li>
                             <li>
-                                <a href="{{url('/type/3')}}">
+                                <a href="{{url('/admin/type/3')}}">
                                     <i class="glyphicon glyphicon-flag"></i>
                                     الأراضي </a>
                             </li>

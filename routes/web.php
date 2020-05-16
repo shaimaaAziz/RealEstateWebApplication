@@ -39,3 +39,12 @@ route::group(['middleware'=>['auth'] ,'namespace' => 'user', 'prefix' => 'user']
    Route::post('/favorite/{property}/add', 'favoriteController@add')->name('property.favorite');
 
 });
+
+
+
+//Route::group(['middleware'=>['web','owner'] , 'namespace' => 'Owner', 'prefix' => 'owner'],function(){
+
+    Route::resource('/Ownerpanel/users','Owner\UsersController');
+    Route::resource('/Ownerpanel/Property','Owner\PropertyController');
+
+//});

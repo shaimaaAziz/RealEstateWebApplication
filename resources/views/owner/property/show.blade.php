@@ -1,4 +1,4 @@
-@extends('admin.layout.layout')
+@extends('owner.layout.layout')
 
 @section('title')
     عرض عقار
@@ -50,7 +50,6 @@
                                             {{'شاليه'}}
                                         @endif</span></li>
                                 <li class="author"><span>وصف العقار:</span><span class="text">{{$property->description}}</span></li>
-                                <li class="author"><span>مالك العقار:</span><span class="text">{{Auth::user()->firstName .' '.Auth::user()->lastName}}</span></li>
                                 <li class="author"><span>حالة العقار:</span><span class="text">{{$property->state==1 ?'ايجار' : 'بيع'}}</span></li>
                                 <li class="author"><span>العنوان:</span><span class="text">{{$property->street}}</span></li>
                                 <li class="author"><span> المدينة:</span><span class="text">

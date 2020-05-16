@@ -1,4 +1,4 @@
-@extends('admin.layout.layout')
+@extends('owner.layout.layout')
 
 @section('title')
     التحكم في العقارات
@@ -12,24 +12,7 @@
 @endsection
 
 @section('content')
-    {{--    <section class="content-header">--}}
-    {{--        <div class="container-fluid">--}}
-    {{--            <div class="row mb-2">--}}
-    {{--                <div class="col-sm-6">--}}
-    {{--                    <h1>التحكم في العقارات</h1>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-sm-6">--}}
-    {{--                    <ol class="breadcrumb float-sm-right">--}}
-    {{--                        <li class="breadcrumb-item"><a href="{{ url('/Adminpanel')}}">الرئيسية</a></li>--}}
-    {{--                        <li class="breadcrumb-item active"><a href="{{ url('/Adminpanel/Property')}}">التحكم في العقارات</a></li>--}}
-    {{--                    </ol>--}}
-    {{--                </div>--}}
 
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-
-    <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-12">
@@ -42,15 +25,10 @@
                             <tr>
                                 <th># </th>
                                 <th>نوع العقار </th>
-                                {{--                                <th>أدنى سعر</th>--}}
-                                {{--                                <th>اعلى سعر</th>--}}
-                                {{--                                <th>عدد الغرف</th>--}}
+
                                 <th>حالة العقار</th>
-                                {{--                                <th>وصف العقار</th>--}}
                                 <th>صورة العقار</th>
-                                {{--                                <th>العنوان</th>--}}
                                 <th>المدينة</th>
-                                <th>المالك</th>
                                 <th colspan="2">التحكم</th>
                             </tr>
                             </thead>
@@ -84,7 +62,6 @@
                                         @elseif($allProperties->city==3)
                                             {{'وسطى'}}
                                         @endif</td>
-                                    <td>{{Auth::user()->firstName .' '.Auth::user()->lastName }}</td>
 
                                     <td>
                                         <a href="{{ route('Property.edit',$allProperties->id)}}"

@@ -1,37 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Owner;
 
 use toastr;
 
-use App\City;
-use App\type;
 use App\Property;
 use App\Http\Requests;
-use http\Client\Curl\User;
-use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use yajra\Datatables\Datables;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Contracts\Session\Session;
-use League\CommonMark\Inline\Element\Image;
 
 class PropertyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $property= Property::all();
-//        $city=cities::all();
-//        $type=type::all();
+        $property= Property::where('adminId',1)->get();
 
-        return view('admin/property/index',compact('property'));
+        return view('owner/property/index',compact('property'));
     }
 
 
@@ -41,13 +26,9 @@ class PropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-//       $city=cities::all();
         $property= Property::all();
-//        $type=type::all();
 
-//        $city=cities::lists('name', 'id');
-
-        return view('admin/property/add',compact('property'));
+        return view('owner/property/add',compact('property'));
     }
 
     /**
@@ -77,13 +58,8 @@ class PropertyController extends Controller
         $photoName = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images',$photoName);
 
-//        $selectCity = cities::all();
-//        $city = $selectCity->find($request->city);
-//        $selectType = type::all();
-//        $type = $selectType->find($request->type);
 
         $property->create([
-//            'type' => $type->name,
             'type'=> $request->type,
             'minPrice' => $request->minPrice,
             'maxPrice' => $request->maxPrice,
@@ -93,17 +69,14 @@ class PropertyController extends Controller
             'propertyPeriod' =>$request->propertyPeriod,
             'street' =>$request->street,
             'image' =>$photoName,
-//            'city' => $city->name,
             'city' =>$request->city,
-            'adminId' => $request->adminId,
             'area'=>$request->area
 
 
         ]);
-//        Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
         toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
 
-        return redirect('admin/Adminpanel/Property')->withFlashMessage('تمت اضافة العضو بنجاح');
+        return redirect('owner/Ownerpanel/Property')->withFlashMessage('تمت اضافة العضو بنجاح');
 
 
 
@@ -120,7 +93,7 @@ class PropertyController extends Controller
     {
         $property= Property::find($id);
 
-        return view('admin/property/show',compact('property'));    }
+        return view('owner/property/show',compact('property'));    }
 
     /**
      * Show the form for editing the specified resource.
@@ -132,9 +105,7 @@ class PropertyController extends Controller
     {
         $property= Property::find($id);
         $im=$property->image;
-//        $city=cities::all();
-//        $type=type::all();
-        return view('admin/property/edit',compact('property','im'));
+        return view('owner/property/edit',compact('property','im'));
     }
 
 
@@ -183,21 +154,18 @@ class PropertyController extends Controller
         $property->propertyPeriod =$request->propertyPeriod;
         $property->street =$request->street;
         $property->city =$request->city;
-        $property->adminId =$request->adminId;
         $property->area =$request->area;
 
 
-////
-            $oldFileName = $property->image;
-            $property->image = $photoName;
-            Storage::delete($oldFileName);
-//            File::delete(public_path('public/images/' ,$oldFileName));
+        $oldFileName = $property->image;
+        $property->image = $photoName;
+        Storage::delete($oldFileName);
 
 
         $property->save();
         toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
 
-        return redirect('admin/Adminpanel/Property');
+        return redirect('Ownerpanel/Property');
 
 
     }
@@ -217,36 +185,5 @@ class PropertyController extends Controller
 
 
     }
-    public function showAllEnabel(Property $pro){
-        $property= Property::all();
-
-        $proAll = $pro->where('status' , 0)->orderBy('id' , 'desc')->paginate(15);
-        return view('welcome' , compact('proAll','property'));
-    }
-
-    public function ForRent(Property $pro){
-        $property= Property::all();
-
-        $proAll = $pro->where('status' , 0)->where('state' ,0)->orderBy('id' , 'desc')->paginate(15);
-        return view('welcome' , compact('proAll','property'));
-    }
-
-    public function ForBuy(Property $pro){
-        $property= Property::all();
-
-        $proAll = $pro->where('status' , 0)->where('state' ,1)->orderBy('id' , 'desc')->paginate(15);
-        return view('welcome' , compact('proAll','property'));
-    }
-
-    public function showByType($type , Property $pro){
-        $property= Property::all();
-
-        if(in_array($type, ['0' , '1' , '2', '3'])){
-            $proAll = $pro->where('status' , 0)->where('type' , $type)->orderBy('id' , 'desc')->paginate(15);
-            return view('welcome' , compact('proAll','property'));
-        }else{
-            return Redirect::back();
-        }
-    }
-
 }
+//            php artisan storage:link

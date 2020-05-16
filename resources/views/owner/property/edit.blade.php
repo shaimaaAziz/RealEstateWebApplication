@@ -1,4 +1,4 @@
-@extends('admin.layout.layout')
+@extends('owner.layout.layout')
 
 @section('title')
 
@@ -62,25 +62,6 @@
                             <br>
                             {!! Form::select('type',['0'=>'فيلا' , '1'=>'ارض', '2'=>'شقة', '3'=>'بيت', '4'=>'شاليه'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}
 
-                            {{--                                {!! Form::select('type', $type->pluck('name'), $city->pluck('id'), ['optional' => 'Select a city...','class'=>'form-control']) !!}--}}
-                            {{--                                <select name="type" style="display: block;--}}
-                            {{--    width: 100%;--}}
-                            {{--    height: calc(2.25rem + 2px);--}}
-                            {{--    padding: .375rem .75rem;--}}
-                            {{--    font-size: 1rem;--}}
-                            {{--    font-weight: 400;--}}
-                            {{--    line-height: 1.5;--}}
-                            {{--    color: #495057;--}}
-                            {{--    background-color: #fff;--}}
-                            {{--    background-clip: padding-box;--}}
-                            {{--    border: 1px solid #ced4da;--}}
-                            {{--    border-radius: .25rem;--}}
-                            {{--    box-shadow: inset 0 0 0 transparent;--}}
-                            {{--    transition: border-color .15s">--}}
-                            {{--                                    @foreach($type as $types)--}}
-                            {{--                                        <option value="{{ $types->id }}"> {{ $types->name }}</option>--}}
-                            {{--                                    @endforeach--}}
-                            {{--                                </select>--}}
                             @error('type')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -160,10 +141,6 @@
 
                             {{Form::label('image', null,['class' => 'control-label'])}}
                             {{Form::file('image')}}
-                            {{--                                {{$property->image}}--}}
-                            {{--                                 <input type="file"--}}
-                            {{--                                        value="{{asset('storage/images/'.$property->image)}}"--}}
-                            {{--                                 >--}}
                             <br>
                             <img src ="{{asset('storage/images/'.$property->image)}}" height="100" width="100"/>
                             <br>
@@ -225,7 +202,6 @@
                             @enderror
                         </div>
                     </div>
-                    <input type="hidden" name="adminId" value="{{Auth::user()->id}}" >
                     <div class="form-group row mb-0">
                         <div class="col-md-12">
                             <a href="{{ route('Property.index') }}" class="btn btn-default">الخلف</a>

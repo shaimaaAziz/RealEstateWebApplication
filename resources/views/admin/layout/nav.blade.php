@@ -87,5 +87,14 @@
                     </ul>
                 </li>
 
+            <li class="nav-item {{Request::is('admin/favorite')?'active':''}}">
+                <a class="nav-link"  href="{{ url('/admin/favorite')}}">
+                    <i class="material-icons">favorite</i>
+                    <p style="margin-right:10px;">المفضلة </p>
+                </a>
 
+
+               
+            </li>
             </ul>
+       

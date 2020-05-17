@@ -24,7 +24,11 @@ Route::group(['middleware'=>['web','admin'] , 'namespace' => 'Admin', 'prefix' =
     // @users
     Route::resource('/Adminpanel/users','UsersController');
     Route::resource('/Adminpanel/Property','PropertyController');
-
+    
+    // favorite property
+    Route::resource('/favorite', 'favoriteController');
+    
+    
 
 // welcome
    Route::get('/ShowAllBullding' , 'PropertyController@showAllEnabel');

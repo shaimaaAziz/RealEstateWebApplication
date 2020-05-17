@@ -24,11 +24,19 @@
 @push('css')
      <style>
         .favorite_properties{
-            color: blue;
+            color:rgb(192, 3, 3);
         }
+        .favorite_properties:hover{
+            color:rgb(192, 3, 3);
+        }
+        
+        #no-background-hover::before {
+   background-color: transparent !important; 
+}
     </style>
 @endpush
 @section('content')
+
     <div class="container">
         <div class="row profile">
             <div class="col-md-9">
@@ -50,25 +58,25 @@
                       <div> 
 
         
-                        <ul class="post-footer">
+                        <ul class="post-footer" style="list-style: none;">
                             <li>
                                 @guest
-                                    <a href="javascript:void(0);" 
+                                    <a style="text-decoration: none;" href="javascript:void(0);" 
                                     onclick="toastr.info('يجب عليك تسجيل الدخول قبل القيام باضافة العقار الي المفضلة .',
                                     '',{
                                         closeButton: true,
                                         progressBar: true,
                                     }
-                                    )"><i class="fas fa-heart" style="color:#485f5a;"></i></a>
+                                    )"><i class="fas fa-heart" id="no-background-hover"></i></a>
                                        {{ $properties->favorite_to_users->count() }}
                                 @else
-                                    <a href="javascript:void(0);" 
+                                    <a href="javascript:void(0);" style="text-decoration: none;" 
                                     onclick="document.getElementById('favorite-form-{{ $properties->id }}')
                                     .submit();"  class="{{ !Auth::user()->favorite_properties->
                                     where('pivot.property_id',$properties->id)->count()  == 0 ?'favorite_properties' : ''}}">
-                                    <i class="fas fa-heart" style="color:#485f5a;"></i>
+                                    <i class="fas fa-heart" id="no-background-hover"></i> </a> 
                                     {{ $properties->favorite_to_users->count() }}
-                                   </a> 
+                                  
         
                                     <form id="favorite-form-{{ $properties->id }}" method="POST" 
                                     action="{{ route('property.favorite', $properties->id) }}

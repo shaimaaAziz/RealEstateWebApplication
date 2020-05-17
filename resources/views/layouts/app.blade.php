@@ -27,11 +27,11 @@
     @toastr_css
     <title>موقع عقارات
 {{-- {{ config('app.name', 'موقع عقارات') }} --}}
-    |@stack('css')
+  
 
   
     @yield('title')</title>
-
+    @stack('css')
     @yield('header')
 
 </head>

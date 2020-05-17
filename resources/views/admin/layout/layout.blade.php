@@ -31,20 +31,19 @@
     <link rel="stylesheet" href="{{ Request::root() }}/admin/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+   
     @yield('header')
+    @toastr_css
 
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-
-
-
-
-
-
 
 
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -261,7 +260,12 @@
 
 @yield('footer')
 
+@stack('js')
+@jquery
+@toastr_js
+@toastr_render
 </body>
+
 </html>
 
 

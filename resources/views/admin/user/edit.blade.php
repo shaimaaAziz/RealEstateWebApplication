@@ -36,11 +36,11 @@
         <div class="col-12">
            <div class="card">
             <div class="card-header">
-              <h3 class="card-title">تعديل العضو {{$user->name}}</h3>
+              <h3 class="card-title"> تعديل العضو {{$user->firstName}}</h3>
               </div>
               <div class="card-body">
 
-                     {!! Form::model($user ,['route' => ['users.update',$user->id ], 'method'=>'PATCH' ]  )  !!}
+                     {!! Form::model($user ,['route' => ['users.update',$user], 'method'=>'PUT' ]  )  !!}
 
                      @include('admin.user.form')
                      {!! Form::close() !!}

@@ -54,13 +54,21 @@
                 <div class="col-md-12">
                     <label> الصلاحية</label>
 
-                    {!! Form::select('admin',['0'=>'user' , '1'=>'admin'] ,null , ['class'=>'form-control'] )!!}
-
-                    @error('admin')
+                    @foreach($roles as $role)
+                    <div class="form-check">
+                        {{-- {!! Form::checkbox('roles[]', '{{ $role->id }}') !!} --}}
+                        <input type="checkbox" name="roles[]" value="{{ $role->id }}"
+                        @if($user->roles->pluck('id')->contains($role->id))checked @endif >
+                        <label> {{ $role->name }} </label>
+                        {{-- {!! Form::label('', '{{ $role->name }}') !!} --}}
+                    </div>
+                   @endforeach
+                    {{-- {!! Form::select('admin',['0'=>'user' , '1'=>'admin'] ,null , ['class'=>'form-control'] )!!} --}}
+                    {{-- @error('admin')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                    @enderror
+                    @enderror --}}
                 </div>
             </div>
 
@@ -160,8 +168,10 @@
 
             <div class="form-group row mb-0">
                 <div class="col-md-12">
-                    <button type="submit" class="btn-warning">
-                        {{ __(' تسجيل ') }}
+                    <button type="submit" class="btn-warning" style="padding: 4px; padding-right: 10px; padding-left: 10px; ">
+                        {{ __(' حفظ ') }}
                     </button>
+
+                    <a href="{{route('users.index')}}" style=" float:left;" class="btn btn-danger ">الرجوع </a>
                 </div>
             </div>

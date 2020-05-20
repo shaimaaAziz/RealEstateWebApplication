@@ -15,7 +15,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::post('/search', 'BuController@search');
 
-Route::group(['middleware'=>['web','admin'] , 'namespace' => 'Admin', 'prefix' => 'admin'],function(){
+Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'prefix' => 'admin'],function(){
  // @datatable
     // Route::get('/Adminpanel/users/data' ,['as ' =>'Adminpanel.users.data' , 'uses' =>'UsersController@anyData']);
  // @admin
@@ -48,7 +48,7 @@ route::group(['middleware'=>['auth'] ,'namespace' => 'user', 'prefix' => 'user']
 
 //Route::group(['middleware'=>['web','owner'] , 'namespace' => 'Owner', 'prefix' => 'owner'],function(){
 
-    Route::resource('/Ownerpanel/users','Owner\UsersController');
-    Route::resource('/Ownerpanel/Property','Owner\PropertyController');
+   //  Route::resource('/Ownerpanel/users','Owner\UsersController');
+   //  Route::resource('/Ownerpanel/Property','Owner\PropertyController');
 
 //});

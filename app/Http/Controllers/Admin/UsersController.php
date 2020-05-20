@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 use App\City;
+use App\Role;
 use app\User;
-use Faker\Provider\ar_JO\Company;
+use Gate;
 
-use Yajra\DataTables\Facades\DataTables;
-// use Yajra\DataTables\DataTables as DataTables;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+// use Yajra\DataTables\DataTables as DataTables;
+use Faker\Provider\ar_JO\Company;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
 
 class UsersController extends Controller
 {
@@ -17,6 +19,16 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   
+   
+     public function __construct(){
+    //     if(Gate::denies('edit-users')){
+    //             return redirect(route('users.index'));
+    //         }
+    $this->middleware('auth');
+    }
+
+
     public function index()
     {
          $user= User::all();
@@ -30,8 +42,11 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $city=City::all();
-        return view('admin/user/add',compact('city'));
+    {  
+        $roles = Role::all();
+        $city=City::all();
+        $user = new User();
+        return view('admin/user/add',compact('city' , 'roles','user'));
     }
 
     /**
@@ -42,34 +57,47 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'firstName'=>'required',
-            'middleName'=>'required',
-            'lastName'=>'required',
-            'mobile'=>'required',
-            'street'=>'required',
-            'city'=>'required',
-            'email'=>'required|email',
-            'password'=>['required', 'string', 'min:5'],
+        // $this->validate($request,[
+        //     'firstName'=>'required',
+        //     'middleName'=>'required',
+        //     'lastName'=>'required',
+        //     'mobile'=>'required',
+        //     'street'=>'required',
+        //     'city'=>'required',
+        //     'email'=>'required|email',
+        //     'password'=>['required', 'string', 'min:5'],
             
-        ]);
+        // ]);
 
-        $users = new User();
-        $users->create([
-            'firstName' => $request->firstName,
-            'middleName' => $request->middleName,
-            'lastName' => $request->lastName,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'admin' => $request->admin,
-           'mobile' =>$request->mobile,
-           'street' =>$request->street,
-           'city' => $request->city
+        // $user = new User();
+        // $user->create([
+        //     'firstName' => $request->firstName,
+        //     'middleName' => $request->middleName,
+        //     'lastName' => $request->lastName,
+        //     'email' => $request->email,
+        //     'password' => bcrypt($request->password),
+        //     'admin' => $request->admin,
+        //    'mobile' =>$request->mobile,
+        //    'street' =>$request->street,
+        //    'city' => $request->city
 
-            ]);
+        //     ]);
+       
+        $user= new User();
+        $user->firstName=  $request->firstName;
+        $user->middleName=  $request->middleName;
+        $user->lastName=  $request->lastName;
+        $user->email =$request->email;
+        $user->password =bcrypt($request->password);
+        $user->mobile =$request->mobile;
+        $user->street =$request->street;
+        $user->city =$request->city;
 
-               
-            return redirect('/Adminpanel/users')->withFlashMessage('تمت اضافة العضو بنجاح');
+        $user->save();
+            
+            $user->roles()->attach($request->roles);
+          
+            return redirect(route('users.index'))->withFlashMessage('تمت اضافة العضو بنجاح');
 
 
 
@@ -93,11 +121,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-       $user= User::find($id);
-
-       return view('admin/user/edit',compact('user'));
+    //    $user= User::find($id);
+    // if(Gate::denies('manage-users')){
+    //     return redirect(route('users.index'));
+    // }
+       $roles = Role::all();
+       return view('admin/user/edit',compact('user' , 'roles'));
     }
 
     /**
@@ -107,12 +138,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user= User::find($id);
+        // $user= User::find($id);
         $user->fill($request->all())->save();
-        // return redirect::back()->withFlashMessage('تم تعديل العضو بنجاح');
-        return redirect('/Adminpanel/users')->withFlashMessage('تمت اضافة العضو بنجاح');
+        // dd($request->roles);
+        $user->roles()->sync($request->roles);
+
+        return redirect(route('users.index'))->withFlashMessage('تمت اضافة العضو بنجاح');
 
 
     }
@@ -123,9 +156,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user= User::find($id);
+        // $user= User::find($id);
+        // if(Gate::denies('manage-users')){
+        //     return redirect(route('users.index'));
+        // }
+        $user->roles()->detach();
         $user->delete();
         
         return redirect()->route('users.index')->withFlashMessage('user  deleted successfully' );

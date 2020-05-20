@@ -62,11 +62,21 @@
                             <td>{{$alluser->middleName}}</td>
                             <td>{{$alluser->lastName}}</td>
                             <td>{{$alluser->email}}</td>
-                            <td>{{$alluser->admin == 1 ? 'مدير' : 'عضو'}}</td>
+                            <td>{{ implode(',' ,$alluser->roles()->pluck('name')->toArray()) }}</td>
                             <td>{{$alluser->mobile}}</td>
                             <td>{{$alluser->street}}</td>
-                            <td>{{$alluser->city}}</td>
-
+                            <td>
+                            @if($alluser->city==0)
+                                            {{'غزة'}}
+                                        @elseif($alluser->city==1)
+                                            {{'رفح'}}
+                                        @elseif($alluser->city==2)
+                                            {{'خانيونس'}}
+                                        @elseif($alluser->city==3)
+                                            {{'دير البلح'}}
+                                       
+                                        @endif             
+                            </td>
                             <td>
                                 <a href="{{ url('/admin/Adminpanel/users/'.$alluser->id.'/edit')}}"
                                 class="btn btn-info btn-sm"><i class="material-icons">تعديل </i></a>

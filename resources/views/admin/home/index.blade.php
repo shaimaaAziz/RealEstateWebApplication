@@ -5,4 +5,5 @@
 @endsection
 @section('content')
     index
+    admin logined in
     @endsection

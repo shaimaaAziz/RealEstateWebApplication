@@ -26,7 +26,7 @@ class CreatePropertiesTable extends Migration
             $table->string('image');
             $table->string('city');
             $table->integer('evaluate')->default('0');
-            $table->unsignedBigInteger('adminId')->default('0');
+            // $table->unsignedBigInteger('adminId')->default('0');
             $table->integer( 'status')->default('0');
             $table->integer( 'area');
             $table->timestamps();

@@ -16,9 +16,34 @@
                 {{--                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>--}}
 
                 <div class="col-md-12">
-                    <input id="name" type="text" placeholder="الاسم" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                    <input id="firstName" type="text" placeholder="  الاسم الأول" class="form-control @error('firstName') is-invalid @enderror" name="firstName" value="{{ old('firstName') }}" required autocomplete="firstName" autofocus>
 
-                    @error('name')
+                    @error('firstName')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-md-12">
+                    <input id="middleName" type="text" placeholder="  الاسم الأوسط" class="form-control @error('middleName') is-invalid @enderror" name="middleName" value="{{ old('middleName') }}" required autocomplete="middleName" autofocus>
+
+                    @error('middleName')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <div class="col-md-12">
+                    <input id="lastName" type="text" placeholder=" اسم العائلة" class="form-control @error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') }}" required autocomplete="lastName" autofocus>
+
+                    @error('lastName')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -62,6 +87,45 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+
+                <div class="col-md-12">
+                    <input id="mobile" type="number" placeholder=" رقم الجوال " class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile" autofocus>
+
+                    @error('mobile')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-md-12">
+                    <input id="street" type="text" placeholder=" العنوان " class="form-control @error('street') is-invalid @enderror" name="street" value="{{ old('street') }}" required autocomplete="street" autofocus>
+
+                    @error('street')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-md-12">
+                    {{-- <input id="city" type="text" placeholder=" المدينة " class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus> --}}
+                    {!! Form::select('city',['0'=>'غزة' , '1'=>'رفح', '2'=>'خانيونس', '3'=>'وسطى'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}
+
+                    @error('city')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
+                </div>
+            </div>
             <div class="form-group row mb-0">
                 <div class="col-md-12">
                     <button type="submit" class="btn-warning">

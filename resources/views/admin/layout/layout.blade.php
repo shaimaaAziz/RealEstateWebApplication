@@ -53,10 +53,10 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="/home" class="nav-link">الرئيسية</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">اتصل بنا</a>
         </li>
     </ul>
 
@@ -165,6 +165,25 @@
             </a>
         </li>
     </ul>
+
+    <li class="nav-item dropdown " style="list-style: none;">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color:black;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ Auth::user()->firstName }} <span class="caret"></span>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                {{ __('تسجيل خروج') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div>
+       
+    </li> 
 </nav>
 <!-- /.navbar -->
 

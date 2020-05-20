@@ -93,11 +93,15 @@ class UsersController extends Controller
         $user->street =$request->street;
         $user->city =$request->city;
 
-        $user->save();
-            
+        if($user->save()){
+        $request->session()->flash('success',$user->firstName.' تمت إضافته بنجاح');
+    }else{
+     $request->session()->flash('error',' يوجد هنالك مشكلة في  عملية الإضافة');
+    } 
+
             $user->roles()->attach($request->roles);
           
-            return redirect(route('users.index'))->withFlashMessage('تمت اضافة العضو بنجاح');
+            return redirect(route('users.index'));
 
 
 
@@ -141,11 +145,16 @@ class UsersController extends Controller
     public function update(Request $request, User $user)
     {
         // $user= User::find($id);
-        $user->fill($request->all())->save();
+
+       if($user->fill($request->all())->save()){
+           $request->session()->flash('success',$user->firstName.'  تم تعديله بنجاح');
+       }else{
+        $request->session()->flash('error',' يوجد هنالك مشكلة في تعديل العضو');
+       }
         // dd($request->roles);
         $user->roles()->sync($request->roles);
-
-        return redirect(route('users.index'))->withFlashMessage('تمت اضافة العضو بنجاح');
+        return redirect(route('users.index'));
+        // return redirect(route('users.index'))->withFlashMessage('تمت اضافة العضو بنجاح');
 
 
     }

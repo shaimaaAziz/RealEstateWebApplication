@@ -6,4 +6,5 @@
 @section('content')
     index
     admin logined in
+   * dashboard *
     @endsection

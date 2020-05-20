@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/AdminDashboard', 'HomeController@AdminDashboard')->name('adminHome');
 
 
 
@@ -19,7 +20,7 @@ Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'pref
  // @datatable
     // Route::get('/Adminpanel/users/data' ,['as ' =>'Adminpanel.users.data' , 'uses' =>'UsersController@anyData']);
  // @admin
-    Route::get('/Adminpanel','AdminController@index');
+   //  Route::get('/Adminpanel','AdminController@index');
 
     // @users
     Route::resource('/Adminpanel/users','UsersController');

@@ -2,58 +2,32 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Contact;
 use Illuminate\Http\Request;
+use Yoeunes\Toastr\Facades\Toastr;
 use App\Http\Controllers\Controller;
-use App\User;
-use Illuminate\Support\Facades\Auth;
 
-class FavoriteController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
 
     public function __construct(){
-        
+       
         $this->middleware('auth');
         }
-        
     public function index()
     {
-        $properties = Auth::user()->favorite_properties;
 
-        return view('admin.favorite',compact('properties'));
-        // $properties = array();
-
-
-        // // $user = User::all();
-       
-        // // $users = User::with('favorite_properties')->get();
-
-
-        // $properties = array();
-
-        // // foreach ($users as $key=> $user) {
-        // //     // dd($users->favorite_properties()->where('user_id', $users->id )->get());
-        // //     // if($key > 0){ 
-        // //     $properties[] = $user->favorite_properties();
-        // //     }
-
-     
-         
-        // // dd(  $properties);
-        // return view('admin.favorite',compact('user','properties'));
-
-
-
-
-
-
-
+        $contacts =Contact::all();
+        return view('Contact.index',compact('contacts'));
 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -84,7 +58,9 @@ class FavoriteController extends Controller
      */
     public function show($id)
     {
-        //
+        $contact=Contact::find($id);
+        return view('Contact.show',compact('contact'));
+
     }
 
     /**
@@ -118,11 +94,9 @@ class FavoriteController extends Controller
      */
     public function destroy($id)
     {
-
-        // $property = User::favorite_properties()->detach($id);
-        $property = Auth::user()->favorite_properties()->detach($id);
-
-        return redirect()->route('favorite.index')->withFlashMessage('user  deleted successfully' );
-
+        $Contact = Contact::find($id);
+        $Contact->delete();
+        Toastr::success('تم ازالة الرسالة بنجاح  ');
+        return redirect()->back();
     }
 }

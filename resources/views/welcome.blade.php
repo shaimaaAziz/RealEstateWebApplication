@@ -41,74 +41,117 @@
         <div class="row profile">
             <div class="col-md-9">
                 <div class="profile-content">
-@if( count($property) > 0)
-    @foreach($property as $key => $properties)
-        @if($key % 3 == 0 && $key!= 0 )
-            <div class="clearfix"></div>
-        @endif
-        <div class="col-md-4 pull-right">
-            <div class="productbox">
-                <img src="http://lorempixel.com/468/258" class="img-responsive">
-                <div class="producttitle">{{ $properties->type }}</div>
-                <p class="text-justify">{{Str::limit($properties->description, 80)}}</p>
-                <div class="productprice"><div class="pull-left"> <a href="#" class="btn btn-primary btn-sm" role="button">اظهر التفاصيل
-                            <span class="glyphicon glyphicon-shopping-cart"> </span></a></div>
-                    <div class="pricetext">{{$properties->maxPrice}}</div></div>
+                        @if( count($property) > 0)
+                            @foreach($property as $key => $properties)
+                                @if($key % 3 == 0 && $key!= 0 )
+                                    <div class="clearfix"></div>
+                                @endif
+                                <div class="col-md-4 pull-right">
+                                    <div class="productbox">
+                                        <img src="http://lorempixel.com/468/258" class="img-responsive">
+                                        <div class="producttitle">{{ $properties->type }}</div>
+                                        <p class="text-justify">{{Str::limit($properties->description, 80)}}</p>
+                                        <div class="productprice"><div class="pull-left"> <a href="#" class="btn btn-primary btn-sm" role="button">اظهر التفاصيل
+                                                    <span class="glyphicon glyphicon-shopping-cart"> </span></a></div>
+                                            <div class="pricetext">{{$properties->maxPrice}}</div></div>
 
-                      <div> 
+                                            <div> 
 
-        
-                        <ul class="post-footer" style="list-style: none;">
-                            <li>
-                                @guest
-                                    <a style="text-decoration: none;" href="javascript:void(0);" 
-                                    onclick="toastr.info('يجب عليك تسجيل الدخول قبل القيام باضافة العقار الي المفضلة .',
-                                    '',{
-                                        closeButton: true,
-                                        progressBar: true,
-                                    }
-                                    )"><i class="fas fa-heart" id="no-background-hover"></i></a>
-                                       {{ $properties->favorite_to_users->count() }}
-                                @else
-                                    <a href="javascript:void(0);" style="text-decoration: none;" 
-                                    onclick="document.getElementById('favorite-form-{{ $properties->id }}')
-                                    .submit();"  class="{{ !Auth::user()->favorite_properties->
-                                    where('pivot.property_id',$properties->id)->count()  == 0 ?'favorite_properties' : ''}}">
-                                    <i class="fas fa-heart" id="no-background-hover"></i> </a> 
-                                    {{ $properties->favorite_to_users->count() }}
-                                  
-        
-                                    <form id="favorite-form-{{ $properties->id }}" method="POST" 
-                                    action="{{ route('property.favorite', $properties->id) }}
-                                        " style="display: none;">
-                                        @csrf
-                                    </form>
-                                @endguest
-        
-                            </li>   
-                        </ul>
-                    </div>
-                   
-
-
-            </div>
-        </div>
-    @endforeach
+                                
+                                                <ul class="post-footer" style="list-style: none;">
+                                                    <li>
+                                                        @guest
+                                                            <a style="text-decoration: none;" href="javascript:void(0);" 
+                                                            onclick="toastr.info('يجب عليك تسجيل الدخول قبل القيام باضافة العقار الي المفضلة .',
+                                                            '',{
+                                                                closeButton: true,
+                                                                progressBar: true,
+                                                            }
+                                                            )"><i class="fas fa-heart" id="no-background-hover"></i></a>
+                                                            {{ $properties->favorite_to_users->count() }}
+                                                        @else
+                                                            <a href="javascript:void(0);" style="text-decoration: none;" 
+                                                            onclick="document.getElementById('favorite-form-{{ $properties->id }}')
+                                                            .submit();"  class="{{ !Auth::user()->favorite_properties->
+                                                            where('pivot.property_id',$properties->id)->count()  == 0 ?'favorite_properties' : ''}}">
+                                                            <i class="fas fa-heart" id="no-background-hover"></i> </a> 
+                                                            {{ $properties->favorite_to_users->count() }}
+                                                        
+                                
+                                                            <form id="favorite-form-{{ $properties->id }}" method="POST" 
+                                                            action="{{ route('property.favorite', $properties->id) }}
+                                                                " style="display: none;">
+                                                                @csrf
+                                                            </form>
+                                                        @endguest
+                                
+                                                    </li>   
+                                                </ul>
+                                            </div>
+                                        
 
 
-    <div class="clearfix"></div>
-    <br>
+                                    </div>
+                                </div>
+                            @endforeach
 
-@else
-    <div class= 'alert alert-danger'>
-        لا يوجد اي عقارات حاليا
-    </div>
-@endif
 
-    <div class="text-center">
+                            <div class="clearfix"></div>
+                            <br>
 
-    </div>
+                        @else
+                            <div class= 'alert alert-danger'>
+                                لا يوجد اي عقارات حاليا
+                            </div>
+                        @endif
+
+   
                 </div>
+
+                        <div class="row ">
+                            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+                                <div class="row">
+                                    <h1>تواصل معنا </h1>
+                                    <form class="contact-form" method="post" action="{{route('contact.send')}}">
+                                        @csrf
+                                       
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="  الرسالة"></textarea>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  الاسم">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="email" type="email" class="form-control" id="email" required="required" placeholder="  الايميل">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="phone" type="text" class="form-control" id="phone" required="required" placeholder="  رقم الهاتف ">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="subject" type="text" class="form-control" id="subject" required="required" placeholder="  الموضوع">
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                                            <div class="text-center">
+                                                <button type="submit" id="submit" name="submit" class="btn btn-send">Send </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                  
+
+
+
+
+
+
+
+
+
             </div>
             <div class="col-md-3">
                 <div class="profile-sidebar">
@@ -196,6 +239,20 @@
 
 
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {{--@section('content')--}}
 

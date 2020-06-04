@@ -22,7 +22,7 @@
                 <div class="header">
                     <h4>
                         المفضلة
-                        <span class="badge bg-blue  font">{{ $properties->count() }}</span>
+                        {{-- <span class="badge bg-blue  font">{{ $properties->count() }}</span> --}}
                     </h4>
                 </div>
                 <div class="body">
@@ -56,7 +56,7 @@
                                     <tr>
                                        
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $property->favorite_to_users ->count()}}</td>
+                                        <td>{{ $property->favorite_to_users->count() }}</td>
                                         <td>{{ $property->id }}</td>
                                         <td>{{ $property->description  }}</td>
                                         <td>{{ $property->favorite_to_users->count() }}</td>

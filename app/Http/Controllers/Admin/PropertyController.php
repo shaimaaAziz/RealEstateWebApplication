@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use yajra\Datatables\Datables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Session\Session;
 use League\CommonMark\Inline\Element\Image;
@@ -101,7 +102,6 @@ class PropertyController extends Controller
             'image' =>$photoName,
 //            'city' => $city->name,
             'city' =>$request->city,
-            'adminId' => $request->adminId,
             'area'=>$request->area
 
 
@@ -189,7 +189,6 @@ class PropertyController extends Controller
         $property->propertyPeriod =$request->propertyPeriod;
         $property->street =$request->street;
         $property->city =$request->city;
-        $property->adminId =$request->adminId;
         $property->area =$request->area;
 
 

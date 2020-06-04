@@ -92,9 +92,15 @@
                     <i class="material-icons">favorite</i>
                     <p style="margin-right:10px;">المفضلة </p>
                 </a>
-
-
-               
+   
             </li>
+
+            <li class="nav-item {{ Request::is('admin/contact*') ? 'active': '' }}">
+                <a class="nav-link" href="{{ route('contact.index') }}">
+                    <i class="material-icons">message</i>
+                    <p style="margin-right:10px;">التواصل</p>
+                </a>
+            </li>
+
             </ul>
        

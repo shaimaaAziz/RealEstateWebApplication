@@ -53,10 +53,21 @@ class UsersTableSeeder extends Seeder
            'street' =>'النصر',
            'city' => 'غزة'
         ]);
+        $user2 = User::create([
+            'firstName' => 'gg',
+            'middleName' => 'عبد العزيز',
+            'lastName' => 'أبوg',
+            'email' => 'g@gmail.com',
+            'password' => bcrypt('admin'),
+           'mobile' =>'0599012345',
+           'street' =>'النصر',
+           'city' => 'غزة'
+        ]);
    
         $admin->roles()->attach($adminRole) ;
         // dd($adminRole);
         $owner->roles()->attach($ownerRole) ;
         $user->roles()->attach($userRole) ;
+        $user2->roles()->attach($userRole) ;
     }
 }

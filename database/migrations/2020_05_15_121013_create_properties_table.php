@@ -27,8 +27,10 @@ class CreatePropertiesTable extends Migration
             $table->string('city');
             $table->integer('evaluate')->default('0');
             // $table->unsignedBigInteger('adminId')->default('0');
-            $table->integer( 'status')->default('0');
+            $table->integer( 'status');
             $table->integer( 'area');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

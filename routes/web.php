@@ -17,7 +17,14 @@ Route::get('/AdminDashboard', 'HomeController@AdminDashboard')->name('adminHome'
 Route::post('/contact','ContactController@sendMessage')->name('contact.send');
 
 
-// Route::post('/search', 'BuController@search');
+
+// in welcome blade
+Route::get('/ShowAllBullding' , 'operationForProperty@showAllEnabel');
+   Route::get('/ForRent' , 'operationForProperty@ForRent');
+   Route::get('/ForBuy' , 'operationForProperty@ForBuy');
+   Route::get('/type/{type}' , 'operationForProperty@showByType');
+   Route::post('/search', 'operationForProperty@search');
+
 
 Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'prefix' => 'admin'],function(){
  // @datatable
@@ -37,10 +44,7 @@ Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'pref
 
 
 // welcome
-   Route::get('/ShowAllBullding' , 'PropertyController@showAllEnabel');
-   Route::get('/ForRent' , 'PropertyController@ForRent');
-   Route::get('/ForBuy' , 'PropertyController@ForBuy');
-   Route::get('/type/{type}' , 'PropertyController@showByType');
+   
 });
 
 //favorite controller 

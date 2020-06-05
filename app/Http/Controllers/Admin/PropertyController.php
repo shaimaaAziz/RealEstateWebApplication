@@ -222,36 +222,4 @@ class PropertyController extends Controller
 
 
     }
-    public function showAllEnabel(Property $pro){
-        $property= Property::all();
-
-        $proAll = $pro->where('status' , 0)->orderBy('id' , 'desc')->paginate(15);
-        return view('welcome' , compact('proAll','property'));
-    }
-
-    public function ForRent(Property $pro){
-        $property= Property::all();
-
-        $proAll = $pro->where('status' , 0)->where('state' ,0)->orderBy('id' , 'desc')->paginate(15);
-        return view('welcome' , compact('proAll','property'));
-    }
-
-    public function ForBuy(Property $pro){
-        $property= Property::all();
-
-        $proAll = $pro->where('status' , 0)->where('state' ,1)->orderBy('id' , 'desc')->paginate(15);
-        return view('welcome' , compact('proAll','property'));
-    }
-
-    public function showByType($type , Property $pro){
-        $property= Property::all();
-
-        if(in_array($type, ['0' , '1' , '2', '3'])){
-            $proAll = $pro->where('status' , 0)->where('type' , $type)->orderBy('id' , 'desc')->paginate(15);
-            return view('welcome' , compact('proAll','property'));
-        }else{
-            return Redirect::back();
-        }
-    }
-
 }

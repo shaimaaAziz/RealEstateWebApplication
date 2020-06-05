@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -30,9 +31,4 @@ class HomeController extends Controller
         // return view('home');
     
         //this method for admin when he loggin into the application
-        public function AdminDashboard(){
-            return view('admin/home/index');
-        }
-
-
 }

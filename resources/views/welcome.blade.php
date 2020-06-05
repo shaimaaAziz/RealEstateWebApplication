@@ -169,13 +169,13 @@
                                 {!! Form::number("roomNumbers" , null, ['class' =>'form-control' , 'placeholder'=>'عدد الغرف']) !!}
                             </li>
                             <li>
-                                {!! Form::select("type"  ,['0'=>'فيلا' , '1'=>'شاليه','2'=>'ارض' , '3'=>'شقة','4'=>'يت'], null, ['class' =>'form-control' , 'placeholder'=>'نوع العقار']) !!}
+                                {!! Form::select("type"  ,['0'=>'فيلا' , '1'=>'شاليه','2'=>'ارض' , '3'=>'شقة','4'=>'بيت'], null, ['class' =>'form-control' , 'placeholder'=>'نوع العقار']) !!}
                             </li>
                             <li>
                                 {!! Form::select("state" , ['0'=>'ايجار' , '1'=>'بيع'],null, ['class' =>'form-control' , 'placeholder'=>'نوع العملية']) !!}
                             </li>
                             <li>
-                                {!! Form::text("square", null, ['class' =>'form-control' , 'placeholder'=>'مساحة العقار']) !!}
+                                {!! Form::text("area", null, ['class' =>'form-control' , 'placeholder'=>'مساحة العقار']) !!}
                             </li>
                             <li>
                                 {!! Form::submit("ابحث", ['class' =>'banner_btn']) !!}
@@ -191,37 +191,37 @@
                     <div class="profile-usermenu">
                         <ul class="nav" style="margin-right: 0px; padding-right: 0px;">
                             <li class="active">
-                                <a href="{{url('/admin/ShowAllBullding')}}">
+                                <a href="{{url('/ShowAllBullding')}}">
                                     <i class="glyphicon glyphicon-home"></i>
                                     كل العقارات </a>
                             </li>
                             <li>
-                                <a href="{{url('/admin/ForRent')}}">
+                                <a href="{{url('/ForRent')}}">
                                     <i class="glyphicon glyphicon-user"></i>
                                     ايجار </a>
                             </li>
                             <li>
-                                <a href="{{url('/admin/ForBuy')}}">
+                                <a href="{{url('/ForBuy')}}">
                                     <i class="glyphicon glyphicon-user"></i>
                                     تمليك </a>
                             </li>
                             <li>
-                                <a href="{{url('/admin/type/0')}}">
+                                <a href="{{url('/type/0')}}">
                                     <i class="glyphicon glyphicon-flag"></i>
                                     الشقق </a>
                             </li>
                             <li>
-                                <a href="{{url('/admin/type/1')}}">
+                                <a href="{{url('/type/1')}}">
                                     <i class="glyphicon glyphicon-flag"></i>
                                     الفلل </a>
                             </li>
                             <li>
-                                <a href="{{url('/admin/type/2')}}">
+                                <a href="{{url('/type/2')}}">
                                     <i class="glyphicon glyphicon-flag"></i>
                                     الشاليهات </a>
                             </li>
                             <li>
-                                <a href="{{url('/admin/type/3')}}">
+                                <a href="{{url('/type/3')}}">
                                     <i class="glyphicon glyphicon-flag"></i>
                                     الأراضي </a>
                             </li>

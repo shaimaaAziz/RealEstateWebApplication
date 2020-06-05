@@ -84,7 +84,7 @@
                                         @elseif($allProperties->city==3)
                                             {{'وسطى'}}
                                         @endif</td>
-                                    <td>{{Auth::user()->firstName .' '.Auth::user()->lastName }}</td>
+                                    <td>{{$allProperties->user->firstName .' '.$allProperties->user->lastName }}</td>
 
                                     <td>
                                         <a href="{{ route('Property.edit',$allProperties->id)}}"

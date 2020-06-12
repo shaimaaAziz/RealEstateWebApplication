@@ -25,10 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $property= Property::all();
+        $pro= Property::all();
+         $property  = $pro->where('status' , 0);
         return view('welcome',compact('property'));
     }
         // return view('home');
     
         //this method for admin when he loggin into the application
+        public function AdminDashboard(){
+            return view('admin/home/index');
+        }
 }

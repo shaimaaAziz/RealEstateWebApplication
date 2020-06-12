@@ -31,7 +31,13 @@ class UsersController extends Controller
 
     public function index()
     {
-         $user= User::all();
+        //  $users= User::all();
+        //  $user = User::with('roles')->where('name' ,'!=', 'أدمن')->get();
+        $user =  User::whereHas('roles', function ($query) {
+            $query->where('name', '!=', 'أدمن');
+        })->get();
+        
+        // dd($user);
          $city=City::all();
         return view('admin/user/index',compact('user','city'));
     }

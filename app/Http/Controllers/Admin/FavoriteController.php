@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
+use App\Property;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
@@ -22,30 +23,13 @@ class FavoriteController extends Controller
         
     public function index()
     {
-        $properties = Auth::user()->favorite_properties;
+        // $properties = Auth::user()->favorite_properties;
 
-        return view('admin.favorite',compact('properties'));
-        // $properties = array();
+        // return view('admin.favorite',compact('properties'));
+        // $users =  User::whereHas('favorite_properties' )->get();
+        $properties=  Property::whereHas('favorite_to_users' )->get();
 
-
-        // // $user = User::all();
-       
-        // // $users = User::with('favorite_properties')->get();
-
-
-        // $properties = array();
-
-        // // foreach ($users as $key=> $user) {
-        // //     // dd($users->favorite_properties()->where('user_id', $users->id )->get());
-        // //     // if($key > 0){ 
-        // //     $properties[] = $user->favorite_properties();
-        // //     }
-
-     
-         
-        // // dd(  $properties);
-        // return view('admin.favorite',compact('user','properties'));
-
+         return view('admin.favorite',compact('properties'));
 
 
 
@@ -118,10 +102,8 @@ class FavoriteController extends Controller
      */
     public function destroy($id)
     {
-
-        // $property = User::favorite_properties()->detach($id);
-        $property = Auth::user()->favorite_properties()->detach($id);
-
+        $user=Property::find($id);
+        $user->favorite_to_users()->detach();
         return redirect()->route('favorite.index')->withFlashMessage('user  deleted successfully' );
 
     }

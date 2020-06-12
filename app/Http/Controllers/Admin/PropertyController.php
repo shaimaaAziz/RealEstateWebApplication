@@ -6,9 +6,10 @@ use toastr;
 
 use App\City;
 use App\type;
+use App\User;
 use App\Property;
+
 use App\Http\Requests;
-use http\Client\Curl\User;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use yajra\Datatables\Datables;
@@ -34,7 +35,8 @@ class PropertyController extends Controller
         
     public function index()
     {
-        $property= Property::all();
+        $pro= Property::all();
+         $property  = $pro->where('status' , 0);
 //        $city=cities::all();
 //        $type=type::all();
 
@@ -50,11 +52,14 @@ class PropertyController extends Controller
     public function create(){
 //       $city=cities::all();
         $property= Property::all();
+        $users =  User::whereHas('roles', function ($query) {
+            $query->where('name', '!=', 'أدمن');
+        })->get();
 //        $type=type::all();
 
 //        $city=cities::lists('name', 'id');
 
-        return view('admin/property/add',compact('property'));
+        return view('admin/property/add',compact('property','users'));
     }
 
     /**
@@ -77,17 +82,16 @@ class PropertyController extends Controller
             'propertyPeriod'=>'required',
             'image'=>'required',
             'area'=>'required',
-
+            'firstName' =>'required',   
+             'lastName' =>'required',
+            // 'user_id' =>'required',
         ]);
 
         $property = new Property();
         $photoName = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images',$photoName);
 
-//        $selectCity = cities::all();
-//        $city = $selectCity->find($request->city);
-//        $selectType = type::all();
-//        $type = $selectType->find($request->type);
+if($request->firstName ==$request->lastName){
 
         $property->create([
 //            'type' => $type->name,
@@ -100,12 +104,14 @@ class PropertyController extends Controller
             'propertyPeriod' =>$request->propertyPeriod,
             'street' =>$request->street,
             'image' =>$photoName,
-//            'city' => $city->name,
             'city' =>$request->city,
-            'area'=>$request->area
-
-
+            'status' =>'0',         //property ia available
+            'area'=>$request->area,
+            'user_id' =>$request->firstName,
         ]);
+    }else{
+        echo" الاسم الأول واسم العائلة غير متطابقين";
+    }
 //        Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
         toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
 
@@ -167,16 +173,15 @@ class PropertyController extends Controller
             'propertyPeriod'=>'required',
             'image'=>'required',
             'area'=>'required',
-
-
+            
         ]);
 
 //        $input = $request->all();
 //        $property->fill($input)->save();
 
-        $photoName = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images',$photoName);
-
+        // $photoName = $request->file('image')->getClientOriginalName();
+        // $request->file('image')->storeAs('public/images',$photoName);
+      
 
         $property = Property::find($id);
 //        $property->type= $type->name;
@@ -193,9 +198,9 @@ class PropertyController extends Controller
 
 
 ////
-            $oldFileName = $property->image;
-            $property->image = $photoName;
-            Storage::delete($oldFileName);
+            // $oldFileName = $property->image;
+            // $property->image = $photoName;            
+            // Storage::delete($oldFileName);
 //            File::delete(public_path('public/images/' ,$oldFileName));
 
 

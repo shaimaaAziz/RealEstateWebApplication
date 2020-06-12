@@ -13,7 +13,8 @@ class operationForProperty extends Controller
   
 
     public function showAllEnabel(Property $pro){
-        $property= Property::all();
+        $pro= Property::all();
+         $property  = $pro->where('status' , 0);
         return view('welcome' , compact('property'));
 
     }

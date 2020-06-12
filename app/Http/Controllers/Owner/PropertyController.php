@@ -69,6 +69,7 @@ class PropertyController extends Controller
             'propertyPeriod' =>$request->propertyPeriod,
             'street' =>$request->street,
             'image' =>$photoName,
+            'status' =>'0',
             'city' =>$request->city,
             'area'=>$request->area
 

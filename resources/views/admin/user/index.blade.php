@@ -102,15 +102,15 @@
                           </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                <tr>
+                {{-- <tfoot> --}}
+                {{-- <tr>
                 <th># </th>
                   <th>اسم المستخدم</th>
                   <th>البريد الالكتروني</th>
                   <th>الصلاحيات</th>
                   <th>التحكم</th>
-                </tr>
-                </tfoot>
+                </tr> --}}
+                {{-- </tfoot> --}}
               </table>
             </div>
             <!-- /.card-body -->
@@ -131,7 +131,6 @@
 
 {{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
 {{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
-
 
 
 

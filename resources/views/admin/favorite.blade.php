@@ -1,4 +1,3 @@
-
 @extends('admin.layout.layout')
 
 @section('title')
@@ -13,6 +12,22 @@
 @endsection
 
 @section('content')
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1> المفضلة </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                     <li class="breadcrumb-item"><a href="{{ url('/AdminDashboard')}}">الرئيسية</a></li>
+                    <li class="breadcrumb-item active"><a href="{{ url('/admin/favorite')}}"> المفضلة </a></li>
+                </ol>
+             </div>
+
+         </div>
+    </div>
+ </section>
 <div class="container-fluid">
 
     <!-- Exportable Table -->
@@ -20,10 +35,9 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h4>
-                        المفضلة
+                   
                         {{-- <span class="badge bg-blue  font">{{ $properties->count() }}</span> --}}
-                    </h4>
+                    
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -41,16 +55,7 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>مجموع المستخدمين </th>
-                                <th>رقم العقار</th>
-                                <th> وصف العقار </th>
-                                <th><i class="material-icons">favorite</i></th>
-                                <th>Action</th>
-                            </tr>
-                            </tfoot>
+                           
                             <tbody>
                                 @foreach($properties as $key=>$property)
                                     <tr>
@@ -96,7 +101,6 @@
 
 {{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
 {{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
-
 
 
 

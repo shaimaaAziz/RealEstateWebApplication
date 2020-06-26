@@ -12,22 +12,22 @@
 @endsection
 
 @section('content')
-    {{--    <section class="content-header">--}}
-    {{--        <div class="container-fluid">--}}
-    {{--            <div class="row mb-2">--}}
-    {{--                <div class="col-sm-6">--}}
-    {{--                    <h1>التحكم في العقارات</h1>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-sm-6">--}}
-    {{--                    <ol class="breadcrumb float-sm-right">--}}
-    {{--                        <li class="breadcrumb-item"><a href="{{ url('/Adminpanel')}}">الرئيسية</a></li>--}}
-    {{--                        <li class="breadcrumb-item active"><a href="{{ url('/Adminpanel/Property')}}">التحكم في العقارات</a></li>--}}
-    {{--                    </ol>--}}
-    {{--                </div>--}}
+       <section class="content-header">
+           <div class="container-fluid">
+               <div class="row mb-2">
+                   <div class="col-sm-6">
+                       <h1>التحكم في العقارات</h1>
+                   </div>
+                   <div class="col-sm-6">
+                       <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ url('/AdminDashboard')}}">الرئيسية</a></li>
+                           <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/Property')}}">التحكم في العقارات</a></li>
+                       </ol>
+                    </div>
 
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
+                </div>
+           </div>
+        </section>
 
     <!-- Main content -->
     <section class="content">
@@ -51,7 +51,7 @@
                                 {{--                                <th>العنوان</th>--}}
                                 <th>المدينة</th>
                                 <th>المالك</th>
-                                <th colspan="2">التحكم</th>
+                                <th>التحكم</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -127,25 +127,21 @@
 
 @section('footer')
 
-    {{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
-    {{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
+{{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
+{{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
 
 
 
+<script type="text/javascript">
+$('#table').DataTable({
+  "paging": true,
+  "lenghtChange":true,
+  "searching":true,
+  "ordring":true,
+  "info":true,
+  "autowidth":true
 
-    <script type="text/javascript">
-        $('#table').DataTable({
-            "paging": true,
-            "lenghtChange":true,
-            "searching":true,
-            "ordring":true,
-            "info":true,
-            "autowidth":true
+});
 
-        });
-
-    </script>
-
-
-
+</script>
 @endsection

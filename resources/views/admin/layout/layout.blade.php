@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>لوحه تحكم الموقع
 
-    
+    |
 
         @yield('title')</title>
 
@@ -235,6 +235,7 @@
     <div class="float-right d-none d-sm-inline-block">
         <b>Version</b> 3.0.2
     </div> --}}
+ 
 </footer>
 
 <!-- Control Sidebar -->

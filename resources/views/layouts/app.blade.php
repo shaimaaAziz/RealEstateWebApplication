@@ -9,6 +9,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <link href="{{ Request::root() }}/website/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ Request::root() }}/website/css/flexslider.css" rel="stylesheet" />
     <link href="{{ Request::root() }}/website/css/style.css" rel="stylesheet" />
@@ -19,7 +21,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-   
 
 
     <!-- CSRF Token -->
@@ -40,17 +41,17 @@
     <div class="container"> <a class="navbar-brand" href="{{url('/')}}"><i class="fa fa-paper-plane"></i> ONE</a>
         <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{ Request::root() }}/website/images/nav_icon.png" alt="" /> </a>
             <ul class="nav" id="nav">
-                <li class="current"><a href="{{url('/home')}}">الرئيسيه</a></li>
+                <li class="current"><a href="{{url('/')}}">الرئيسية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="services.html">خدماتنا</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a>
+                        <a class="glyphicon glyphicon-log-in nav-link" href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('عضويه جديده') }}</a>
+                            <a class="glyphicon glyphicon-user nav-link" href="{{ route('register') }}">{{ __('عضويه جديده') }}</a>
                         </li>
                     @endif
                 @else
@@ -60,7 +61,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a style="text-decoration: none;" class=" dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('تسجيل خروج') }}
@@ -71,7 +72,11 @@
                             </form>
                           
                             @can('manage-users')
-                            <a class="dropdown-item" href="/AdminDashboard">الصفحة الشخصية</a>
+                            <a style="text-decoration: none; " class=" dropdown-item" href="/AdminDashboard">الصفحة الشخصية</a>
+                            @endcan
+
+                            @can('user')
+                            <a style="text-decoration: none; " class="dropdown-item" href="/user/personalPage">الصفحة الشخصية</a>
                             @endcan
 
                         </div>  

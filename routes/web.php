@@ -9,15 +9,19 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/AdminDashboard', 'HomeController@AdminDashboard')->name('adminHome');
 
 
 // for contact in welcome blade
 Route::post('/contact','ContactController@sendMessage')->name('contact.send');
 
+//for user when he login
+Route::group(['middleware'=>['can:user'] , 'namespace' => 'User', 'prefix' => 'user'],function(){
+   
+   Route::resource('/personalPage','userController');
 
-
+});
 // in welcome blade
 Route::get('/ShowAllBullding' , 'operationForProperty@showAllEnabel');
    Route::get('/ForRent' , 'operationForProperty@ForRent');

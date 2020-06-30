@@ -29,6 +29,14 @@ class AuthServiceProvider extends ServiceProvider
         return $user->hasAnyRole('أدمن');
        });
 
+       Gate::define('user' , function($user){
+        return $user->hasAnyRole('مستخدم');
+       });
+
+       Gate::define('owner' , function($user){
+        return $user->hasAnyRole('صاحب العقار');
+       });
+       
     //    Gate::define('users' , function($user){
     //     return $user->hasAnyRoles(['أدمن','مستخدم']);
     //    });

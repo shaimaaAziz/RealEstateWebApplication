@@ -3,7 +3,7 @@
 @section('title')
 
 تعديل العضو 
-{{$user->name}}
+{{$user->firstName}}
 
 @endsection
 
@@ -24,7 +24,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin/Adminpanel')}}">الرئيسية</a></li>
               <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
-              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/users/'.$user->id.'edit')}}">تعديل العضو {{$user->name}} </a></li>
+              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/users/'.$user->id.'edit')}}">تعديل العضو {{$user->firstName}} </a></li>
             </ol>         
         </div>
       </div><!-- /.container-fluid -->

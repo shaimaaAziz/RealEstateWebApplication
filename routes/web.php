@@ -18,7 +18,8 @@ Route::post('/contact','ContactController@sendMessage')->name('contact.send');
 
 //for user when he login
 Route::group(['middleware'=>['can:user'] , 'namespace' => 'User', 'prefix' => 'user'],function(){
-   
+     
+   Route::get('/personalPage/favorite','userController@favorite');
    Route::resource('/personalPage','userController');
 
 });

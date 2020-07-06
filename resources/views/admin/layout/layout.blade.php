@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>لوحه تحكم الموقع
 
-    |
-
         @yield('title')</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ Request::root() }}/admin/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -36,8 +35,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
    
     @yield('header')
+    {{-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">  --}}
+
     @toastr_css
 
 </head>

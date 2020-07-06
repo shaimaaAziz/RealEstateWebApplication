@@ -165,6 +165,7 @@ return [
         yajra\DataTables\DataTablesServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -102,5 +102,11 @@
                 </a>
             </li>
 
+            <li >
+                <a class="nav-link" href="{{ route('properties.rating') }}">
+                    <i class="material-icons">star</i>
+                    <p style="margin-right:10px;">التقيمات</p>
+                </a>
+            </li>
             </ul>
        

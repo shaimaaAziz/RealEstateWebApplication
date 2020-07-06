@@ -20,7 +20,16 @@ Route::post('/contact','ContactController@sendMessage')->name('contact.send');
 Route::group(['middleware'=>['can:user'] , 'namespace' => 'User', 'prefix' => 'user'],function(){
      
    Route::get('/personalPage/favorite','userController@favorite');
-   Route::resource('/personalPage','userController');
+   Route::get('/personalPage/properties', 'PropertyReviewController@userRating')->name('userRating');
+
+
+   // for user to rate a property 
+  Route::post('/personalPage/properties', 'PropertyReviewController@postProperty')->name('properties.post');
+  Route::post('/personalPage/propertiesPersonal', 'PropertyReviewController@postPropertyforPersonal')->name('propertiesPersonalRating');
+
+  
+  Route::resource('/personalPage','userController');
+
 
 });
 // in welcome blade
@@ -47,6 +56,8 @@ Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'pref
     // contact
     Route::resource('/contact', 'ContactController');
 
+    Route::get('propertiesRate', 'PropertyController@rating')->name('properties.rating');
+
 
 // welcome
    
@@ -57,7 +68,15 @@ route::group(['middleware'=>['auth'] ,'namespace' => 'user', 'prefix' => 'user']
 
    Route::post('/favorite/{property}/add', 'favoriteController@add')->name('property.favorite');
 
+
+   // Route::get('properties', 'PropertyReviewController@properties')->name('properties');
+
+   //  Route::post('properties', 'PropertyReviewController@postProperty')->name('properties.post');
+   
+   // Route::get('properties/{id}', 'PropertyReviewController@show')->name('properties.show');
 });
+
+
 
 
 

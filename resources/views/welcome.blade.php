@@ -29,7 +29,14 @@
         .favorite_properties:hover{
             color:rgb(192, 3, 3);
         }
-        
+        .rating-xs {
+           font-size: 1.5em;
+        }
+      
+ 
+
+
+
         #no-background-hover::before {
    background-color: transparent !important; 
 }
@@ -58,7 +65,7 @@
                                             <div> 
 
                                 
-                                                <ul class="post-footer" style="list-style: none;">
+                                                <ul class="post-footer" style="list-style: none; padding:0px">
                                                     <li>
                                                         @guest
                                                             <a style="text-decoration: none;" href="javascript:void(0);" 
@@ -69,6 +76,17 @@
                                                             }
                                                             )"><i class="fas fa-heart" id="no-background-hover"></i></a>
                                                             {{ $properties->favorite_to_users->count() }}
+
+                                                            <li  style="direction:ltr;">
+                                                                <input id="input-1-xs " name="rate" class="rating rating-loading " data-min="0" 
+                                                                data-max="5" data-step="0.1" 
+                                                                data-show-clear="false" data-show-caption="false"
+                                                                value="{{ $properties->averageRating() }}" 
+                                                                data-size="xs" disabled>
+                                                            
+
+                                                            </li>
+                                                            <div class="clearfix"></div>
                                                         @else
                                                             <a href="javascript:void(0);" style="text-decoration: none;" 
                                                             onclick="document.getElementById('favorite-form-{{ $properties->id }}')
@@ -87,6 +105,33 @@
                                 
                                                     </li>   
                                                 </ul>
+ 
+                                                {{-- <div class="details col-md-6"> --}}
+
+                                                    @can('user')
+                                                    <form action="{{ route('properties.post') }}" method="POST">
+
+                                                        {{ csrf_field() }}
+                                                        <div class="rating">
+                    
+                                                            <input id="input-1" name="rate" class="rating rating-loading" data-min="0" 
+                                                            data-max="5" data-step="1" value="{{ $properties->userAverageRating }}" 
+                                                            data-size="xs">
+                    
+                                                            <input type="hidden" name="id" required="" value="{{ $properties->id }}">
+                    
+                                                    {{-- <span class="review-no">422 reviews</span> --}}
+                    
+                                                            <br/>
+                    
+                                                            <button class="btn btn-success">إرسال المراجعة</button>
+                    
+                                                        </div>
+                                                    </form>
+                                                    @endcan
+                                                {{-- </div> --}}
+
+
                                             </div>
                                         
 
@@ -416,5 +461,9 @@
 
         // alert('هلو')
     </script>
+<script type="text/javascript">
 
+    $("#input-id").rating();
+
+</script>
 @endsection

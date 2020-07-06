@@ -227,4 +227,10 @@ if($request->firstName ==$request->lastName){
 
 
     }
+    public function rating(){
+        $Property = Property::all();
+
+        return view('admin/Property',compact('Property'));
+
+    }
 }

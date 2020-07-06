@@ -2,10 +2,13 @@
 
 namespace App;
 
+use willvincent\Rateable\Rateable;
 use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {
+    use Rateable;
+
     protected $fillable = [
         'type','minPrice','maxPrice','roomNumbers','state','description','propertyPeriod', 'street','image','city','status','area','user_id',
     ];

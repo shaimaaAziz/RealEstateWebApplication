@@ -30,6 +30,12 @@
         <ul class="nav navbar-nav ">
           <li class="active"><a href="{{ url('/user/personalPage/favorite') }}"> المفضلة </a></li>
       </ul>
+
+      <ul class="nav navbar-nav ">
+        <li class="active"><a href="{{ url('/user/personalPage/properties') }}"> التقيمات </a></li>
+    </ul>
+
+
     <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="/">الرئيسية</a></li>
     </ul>

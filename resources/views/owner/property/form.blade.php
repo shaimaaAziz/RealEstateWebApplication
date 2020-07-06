@@ -159,5 +159,6 @@
         <button type="submit" class="btn btn-warning">
             {{ __(' إضافة ') }}
         </button>
+        <a href="{{route('users.index')}}" style=" " class="btn btn-danger ">رجوع  </a>
     </div>
 </div>

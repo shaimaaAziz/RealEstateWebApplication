@@ -1,19 +1,11 @@
-@extends('owner.layout.layout')
+@extends('owner.layout')
 
 @section('title')
     التحكم في العقارات
 
 @endsection
-
-@section('header')
-
-    {{!! Html::style('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css') !!}}
-
-@endsection
-
 @section('content')
-
-    <section class="content">
+        <br>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -23,13 +15,12 @@
                         <table id="table" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th># </th>
-                                <th>نوع العقار </th>
-
-                                <th>حالة العقار</th>
-                                <th>صورة العقار</th>
-                                <th>المدينة</th>
-                                <th colspan="2">التحكم</th>
+                                <th class="text-center"># </th>
+                                <th class="text-center">نوع العقار </th>
+                                <th class="text-center">حالة العقار</th>
+                                {{-- <th>صورة العقار</th> --}}
+                                <th class="text-center">المدينة</th>
+                                <th class="text-center">التحكم</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -50,9 +41,9 @@
                                             {{'شاليه'}}
                                         @endif                                    </td>
                                     <td>{{$allProperties->state ==0 ? 'ايجار' : 'بيع'}}</td>
-                                    <td>
+                                    {{-- <td>
                                         <img src ="{{asset('storage/images/'.$allProperties->image)}}" height="100" width="100"/>
-                                    </td>
+                                    </td> --}}
                                     <td> @if($allProperties->city==0)
                                             {{'غزة'}}
                                         @elseif($allProperties->city==1)
@@ -95,9 +86,7 @@
             <!-- /.col -->
         </div>
         <!-- /.row -->
-    </section>
     <!-- /.content -->
-    </div>
 
 @endsection
 

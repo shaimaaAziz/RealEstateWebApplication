@@ -9,12 +9,19 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use yajra\Datatables\Datables;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
 {
+    public function __construct(){
+        
+        $this->middleware('auth');
+        }
+        
     public function index()
     {
-        $property= Property::where('adminId',1)->get();
+        $user =  Auth::user();
+        $property= Property::where('user_id',$user->id)->get();
 
         return view('owner/property/index',compact('property'));
     }
@@ -71,8 +78,8 @@ class PropertyController extends Controller
             'image' =>$photoName,
             'status' =>'0',
             'city' =>$request->city,
-            'area'=>$request->area
-
+            'area'=>$request->area,
+            'user_id' =>Auth::user()->id,
 
         ]);
         toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
@@ -140,8 +147,8 @@ class PropertyController extends Controller
 //        $input = $request->all();
 //        $property->fill($input)->save();
 
-        $photoName = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images',$photoName);
+        // $photoName = $request->file('image')->getClientOriginalName();
+        // $request->file('image')->storeAs('public/images',$photoName);
 
 
         $property = Property::find($id);
@@ -158,16 +165,15 @@ class PropertyController extends Controller
         $property->area =$request->area;
 
 
-        $oldFileName = $property->image;
-        $property->image = $photoName;
-        Storage::delete($oldFileName);
+        // $oldFileName = $property->image;
+        // $property->image = $photoName;
+        // Storage::delete($oldFileName);
 
 
         $property->save();
         toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
 
-        return redirect('Ownerpanel/Property');
-
+        return redirect()->route('Property.index');
 
     }
 

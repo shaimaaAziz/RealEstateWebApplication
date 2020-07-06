@@ -67,22 +67,17 @@ Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'pref
 route::group(['middleware'=>['auth'] ,'namespace' => 'user', 'prefix' => 'user'],function(){
 
    Route::post('/favorite/{property}/add', 'favoriteController@add')->name('property.favorite');
-
-
-   // Route::get('properties', 'PropertyReviewController@properties')->name('properties');
-
-   //  Route::post('properties', 'PropertyReviewController@postProperty')->name('properties.post');
-   
-   // Route::get('properties/{id}', 'PropertyReviewController@show')->name('properties.show');
 });
 
 
 
 
 
-//Route::group(['middleware'=>['web','owner'] , 'namespace' => 'Owner', 'prefix' => 'owner'],function(){
 
-   //  Route::resource('/Ownerpanel/users','Owner\UsersController');
-   //  Route::resource('/Ownerpanel/Property','Owner\PropertyController');
+//when the owner login
+Route::group(['middleware'=>['can:owner'] , 'namespace' => 'Owner', 'prefix' => 'owner'],function(){
+   // Route::get('/Ownerpanel/users/{id}','UsersController@show');
+    Route::resource('/Ownerpanel/users','UsersController');
+    Route::resource('/Ownerpanel/Property','PropertyController');
 
-//});
+});

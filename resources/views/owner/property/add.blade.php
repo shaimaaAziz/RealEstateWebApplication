@@ -1,25 +1,14 @@
-@extends('owner.layout.layout')
+@extends('owner.layout')
 
 @section('title')
-    اضافة عقار
-
+    إضافة عقار
 @endsection
-
-@section('header')
-
-
-@endsection
-
 @section('content')
-
-
-
-    <section class="content">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">اضافة عقار</h3>
+                        <h3 class="card-title">إضافة عقار</h3>
                     </div>
                     <div class="card-body">
                         @if(Session::has('flash_message'))
@@ -42,16 +31,4 @@
                 </div>
             </div>
         </div>
-    </section>
-
-
-
-
-
-
-@endsection
-
-@section('footer')
-
-
 @endsection

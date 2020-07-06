@@ -1,16 +1,7 @@
-@extends('owner.layout.layout')
-
+@extends('owner.layout')
 @section('title')
-
     تعديل العقار
-
 @endsection
-
-@section('header')
-
-
-@endsection
-
 @section('content')
 
     <section class="content-header">
@@ -28,9 +19,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
+                    {{-- <div class="card-header">
                         <h3 class="card-title">تعديل العقار </h3>
-                    </div>
+                    </div> --}}
                     <div class="card-body">
 
                         @if(Session::has('flash_message'))
@@ -204,10 +195,11 @@
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-12">
-                            <a href="{{ route('Property.index') }}" class="btn btn-default">الخلف</a>
                             <button type="submit" class="btn btn-warning">
                                 {{ __(' تعديل ') }}
                             </button>
+                            <a href="{{ route('Property.index') }}" class="btn btn-default">الخلف</a>
+
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -216,6 +208,4 @@
         </div>
         </div>
     </section>
-@endsection
-@section('footer')
 @endsection

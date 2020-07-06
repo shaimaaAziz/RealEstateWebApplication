@@ -94,7 +94,6 @@ class PropertyController extends Controller
 if($request->firstName ==$request->lastName){
 
         $property->create([
-//            'type' => $type->name,
             'type'=> $request->type,
             'minPrice' => $request->minPrice,
             'maxPrice' => $request->maxPrice,
@@ -105,7 +104,7 @@ if($request->firstName ==$request->lastName){
             'street' =>$request->street,
             'image' =>$photoName,
             'city' =>$request->city,
-            'status' =>'0',         //property ia available
+            'status' =>'0',         //property is available
             'area'=>$request->area,
             'user_id' =>$request->firstName,
         ]);

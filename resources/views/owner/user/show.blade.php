@@ -1,42 +1,28 @@
-@extends('owner.layout.layout')
+    @extends('owner.layout')
 
-@section('title')
-    عرض بياناتي
-
-@endsection
-
-@section('header')
-
-
-@endsection
-
-@section('content')
-
-    <section class="content">
-
-
-
-        <div class="container">
-
+    @section('title')
+    عرض بياناتي  
+    @endsection
+    
+    @section('content')
             <br />
             <h3 align="center">عرض بياناتي</h3>
             <br />
 
-            <div class="jumbotron text-center">
+            <div align="right" class="jumbotron ">
 
                 <br />
                 <div class="row"  >
-                    <div class="block-content" style=" direction: rtl;">
-                        <h6 class="title" style="font-size: 15px"><a href="" tabindex="0">   {{$user->firstName}} </a></h6>
+                    <div class="block-content">
 
                         <div class="product-info">
                             <ul class="list-inline" >
-                                <li class="author"><span>الاسم الاول:</span><span class="text">{{$user->firstName}}</span></li>
-                                <li class="author"><span>اسم الأب:</span><span class="text">{{$user->middleName}}</span></li>
-                                <li class="author"><span>اسم العائلة:</span><span class="text">{{$user->lastName}}</span></li>
-                                <li class="author"><span>البريد الالكتروني:</span><span class="text">{{$user->email}}</span></li>
-                                <li class="author"><span>رقم الجوال:</span><span class="text">{{$user->mobile}}</span></li>
-                                <li class="author"><span> المدينة:</span><span class="text">
+                                <li class="author"><span>الاسم:</span><span class="text">{{Auth::user()->firstName.' '.Auth::user()->middleName .' '.Auth::user()->lastName}}</span></li><br><br>
+                                <li class="author"><span> الإيميل:</span><span class="text">{{$user->email}}</span></li><br><br>
+                                <li class="author"><span> رقم الجوال:</span><span class="text">{{$user->mobile}}</span></li><br><br>
+                                <li class="author"><span> كلمة السر:</span><span class="text">{{$user->password}}</span></li><br><br>
+                                <li class="author"><span>العنوان:</span><span class="text">{{$user->street}}</span></li><br><br>
+                                <li class="author"><span> المدينة:</span><span class="text">      
 
                                                 @if($user->city==0)
                                             {{'غزة'}}
@@ -49,20 +35,15 @@
                                         @endif
 
                                             </span></li>
-                                <li class="author"><span> العنوان: </span><span class="text">{{$user->street}}</span></li>
-                                <li class="rating"><a href="" tabindex="0"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></a></li>
-
+                               
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>        </div>
+                <a style="margin-right: 30px;" href="{{ route('users.edit',$user->id) }}" class="btn btn-primary">تعديل</a>
 
+            </div>       
 
-
-
-
-    </section>
     <!-- /.content -->
 
 @endsection

@@ -1,15 +1,7 @@
-@extends('owner.layout.layout')
+@extends('owner.layout')
 
 @section('title')
-
-تعديل بياناتي
-
-
-@endsection
-
-@section('header')
-
-
+تعديل بياناتي  {{$user->firstName}}
 @endsection
 
 @section('content')
@@ -43,16 +35,6 @@
            </div>
           </div>
 </section>
-        
-
-
-
-
-
 @endsection
 
 
-@section('footer')
-
-
-@endsection

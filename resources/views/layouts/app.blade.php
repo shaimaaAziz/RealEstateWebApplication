@@ -75,11 +75,12 @@
                             @can('manage-users')
                             <a style="text-decoration: none; " class=" dropdown-item" href="/AdminDashboard">الصفحة الشخصية</a>
                             @endcan
-
                             @can('user')
                             <a style="text-decoration: none; " class="dropdown-item" href="/user/personalPage">الصفحة الشخصية</a>
                             @endcan
-
+                            @can('owner')
+                            <a style="text-decoration: none; " class="dropdown-item" href="/owner/Ownerpanel/users">الصفحة الشخصية</a>
+                            @endcan
                         </div>  
                         
                     </li>

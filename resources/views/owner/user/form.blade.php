@@ -123,22 +123,16 @@
                 </div>
             </div>
 
-         
-
-
-
-
-
-
-
-
 
 @endif
 
             <div class="form-group row mb-0">
                 <div class="col-md-12">
-                    <button type="submit" class="btn-warning">
+                    <button type="submit" class="btn-warning" style="padding: 4px; padding-right: 10px; padding-left: 10px; ">
                         {{ __(' تعديل ') }}
                     </button>
+      
+                    <a href="{{route('users.index')}}" style=" " class="btn btn-danger ">رجوع  </a>
+              
                 </div>
             </div>

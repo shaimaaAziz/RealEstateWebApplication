@@ -31,7 +31,7 @@
     @toastr_css
     <title>موقع عقارات
 {{-- {{ config('app.name', 'موقع عقارات') }} --}}
-  
+
     @yield('title')</title>
     @stack('css')
     @yield('header')
@@ -43,16 +43,18 @@
         <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{ Request::root() }}/website/images/nav_icon.png" alt="" /> </a>
             <ul class="nav" id="nav">
                 <li class="current"><a href="{{url('/')}}">الرئيسية</a></li>
-                <li><a href="about.html">من نحن</a></li>
-                <li><a href="services.html">خدماتنا</a></li>
-                <li><a href="contact.html">اتصل بنا</a></li>
+                <li><a href="#">كل العقارات</a></li>
+                <li><a href="#"> مميزات الموقع</a></li>
+                <li><a href="#">من نحن </a></li>
+                <li><a href="#">شروط الاستخدام</a></li>
                 @guest
                     <li class="nav-item">
-                        <a class="glyphicon glyphicon-log-in nav-link" href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a>
+
+                        <a  href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a> {{--        class="glyphicon glyphicon-log-in nav-link"                --}}
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="glyphicon glyphicon-user nav-link" href="{{ route('register') }}">{{ __('عضويه جديده') }}</a>
+                            <a href="{{ route('register') }}">{{ __('عضويه جديده') }}</a>   {{--  class="glyphicon glyphicon-user nav-link"    --}}
                         </li>
                     @endif
                 @else
@@ -71,7 +73,7 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                          
+
                             @can('manage-users')
                             <a style="text-decoration: none; " class=" dropdown-item" href="/AdminDashboard">الصفحة الشخصية</a>
                             @endcan
@@ -81,8 +83,8 @@
                             @can('owner')
                             <a style="text-decoration: none; " class="dropdown-item" href="/owner/Ownerpanel/users">الصفحة الشخصية</a>
                             @endcan
-                        </div>  
-                        
+                        </div>
+
                     </li>
                 @endguest
                 <div class="clear"></div>
@@ -99,10 +101,9 @@
         </main>
 <div class="footer">
     <div class="footer_bottom">
-        <div class="follow-us"> <a class="fa fa-facebook social-icon" href="#"></a> <a class="fa fa-twitter social-icon" href="#"></a> <a class="fa fa-linkedin social-icon" href="#"></a> <a class="fa fa-google-plus social-icon" href="#"></a> </div>
+        <div class="follow-us"> <a class="fab fa-facebook social-icon" href="#"></a> <a class="fab fa-twitter social-icon" href="#"></a> <a class="fab fa-linkedin social-icon" href="#"></a> <a class="fab fa-google-plus social-icon" href="#"></a> </div>
         <div class="copy">
-            <p>Copyright &copy; 2020 Company Name. Design by <a href="http://www.templategarden.com" 
-                rel="nofollow">TemplateGarden</a></p>
+            <p>Copyright &copy; 2020 Real Estate website</p>
         </div>
     </div>
 </div>

@@ -149,7 +149,8 @@ body a {
     }
 }
 .banner {
-    background: url(../images/banner.jpg) no-repeat center;
+    background: url(../images/banner2.jpg) no-repeat center;
+    background-color: rgba(0,0,0,0.3);
     min-height: 500px;
     width: 100%;
     -webkit-background-size: 100%;
@@ -529,7 +530,7 @@ a.social-icon:hover, a.social-icon:active, a.social-icon:focus {
     padding-top: 1em;
     padding-right: 0;
     padding-left: 0;
-    padding-bottom: 4em;
+    padding-bottom: 370px;
 }
 .contact_top {
     margin-right: 0;

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Property;
+
+use App\messageType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -26,8 +28,9 @@ class HomeController extends Controller
     public function index()
     {
         $pro= Property::all();
+        $messageType= messageType::all();
          $property  = $pro->where('status' , 0);
-        return view('welcome',compact('property'));
+        return view('welcome',compact('property','messageType'));
     }
         // return view('home');
     

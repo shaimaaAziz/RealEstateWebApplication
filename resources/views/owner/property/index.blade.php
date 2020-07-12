@@ -4,6 +4,16 @@
     التحكم في العقارات
 
 @endsection
+@section('header') 
+  {{--  for datatable --}}
+  <script src="/admin/plugins/datatables/jquery.dataTables.js"></script>
+  <script src="/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <link media="all" type="text/css" rel="stylesheet" href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+{{-- 
+  {{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
+  {{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
+  {{!! Html::style('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css') !!}} --}}
+  @endsection
 @section('content')
         <br>
         <div class="row">
@@ -87,18 +97,6 @@
         </div>
         <!-- /.row -->
     <!-- /.content -->
-
-@endsection
-
-
-@section('footer')
-
-    {{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
-    {{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
-
-
-
-
     <script type="text/javascript">
         $('#table').DataTable({
             "paging": true,

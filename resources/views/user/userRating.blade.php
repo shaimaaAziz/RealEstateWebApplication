@@ -1,45 +1,19 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
+@extends('user.layout')
+ @section('title') 
+ التقييم للعقارات 
+ @endsection
+ 
+ @section('header') 
+  {{--  for datatable --}}
+  <script src="/admin/plugins/datatables/jquery.dataTables.js"></script>
+  <script src="/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <link media="all" type="text/css" rel="stylesheet" href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  {{-- {{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
+  {{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
+  {{!! Html::style('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css') !!}} --}}
+  @endsection
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <link href="{{ Request::root() }}/website/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="{{ Request::root() }}/website/css/flexslider.css" rel="stylesheet" />
-    <link href="{{ Request::root() }}/website/css/style.css" rel="stylesheet" />
-    {{-- <link rel="stylesheet" href="{{ Request::root() }}/website/css/font-awesome.min.css"> --}}
-    <script src="{{ Request::root() }}/website/js/jquery.min.js"></script>
-   
-    {{-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">  --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
-
-    {{-- // for datatable --}}
-    {{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
-    {{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
-    {{!! Html::style('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css') !!}}
-
-    
-    
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    @toastr_css
-    <title>موقع عقارات
-{{-- {{ config('app.name', 'موقع عقارات') }} --}}
-  
-
-  
-    @yield('title')</title>
-    @stack('css')
-    @yield('header')
-
-</head>
-<body style="direction:rtl;">
-
-<div class="container">
+  @section('content')
 
     <div class="row">
 
@@ -119,4 +93,4 @@ $('#table').DataTable({
 });
 
 </script>
-</body>
+@endsection

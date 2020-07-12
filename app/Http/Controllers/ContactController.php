@@ -14,7 +14,7 @@ class ContactController extends Controller
             'name'=>'required',
             'email'=>'required',
             'phone'=>'required',
-            'subject'=>'required',
+            'messageType'=>'required',
             'message'=>'required',
         ]);
 
@@ -22,10 +22,20 @@ class ContactController extends Controller
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
-        $contact->subject = $request->subject;
+
+
+        if( $request->messageType == 1){
+            $contact->messageType = "اقتراح";
+        }elseif( $request->messageType == 2){
+            $contact->messageType = "إعجاب";
+        }elseif( $request->messageType == 3){
+            $contact->messageType = "مشكلة";
+        }elseif( $request->messageType == 4){
+            $contact->messageType = "أخرى";
+        }
+
         $contact->message = $request->message;
-
-
+        $contact->view = false;
         $contact->save();
 
 

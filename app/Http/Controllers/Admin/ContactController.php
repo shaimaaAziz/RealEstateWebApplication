@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Contact;
+use App\messageType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yoeunes\Toastr\Facades\Toastr;
 use App\Http\Controllers\Controller;
 
@@ -20,11 +22,14 @@ class ContactController extends Controller
        
         $this->middleware('auth');
         }
+
+        
     public function index()
     {
 
         $contacts =Contact::all();
-        return view('Contact.index',compact('contacts'));
+        $messageType= messageType::all();
+        return view('Contact.index',compact('contacts','messageType'));
 
     }
 
@@ -99,4 +104,27 @@ class ContactController extends Controller
         Toastr::success('تم ازالة الرسالة بنجاح  ');
         return redirect()->back();
     }
+
+    public function view($id)
+    {
+        $contact = Contact::find($id);
+        $contact->view = true;
+        $contact->save();
+
+        Toastr::success('تمت العملية بنجاح .','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
+    } 
+
+    public function countMessage()
+    {
+        $contact1= Contact::all();
+        $contacts  = DB::table('contacts')->where('view' , 0)->count();
+      return view('admin.layout.layout',compact('contacts'));
+   }
+   public function unreadMessage()
+   {
+     $new =   Contact::where('view', '0')->get();
+     return view('admin.layout.layout',compact('new'));
+  }
+
 }

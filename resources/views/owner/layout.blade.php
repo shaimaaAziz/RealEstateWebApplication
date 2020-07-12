@@ -10,7 +10,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @toastr_css
   <title>الصفحة الشخصية لصاحب العقار     @yield('title')</title>
-
+  @yield('header')
 </head>
 
   <body  style="direction:rtl;">

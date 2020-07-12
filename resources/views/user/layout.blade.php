@@ -6,10 +6,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+
+   @yield('header')
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @toastr_css
-  <title>الصفحة الشخصية للمستخدم     @yield('title')</title>
+  <title> @yield('title')</title>
 
 </head>
 
@@ -35,6 +40,9 @@
           <ul class="nav navbar-nav ">
             <li class="active"><a href="{{ url('/user/personalPage/favorite') }}"> المفضلة </a></li>
         </ul>
+        <ul class="nav navbar-nav ">
+          <li class="active"><a href="{{ url('/user/personalPage/properties') }}"> التقيمات </a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/">الرئيسية</a></li>
       </ul>

@@ -35,7 +35,7 @@
                                    الايميل
                                 </th>
                                 <th>
-                                   الموضوع
+                                   نوع الرسالة 
                                 </th>
                                 <th>
                                     رقم الهاتف 
@@ -44,8 +44,15 @@
                                    الرسالة 
                                 </th>
                                 <th>
-                                   تم الارسال 
+                                   العرض 
                                 </th>
+                                <th>
+                                   وقت الارسال  
+                                </th>
+                                <th>
+                                التأكيد 
+                                </th>
+                                
                                 <th>
                                     الحدث
                                 </th>
@@ -57,11 +64,40 @@
                                         <td>{{$key + 1}}</td>
                                         <td>{{$contact->name}}</td>
                                         <td>{{$contact->email}}</td>
-                                        <td>{{$contact->subject}}</td>
+                                        <td>{{$contact->messageType}}</td>
                                         <td>{{$contact->phone}}</td>
                                         <td>{{$contact->message}}</td>
-                                        <td>{{$contact->created_at}}</td>
+                                        <th>
+                                            @if($contact->view == true)
+                                                <span class="label label-info">رسالة قديمة </span>
+                                            @else
+                                                <span class="label label-danger ">رسالة جديدة </span>
+                                            @endif
 
+                                        </th>
+                                        <td>{{$contact->created_at}}</td>
+                                        <td>
+
+                                            @if($contact->view == false)
+                                                <form id="status-form-{{ $contact->id }}" action="{{ route('contact.view',$contact->id) }}" 
+                                                style="display: none;" method="POST">
+                                                    @csrf
+                                                </form>
+
+                                                <button type="button" class="btn btn-info btn-sm" onclick="if(confirm('هل تريد تحويلها الي الرسائل القديمة ؟')){
+                                                        event.preventDefault();
+                                                        document.getElementById('status-form-{{ $contact->id }}').submit();
+                                                        }else {
+                                                        event.preventDefault();
+                                                        }"><i class="material-icons">done</i></button>
+
+                                            @elseif($contact->view == true)
+                                            <button type="button" class="btn btn-danger btn-sm" 
+                                          ><i class="material-icons">close</i></button>         
+                                            @endif
+
+                                        
+                                        </td>
                                         <td><a href="{{route('contact.show',$contact->id)}}"
                                                class="btn btn-info btn-sm"><i class="material-icons">details</i></a>
 
@@ -70,7 +106,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
-                                            <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? You want to delete this?')){
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('هل أنت متأكد أنك تريد حذفها ؟')){
                                                     event.preventDefault();
                                                     document.getElementById('delete-form-{{ $contact->id }}').submit();
                                                     }else {

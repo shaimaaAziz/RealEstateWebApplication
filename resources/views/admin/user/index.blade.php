@@ -145,10 +145,10 @@ $('#table').DataTable({
 
 });
 
-</script>
+ </script>
 
 
-{{-- <script>
+ <script>
 
     var lastIdx = null;
 
@@ -166,7 +166,7 @@ $('#data thead th').each( function () {
 var table = $('#data').DataTable({
     processing: true,
     serverSide: true,
-    ajax: '{{ url('/Adminpanel/users/data') }}',
+    // ajax: '{{ url('/Adminpanel/users/data')}}',
     columns: [
         {data: 'id', name: 'id'},
         {data: 'name', name: 'name'},
@@ -271,5 +271,5 @@ $('#data tbody')
         } );
 
 
-</script> --}}
+</script>  -->
 @endsection

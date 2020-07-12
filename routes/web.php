@@ -55,6 +55,9 @@ Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'pref
     
     // contact
     Route::resource('/contact', 'ContactController');
+    Route::post('/Adminpanel/contact/{id}','ContactController@view')->name('contact.view');
+   //  Route::get('/Adminpanel/contact','ContactController@countMessage')->name('contact.countMessage');
+   //  Route::get('/Adminpanel/contact','ContactController@unreadMessage')->name('contact.unreadMessage');
 
     Route::get('propertiesRate', 'PropertyController@rating')->name('properties.rating');
 

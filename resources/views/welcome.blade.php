@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@section('title')
+<!-- @section('title')
     اهلا بك زائرنا الكريم
-@endsection
+@endsection -->
 
-{{--@section('header')--}}
+<!-- {{--@section('header')--}}
 {{--    <style media="screen">--}}
 {{--        body {--}}
 {{--            background-color: red;--}}
 {{--        }--}}
 {{--    </style>--}}
 {{--@endsection--}}
-{{--@section('content')--}}
+{{--@section('content')--}} -->
 
-{{-- @extends('layouts.app') --}}
+<!-- {{-- @extends('layouts.app') --}} -->
 @section('title')
     كل العقارات
 @endsection
@@ -296,22 +296,33 @@
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
+                                <label>الاسم</label>
                                     <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  الاسم">
                                 </div>
                                 <div class="form-group">
-                                    <input name="email" type="email" class="form-control" id="email" required="required" placeholder="  الايميل">
+                                <label> البريد الإلكتروني</label>
+                                    <input name="email" type="email" class="form-control" id="email" required="required" placeholder="  البريد الإلكتروني">
                                 </div>
                                 <div class="form-group">
+                                <label> رقم الهاتف</label>
                                     <input name="phone" type="text" class="form-control" id="phone" required="required" placeholder="  رقم الهاتف ">
                                 </div>
                                 <div class="form-group">
-                                    <input name="subject" type="text" class="form-control" id="subject" required="required" placeholder="  الموضوع">
+                                 
+                                   
+                                <label>نوع الرسالة</label>
+                                <select name="messageType" class="form-control">
+                                    @foreach($messageType as $types)
+                                    <option value="{{ $types->id }}"> {{$types->name}}</option>
+                                    @endforeach
+                                </select>
+                              
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3">
                                 <div class="text-center">
-                                    {{--                                                <button type="submit" id="submit" name="submit" class="btn btn-send">Send </button>--}}
+                                  <!-- <button type="submit" id="submit" name="submit" class="btn btn-send">Send </button> -->
                                     {!! Form::submit("ارسال", ['class' =>'btn banner_btn']) !!}
                                 </div>
                             </div>

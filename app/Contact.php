@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    //
+    public  function messageType(){
+        return $this->belongsTo('App\messageType');
+    }
 }

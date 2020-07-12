@@ -50,11 +50,11 @@
                 @guest
                     <li class="nav-item">
 
-                        <a  href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a> {{--        class="glyphicon glyphicon-log-in nav-link"                --}}
+                        <a class="glyphicon glyphicon-log-in nav-link"  href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a>           
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a href="{{ route('register') }}">{{ __('عضويه جديده') }}</a>   {{--  class="glyphicon glyphicon-user nav-link"    --}}
+                            <a class="glyphicon glyphicon-user nav-link"  href="{{ route('register') }}">{{ __('عضويه جديده') }}</a>   
                         </li>
                     @endif
                 @else

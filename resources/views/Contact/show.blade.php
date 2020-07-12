@@ -18,7 +18,7 @@
                 <div class="card">
 
                     <div class="card-header card-header-primary" >
-                        <h4 class="card-title">{{ $contact->subject }}</h4>
+                        <h4 class="card-title">{{ $contact->messageType }}</h4>
                     </div>
                     <div class="card-body">
                         <div class="row">

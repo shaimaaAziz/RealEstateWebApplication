@@ -1,3 +1,9 @@
+<?php
+use App\Http\Controllers\Admin\ContactController ;
+
+$countMessage= ContactController::countMessage();
+    //  $contacts   = ContactController::unreadMessage();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,22 +86,32 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
-                <span class="badge badge-danger navbar-badge"> </span>
+                <span class="badge badge-danger navbar-badge">{{$countMessage->count() }} </span>
             </a>
-             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
-                <a href="#" class="dropdown-item">
-                  
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                {{-- <a href="#" class="dropdown-item"> --}}
                     <!-- Message Start -->
-                   
+                    <div class="">
+                        @if($countMessage->count() > 0)
+                        @foreach($countMessage as $key=>$contact)
+                        <div class="">
+                           <a href="{{ url('admin/Adminpanel/unreadMessage') }}">
+                             <h3 class="dropdown-item-title">
+                                {{$contact->name}}
+                                <span class="text-sm float-right">{{Str::limit($contact->message ,10)}}</span>
+                            </h3></a>
+                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>{{$contact->created_at }}</p>
+                        </div>
+                        @endforeach
+                        @else
+                        <span class="text-sm float-right">لا يوجد رسائل جديدة </span>
+
+                        @endif
+                    </div>
                     <!-- Message End -->
-                </a>
-                <div class="dropdown-divider"></div>
-              
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                {{-- </a> --}}
+            
+                <a href="{{ url('admin/Adminpanel/unreadMessage') }}" class="dropdown-item dropdown-footer">See All Messages</a>
             </div> 
         </li>
         <!-- Notifications Dropdown Menu -->

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Property;
+use App\Contact;
 
+use App\Property;
 use App\messageType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;

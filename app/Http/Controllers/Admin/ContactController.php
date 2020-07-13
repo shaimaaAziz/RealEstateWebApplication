@@ -115,16 +115,23 @@ class ContactController extends Controller
         return redirect()->back();
     } 
 
-    public function countMessage()
+    public static function countMessage()
     {
-        $contact1= Contact::all();
-        $contacts  = DB::table('contacts')->where('view' , 0)->count();
-      return view('admin.layout.layout',compact('contacts'));
+        
+        $contactscountMessage  = DB::table('contacts')->where('view' , 0)->get();
+        // $contacts =   Contact::where('view', '0')->get();
+
+      return  $contactscountMessage  ;
+
+    //   view('admin.layout.layout',compact('contacts'));
    }
-   public function unreadMessage()
+   public static function unreadMessage()
    {
-     $new =   Contact::where('view', '0')->get();
-     return view('admin.layout.layout',compact('new'));
+     $contacts =   Contact::where('view', '0')->get();
+     return  view('Contact.index',compact('contacts'));
   }
+
+  
+
 
 }

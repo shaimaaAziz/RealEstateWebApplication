@@ -218,7 +218,7 @@ if($request->firstName ==$request->lastName){
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {dd('fffff');
         $property= Property::find($id);
         $property->delete();
 
@@ -232,4 +232,8 @@ if($request->firstName ==$request->lastName){
         return view('admin/Property',compact('Property'));
 
     }
+
+   
+
+ 
 }

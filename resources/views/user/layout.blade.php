@@ -35,16 +35,16 @@
               </li>
             </ul>
             <ul class="nav navbar-nav ">
-              <li class="active"><a href="{{ url('/user/personalPage') }}" >المعلومات الشخصية</a></li>
+              <li class="active"><a class="glyphicon glyphicon-user" href="{{ url('/user/personalPage') }}" > المعلومات الشخصية </a></li>
           </ul>
           <ul class="nav navbar-nav ">
-            <li class="active"><a href="{{ url('/user/personalPage/favorite') }}"> المفضلة </a></li>
+            <li class="active"><a class="glyphicon glyphicon-heart" href="{{ url('/user/personalPage/favorite') }}"> المفضلة</a></li>
         </ul>
         <ul class="nav navbar-nav ">
-          <li class="active"><a href="{{ url('/user/personalPage/properties') }}"> التقيمات </a></li>
+          <li class="active"><a class="glyphicon glyphicon-star" href="{{ url('/user/personalPage/properties') }}"> التقيمات </a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="/">الرئيسية</a></li>
+          <li class="active"><a class="glyphicon glyphicon-home" href="/"> الرئيسية</a></li>
       </ul>
   </nav>
   </div>

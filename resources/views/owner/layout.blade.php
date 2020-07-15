@@ -9,7 +9,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @toastr_css
-  <title>الصفحة الشخصية لصاحب العقار     @yield('title')</title>
+  <title>@yield('title')</title>
   @yield('header')
 </head>
 
@@ -30,7 +30,7 @@
               </li>
             </ul>
             <ul class="nav navbar-nav ">
-              <li class="active"><a href="{{ url('/owner/Ownerpanel/users') }}" >المعلومات الشخصية</a></li>
+              <li class="active"><a class="glyphicon glyphicon-user" href="{{ url('/owner/Ownerpanel/users') }}" > المعلومات الشخصية</a></li>
           </ul>
           <ul class="nav navbar-nav ">
             <li class="active dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> العقارات <span class="caret"></span></a>
@@ -39,8 +39,11 @@
                 <li ><a href="{{ route('Property.create') }}"> إضافة عقار </a></li>
               </ul>
         </ul>
+        <ul class="nav navbar-nav ">
+          <li class="active"><a href="{{ url('/owner/Ownerpanel/reservations') }}" > الحجوزات</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="/">الرئيسية</a></li>
+          <li class="active"><a class="glyphicon glyphicon-home" href="/"> الرئيسية</a></li>
       </ul>
   </nav>
   </div>

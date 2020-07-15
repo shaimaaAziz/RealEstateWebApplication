@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use toastr;
 
+use App\User;
 use App\Property;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -76,7 +77,7 @@ class PropertyController extends Controller
             'propertyPeriod' =>$request->propertyPeriod,
             'street' =>$request->street,
             'image' =>$photoName,
-            'status' =>'0',
+            'status' =>'0',  // the property is available
             'city' =>$request->city,
             'area'=>$request->area,
             'user_id' =>Auth::user()->id,
@@ -192,5 +193,6 @@ class PropertyController extends Controller
 
 
     }
+
 }
 //            php artisan storage:link

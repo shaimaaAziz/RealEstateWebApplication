@@ -93,6 +93,21 @@
                                                             }
                                                             )"><i class="fas fa-heart" id="no-background-hover"></i></a>
                                                             {{ $properties->favorite_to_users->count() }}
+                                                            
+                                                                
+                                                                <a class="glyphicon glyphicon-shopping-cart" style="float:left; text-decoration: none;" href="javascript:void(0);"
+                                                                onclick="toastr.info('يجب عليك تسجيل الدخول قبل القيام بحجز العقار   .',
+                                                                '',{
+                                                                    closeButton: true,
+                                                                    progressBar: true,
+                                                                }
+                                                                )">
+                                                                @if ($properties->state ==0)  تأجير
+                                                                @elseif($properties->state ==1) بيع
+                                                                @endif
+                                                                </a>
+                                                                
+                                                            
 
                                                             <li  style="direction:ltr;">
                                                                 <input id="input-1-xs " name="rate" class="rating rating-loading " data-min="0"
@@ -105,6 +120,17 @@
                                                             </li>
                                                             <div class="clearfix"></div>
                                                         @else
+                                                        @can('user')
+                                                        <form action="{{ route('properties.reservation') }}" method="POST">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="id" required="" value="{{ $properties->id }}">
+                                                            <button class="  glyphicon glyphicon-shopping-cart" style="float:left; text-decoration: none;">
+                                                            @if ($properties->state ==0)  تأجير
+                                                            @elseif($properties->state ==1) بيع
+                                                            @endif
+                                                           </button>
+                                                        </form>
+                                                        @endcan
                                                             <a href="javascript:void(0);" style="text-decoration: none;"
                                                             onclick="document.getElementById('favorite-form-{{ $properties->id }}')
                                                             .submit();"  class="{{ !Auth::user()->favorite_properties->
@@ -118,9 +144,12 @@
                                                                 " style="display: none;">
                                                                 @csrf
                                                             </form>
+
+                                                           
                                                         @endguest
 
                                                     </li>
+                                                   
                                                 </ul>
 
                                                 {{-- <div class="details col-md-6"> --}}
@@ -311,6 +340,8 @@
                                  
                                    
                                 <label>نوع الرسالة</label>
+                                <?php use App\messageType;
+                                $messageType = messageType::all(); ?>
                                 <select name="messageType" class="form-control">
                                     @foreach($messageType as $types)
                                     <option value="{{ $types->id }}"> {{$types->name}}</option>
@@ -323,7 +354,7 @@
                             <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3">
                                 <div class="text-center">
                                   <!-- <button type="submit" id="submit" name="submit" class="btn btn-send">Send </button> -->
-                                    {!! Form::submit("ارسال", ['class' =>'btn banner_btn']) !!}
+                                    {!! Form::submit("إرسال", ['class' =>'btn banner_btn']) !!}
                                 </div>
                             </div>
                         </form>
@@ -336,10 +367,6 @@
 @endsection
 
 @section('footer')
-    <script type="text/javascript">
-
-        // alert('هلو')
-    </script>
 <script type="text/javascript">
 
     $("#input-id").rating();

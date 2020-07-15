@@ -17,10 +17,11 @@
     {{-- <link rel="stylesheet" href="{{ Request::root() }}/website/css/font-awesome.min.css"> --}}
     <script src="{{ Request::root() }}/website/js/jquery.min.js"></script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+    {{-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'> --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     {{-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">  --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
@@ -42,7 +43,7 @@
     <div class="container"> <a class="navbar-brand" href="{{url('/')}}"><i class="fa fa-paper-plane"></i> ONE</a>
         <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{ Request::root() }}/website/images/nav_icon.png" alt="" /> </a>
             <ul class="nav" id="nav">
-                <li class="current"><a href="{{url('/')}}">الرئيسية</a></li>
+                <li class="current"> <a class="glyphicon glyphicon-home" href="{{url('/')}}"> الرئيسية</a></li>
                 <li><a href="#">كل العقارات</a></li>
                 <li><a href="#"> مميزات الموقع</a></li>
                 <li><a href="#">من نحن </a></li>
@@ -101,9 +102,14 @@
         </main>
 <div class="footer">
     <div class="footer_bottom">
-        <div class="follow-us"> <a class="fab fa-facebook social-icon" href="#"></a> <a class="fab fa-twitter social-icon" href="#"></a> <a class="fab fa-linkedin social-icon" href="#"></a> <a class="fab fa-google-plus social-icon" href="#"></a> </div>
+        <div class="follow-us">
+             <a class="fab fa-facebook social-icon" href="https://www.facebook.com/"></a> 
+            <a class="fab fa-twitter social-icon" href="https://twitter.com/"></a>
+             <a class="fab fa-linkedin social-icon" href="https://linkedin.com/"></a>
+              <a class="fab fa-google-plus social-icon" href="https://plus.google.com/"></a> 
+            </div>
         <div class="copy">
-            <p>Copyright &copy; 2020 Real Estate website</p>
+            <p>Copyright &copy; 2020  realestat website</p>
         </div>
     </div>
 </div>

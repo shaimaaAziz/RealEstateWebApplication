@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Property;
+use App\Reservation;
 use Illuminate\Http\Request;
 use willvincent\Rateable\Rating;
 use willvincent\Rateable\Rateable;
@@ -93,6 +94,24 @@ class PropertyReviewController extends Controller
         return redirect()->route("properties.post");
 
     }
+
+    public function doReservation(Request $request)
+    {
+        // dd('hhhh');
+        $property = Property::find($request->id);
+         $reservation = new Reservation();
+         $reservation->property_id = $request->id;
+         $reservation->user_id =Auth::user()->id;
+         $reservation->reservation = false;  // لم يتم قبول طلب الحجز بعد 
+         if($property->state ==0){
+         $reservation->state = 'تأجير';
+         }elseif($property->state ==1){
+         $reservation->state = 'بيع';
+        }
+         $reservation->save();
+         Toastr::success( ' سيتم التواصل معك قريباً من قبل صاحب العقار'  );
+         return redirect()->route("home");
+            }
 
 
 }

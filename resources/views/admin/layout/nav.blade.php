@@ -6,7 +6,7 @@
                     <a href="#" class="nav-link active">
                
                         <p > <i class="nav-icon fas fa-tachometer-alt "></i>
-                        <span style="margin-right:10px;" >الرئيسية</span> 
+                        <span class="glyphicon glyphicon-home"  style="margin-right:10px;" >الرئيسية</span> 
                        
                             <i class="right fas fa-angle-left"></i>
                         </p>     
@@ -15,7 +15,7 @@
                         <li class="nav-item">
                             <a href="/AdminDashboard" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard </p>
+                                <p>لوحة التحكم </p>
                             </a>
                         </li>
                         {{-- <li class="nav-item">
@@ -83,7 +83,13 @@
 
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/admin/Adminpanel/reservations')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>  الحجوزات </p>
 
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

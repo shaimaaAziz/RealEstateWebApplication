@@ -33,9 +33,12 @@
            font-size: 1.5em;
         }
 
-
-
-
+        #map {
+        width: 100%;
+        height:500px;
+        background-color: grey;
+  
+    }
 
         #no-background-hover::before {
    background-color: transparent !important;
@@ -76,8 +79,16 @@
                                     </div>
 
                                     <div class="pricetext"><i class="fa fa-usd" aria-hidden="true"></i> {{$properties->maxPrice}}</div>
-                                    <div class="productprice"><div class=""> <a href="#" class="btn btn-primary" style="width:100%" role="button">اظهر التفاصيل
-                                                <span class="fa fa-shopping-cart" aria-hidden="true"> </span></a></div><br>
+                                    <div class="productprice"><div class=""> 
+                                        <form method="get" action="{{ route('showMap') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
+                                            {{ csrf_field() }}
+                            
+                                            <input type="hidden" name="property_id" value="{{$properties->id}}" >
+                                            {{-- <input type="hidden" name="id" value="{{$properties->id}}" > --}}
+
+                                        <button class="btn btn-primary" style="width:100%" role="button">اظهر التفاصيل
+                                                <span class="fa fa-shopping-cart" aria-hidden="true"> </span></button>
+                                        </form>  </div><br>
                                     </div>
                                     <div>
 
@@ -313,6 +324,9 @@
                 </div>
             </div> <br><br>
 
+
+
+
             <div class="contact ">
                 <div class="col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1">
                     <div class="row">
@@ -361,9 +375,7 @@
                     </div>
                 </div>
             </div>
-
-
-
+           
 @endsection
 
 @section('footer')
@@ -372,4 +384,11 @@
     $("#input-id").rating();
 
 </script>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8EKP73TK6UVkBWNOeRcyQDOvDzvAUla4&callback=initMap">
+        </script>
 @endsection

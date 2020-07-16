@@ -38,9 +38,7 @@ Route::get('/ShowAllBullding' , 'operationForProperty@showAllEnabel');
    Route::get('/ForBuy' , 'operationForProperty@ForBuy');
    Route::get('/type/{type}' , 'operationForProperty@showByType');
    Route::post('/search', 'operationForProperty@search');
-   Route::get('/showMap', 'operationForProperty@showMap')->name('showMap');
 
-   
 
 Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'prefix' => 'admin'],function(){
  // @datatable

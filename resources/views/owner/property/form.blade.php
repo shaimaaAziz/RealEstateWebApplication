@@ -153,28 +153,6 @@
     </div>
 </div>
 
-
-<div class="form-group row ">
-    <div class="col-md-12">
-        <br>
-        <label>خط الطول</label>
-        <input type="text" name="Longitude" id="lon">
-    
-        <label>خط العرض</label>
-        <input type="text" name="Latitude" id="lat">
-
-        <label>العنوان بالتفصيل </label>
-        <input type="text" name="location" id="location">
-
-    </div>
-</div>
-<br>
-
-<input id="searchInput" class="mapControls" type="text" placeholder="Enter a location">
-
-<div id="map"></div> <br>
-
-
 <input type="hidden" name="adminId" value="{{Auth::user()->id}}" >
 <div class="form-group row mb-0">
     <div class="col-md-12">

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\mapLocation;
 use App\Property;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
@@ -83,15 +82,5 @@ if ( $property = $bu->where('status' , 0)) {
 
 
 
-    }
-
-
-    public function showMap(Request $request){
-    
-       $mapLocation= DB::table('map_locations')->where('property_id' ,$request->property_id)->first();
-    //    dd($mapLocation->Latitude);
-    // $pro= Property::all();
-    $property  = DB::table('properties')->where('id' ,$request->property_id)->first();
-       return view('showMap',compact('mapLocation','property'));
     }
 }

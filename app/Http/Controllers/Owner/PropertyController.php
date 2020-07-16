@@ -10,7 +10,6 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use yajra\Datatables\Datables;
 use App\Http\Controllers\Controller;
-use App\mapLocation;
 use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
@@ -46,7 +45,7 @@ class PropertyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request )
+    public function store(Request $request)
     {
         $this->validate($request,[
             'type'=>'required',
@@ -64,18 +63,10 @@ class PropertyController extends Controller
         ]);
 
         $property = new Property();
-       $mapLocation= new  mapLocation();
         $photoName = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images',$photoName);
 
-        $mapLocation->create([
-        
-            'property_id'=>$request->property_id,
-            'Longitude'=>$request->Longitude,
-            'Latitude'=>$request->Latitude
 
-        ]);
-        
         $property->create([
             'type'=> $request->type,
             'minPrice' => $request->minPrice,
@@ -90,16 +81,8 @@ class PropertyController extends Controller
             'city' =>$request->city,
             'area'=>$request->area,
             'user_id' =>Auth::user()->id,
-           
 
         ]);
-
-    //  dd($request->property_id);
-        
-      
-
-        
-
         toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
 
         return redirect('owner/Ownerpanel/Property')->withFlashMessage('تمت اضافة العضو بنجاح');

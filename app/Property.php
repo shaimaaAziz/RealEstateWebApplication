@@ -26,8 +26,6 @@ class Property extends Model
         return $this->belongsToMany('App\User')->withTimestamps();
      }
 
-     public  function mapLocation(){
-        return $this->belongsTo('App\mapLocation');
-    }
+    
 
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
-use App\mapLocation;
+
 use App\Property;
 use App\messageType;
 use Illuminate\Http\Request;
@@ -31,8 +31,7 @@ class HomeController extends Controller
         $pro= Property::all();
         $messageType= messageType::all();
          $property  = $pro->where('status' , 0);
-        $mapLocation= mapLocation::all();
-        return view('welcome',compact('property','messageType','mapLocation'));
+        return view('welcome',compact('property','messageType'));
     }
         // return view('home');
     

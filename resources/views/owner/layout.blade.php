@@ -53,5 +53,10 @@
       @yield('content')
         </div>
     </section>
+
+
+    <main class="py-4">
+      @yield('footer')
+  </main>
   </body>
 </html>

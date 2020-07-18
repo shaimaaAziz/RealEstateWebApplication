@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
+{
 Route::get('/', 'HomeController@index')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/AdminDashboard', 'HomeController@AdminDashboard')->name('adminHome');
@@ -89,4 +92,5 @@ Route::group(['middleware'=>['can:owner'] , 'namespace' => 'Owner', 'prefix' => 
 
     
 
+});
 });

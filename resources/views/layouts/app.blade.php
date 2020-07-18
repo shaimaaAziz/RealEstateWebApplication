@@ -30,7 +30,7 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <!-- CSRF Token --> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @toastr_css
-    <title>        {{__('message.موقع عقارات')}}
+    <title>       موقع عقارات
 
         {{-- {{ config('app.name', 'موقع عقارات') }} --}}
 
@@ -44,25 +44,25 @@
     <div class="container"> <a class="navbar-brand" href="{{url('/')}}"><i class="fa fa-paper-plane"></i> ONE</a>
         <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{ Request::root() }}/website/images/nav_icon.png" alt="" /> </a>
             <ul class="nav" id="nav">
-                <li class="current"> <a class="glyphicon glyphicon-home" href="{{url('/')}}"> {{__('message.الرئيسية')}}</a></li>
-                <li><a href="#">{{__('message.كل العقارات')}}</a></li>
-                <li><a href="#"> {{__('message.مميزات الموقع')}}</a></li>
-                <li><a href="#">{{__('message.من نحن')}} </a></li>
-                <li><a href="#">{{__('message.شروط الاستخدام')}}</a></li>
-                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <li class="current"> <a class="glyphicon glyphicon-home" href="{{url('/')}}"> الرئيسية</a></li>
+                <li><a href="#">كل العقارات</a></li>
+                <li><a href="#"> مميزات الموقع</a></li>
+                <li><a href="#">من نحن </a></li>
+                <li><a href="#">شروط الاستخدام</a></li>
+{{--                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)--}}
 
-                    <li class="nav-item">
-                        <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">  <span class="glyphicon glyphicon-globe"></span> {{ $properties['native'] }}</a>   {{--  class="glyphicon glyphicon-user nav-link"    --}}
-                    </li>
-                @endforeach
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">  <span class="glyphicon glyphicon-globe"></span> {{ $properties['native'] }}</a>   --}}{{--  class="glyphicon glyphicon-user nav-link"    --}}
+{{--                    </li>--}}
+{{--                @endforeach--}}
                 @guest
                     <li class="nav-item">
 
-                        <a class="glyphicon glyphicon-log-in nav-link"  href="{{ route('login') }}">{{__('message.تسجيل الدخول') }}</a>
+                        <a class="glyphicon glyphicon-log-in nav-link"  href="{{ route('login') }}">{{__('تسجيل الدخول') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="glyphicon glyphicon-user nav-link"  href="{{ route('register') }}">{{__('message.عضويه جديده') }}</a>
+                            <a class="glyphicon glyphicon-user nav-link"  href="{{ route('register') }}">{{__('عضويه جديده') }}</a>
                         </li>
                     @endif
                 @else
@@ -75,20 +75,20 @@
                             <a style="text-decoration: none;" class=" dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{__('message.تسجيل خروج') }}                            </a>
+                                {{__('تسجيل خروج') }}                            </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
 
                             @can('manage-users')
-                            <a style="text-decoration: none; " class=" dropdown-item" href="/AdminDashboard"> {{__('message.الصفحة الشخصية') }}</a>
+                            <a style="text-decoration: none; " class=" dropdown-item" href="/AdminDashboard"> الصفحة الشخصية</a>
                             @endcan
                             @can('user')
-                            <a style="text-decoration: none; " class="dropdown-item" href="/user/personalPage"> {{__('message.الصفحة الشخصية') }}</a>
+                            <a style="text-decoration: none; " class="dropdown-item" href="/user/personalPage"> الصفحة الشخصية</a>
                             @endcan
                             @can('owner')
-                            <a style="text-decoration: none; " class="dropdown-item" href="/owner/Ownerpanel/users"> {{__('message.الصفحة الشخصية') }}</a>
+                            <a style="text-decoration: none; " class="dropdown-item" href="/owner/Ownerpanel/users"> الصفحة الشخصية</a>
                             @endcan
                         </div>
 

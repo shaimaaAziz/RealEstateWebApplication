@@ -14,7 +14,7 @@
 
 <!-- {{-- @extends('layouts.app') --}} -->
 @section('title')
-    {{__('message.كل العقارات')}}
+  كل العقارات
 @endsection
 
 @section('header')
@@ -86,7 +86,7 @@
                                             <input type="hidden" name="property_id" value="{{$properties->id}}" >
                                             {{-- <input type="hidden" name="id" value="{{$properties->id}}" > --}}
 
-                                        <button class="btn btn-primary" style="width:100%" role="button">{{__('message.اظهر التفاصيل')}}
+                                        <button class="btn btn-primary" style="width:100%" role="button">اظهر التفاصيل
                                                 <span class="fa fa-shopping-cart" aria-hidden="true"> </span></button>
                                         </form>  </div><br>
                                     </div>
@@ -179,7 +179,7 @@
 
                                                     {{-- <span class="review-no">422 reviews</span> --}}
                                                             <br/>
-                                                            <button class="btn btn-success">{{__('message.إرسال المراجعة')}}</button>
+                                                            <button class="btn btn-success">إرسال المراجعة</button>
                                                         </div>
                                                     </form>
                                                     @endcan
@@ -197,7 +197,7 @@
 
                         @else
                             <div class= 'alert alert-danger'>
-                                {{__('message.لا يوجد اي عقارات حاليا')}}
+                                لا يوجد اي عقارات حاليا
                             </div>
                         @endif
 
@@ -212,37 +212,37 @@
 
             <div class="col-lg-3 fixed">
                 <div class="profile-sidebar">
-                    <h2 style="margin-right: 10px">{{__('message.البحث المتقدم')}} </h2>
+                    <h2 style="margin-right: 10px">البحث المتقدم </h2>
                     <div class="profile-usermenu" style="padding: 10px">
                         {!! Form::open(['url' => 'search' , 'action' =>'post']) !!}
                         <ul class="nav" style="margin-right: 0px; padding-right: 0px;">
                             <li>
-                                <label>{{__('message.السعر الادنى العقار')}}</label>
-                                {!! Form::number("minPrice", null, ['class' =>'form-control' , 'placeholder'=>"{{__('message.السعر الادنى العقار (رقم)')}}"]) !!}
+                                <label>السعر الادنى العقار</label>
+                                {!! Form::number("minPrice", null, ['class' =>'form-control' , 'placeholder'=>"السعر الادنى العقار (رقم)"]) !!}
                             </li>
                             <li>
-                                <label>{{__('message.السعر الاعلى العقار')}}</label>
-                                {!! Form::number("maxPrice"  , null, ['class' =>'form-control' , 'placeholder'=>"{{__('message.السعر الاعلى العقار (رقم)')}}"]) !!}
+                                <label>السعر الاعلى العقار</label>
+                                {!! Form::number("maxPrice"  , null, ['class' =>'form-control' , 'placeholder'=>"السعر الاعلى العقار (رقم)"]) !!}
                             </li>
                             <li>
-                                <label>{{__('message.عدد الغرف')}}</label>
-                                {!! Form::number("roomNumbers" , null, ['class' =>'form-control' , 'placeholder'=>"{{__('message.عدد الغرف (رقم)')}}"]) !!}
+                                <label>عدد الغرف</label>
+                                {!! Form::number("roomNumbers" , null, ['class' =>'form-control' , 'placeholder'=>"عدد الغرف (رقم)"]) !!}
                             </li>
                             <li>
-                                <label>{{__('message.نوع العقار')}}</label>
-                                {!! Form::select("type"  ,['0'=>"{{__('message.فيلا')}}" , '1'=>"{{__('message.شاليه')}}",'2'=>"{{__('message.ارض')}}" , '3'=>"{{__('message.شقة')}}",'4'=>"{{__('message.بيت')}}"], null, ['class' =>'form-control']) !!}
+                                <label>نوع العقار</label>
+                                {!! Form::select("type"  ,['0'=>"فيلا" , '1'=>"شاليه",'2'=>"ارض" , '3'=>"شقة",'4'=>"بيت"], null, ['class' =>'form-control']) !!}
                             </li>
                             <li>
-                                <label>{{__('message.نوع العملية')}}</label>
-                                {!! Form::select("state" , ['0'=>"{{__('message.ايجار')}}" , '1'=>"{{__('message.بيع')}}"],null, ['class' =>'form-control']) !!}
+                                <label>نوع العملية</label>
+                                {!! Form::select("state" , ['0'=>"ايجار" , '1'=>"بيع"],null, ['class' =>'form-control']) !!}
                             </li>
                             <li>
-                                <label>{{__('message.مساحة العقار')}}</label>
-                                {!! Form::text("area", null, ['class' =>'form-control' , 'placeholder'=>"{{__('message.مساحة العقار')}}"]) !!}
+                                <label>مساحة العقار</label>
+                                {!! Form::text("area", null, ['class' =>'form-control' , 'placeholder'=>"مساحة العقار"]) !!}
                             </li>
                             <li>
                                 <label></label>
-                                {!! Form::submit("{{__('message.ابحث')}}", ['class' =>'banner_btn']) !!}
+                                {!! Form::submit("ابحث", ['class' =>'banner_btn']) !!}
                             </li>
                         </ul>
                         {!! Form::close() !!}
@@ -251,43 +251,43 @@
                 <br>
 
                 <div class="profile-sidebar fixed">
-                    <h2 style="margin-right: 10px">{{__('message.خيارات العقارات')}} </h2>
+                    <h2 style="margin-right: 10px">خيارات العقارات </h2>
                     <div class="profile-usermenu">
                         <ul class="nav" style="margin-right: 0px; padding-right: 0px;">
                             <li class="active">
                                 <a href="{{url('/ShowAllBullding')}}">
                                     <i class="fa fa-home" aria-hidden="true"></i>
-                                    {{__('message.كل العقارات')}} </a>
+                                  كل العقارات </a>
                             </li>
                             <li>
                                 <a href="{{url('/ForRent')}}">
                                     <i class="fa fa-user" aria-hidden="true"></i>
-                                    {{__('message.ايجار')}} </a>
+                                    ايجار </a>
                             </li>
                             <li>
                                 <a href="{{url('/ForBuy')}}">
                                     <i class="fa fa-user" aria-hidden="true"></i>
-                                    {{__('message.تمليك')}} </a>
+                                  تمليك </a>
                              </li>
                              <li>
                                  <a href="{{url('/type/0')}}">
                                     <i class="fa fa-check" aria-hidden="true"></i>
-                                    {{__('message.الشقق')}} </a>
+                                   الشقق </a>
                             </li>
                             <li>
                                 <a href="{{url('/type/1')}}">
                                     <i class="fa fa-check" aria-hidden="true"></i>
-                                    {{__('message.الفلل')}} </a>
+                                    الفلل</a>
                             </li>
                             <li>
                                 <a href="{{url('/type/2')}}">
                                     <i class="fa fa-check" aria-hidden="true"></i>
-                                    {{__('message.الشاليهات')}} </a>
+                                  الشاليهات </a>
                              </li>
                              <li>
                                  <a href="{{url('/type/3')}}">
                                     <i class="fa fa-check" aria-hidden="true"></i>
-                                    {{__('message.الأراضي')}} </a>
+                                    الأراضي</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -305,21 +305,21 @@
                                                     <div class="container">
                                                         <div class="row text-center">
                                                             <div class="col-mg-3 col-xs-3 feature_grid1"> <i class="fa fa-television fa-3x" aria-hidden="true"></i>
-                                                                <h3 class="m_1"><a href="#">{{__('message.الاعلانات')}} </a></h3>
-                                                                <p class="m_2">{{__('message.عليك نشر اعلان لعقار حقيقي.')}}<br>{{__('message.عليك ازالة عقارك بعد بيعه او تأجيره.')}}</p>
-                                                                <a href="services.html" class="feature_btn">{{__('message.المزيد')}}</a> </div>
+                                                                <h3 class="m_1"><a href="#">الاعلانات </a></h3>
+                                                                <p class="m_2">عليك نشر اعلان لعقار حقيقي.<br>عليك ازالة عقارك بعد بيعه او تأجيره.</p>
+                                                                <a href="services.html" class="feature_btn">المزيد</a> </div>
                                                             <div class="col-mg-3 col-xs-3 feature_grid1"> <i class="fa fa-key fa-3x" aria-hidden="true"></i>
-                                                                <h3 class="m_1"><a href="#">{{__('message.مميزات الموقع')}}</a></h3>
-                                                                <p class="m_2">{{__('message.تتبع القيمة المقدرة لمنزلك و البقاء على اتصال مع السوق المحلي.')}}</p>
-                                                                <a href="services.html" class="feature_btn">{{__('message.المزيد')}}</a> </div>
+                                                                <h3 class="m_1"><a href="#">مميزات الموقع</a></h3>
+                                                                <p class="m_2">تتبع القيمة المقدرة لمنزلك و البقاء على اتصال مع السوق المحلي.</p>
+                                                                <a href="services.html" class="feature_btn">المزيد</a> </div>
                                                             <div class="col-lg-3 col-xs-3 feature_grid1"> <i class="fa fa-check-circle fa-3x"></i>
-                                                                <h3 class="m_1"><a href="#">{{__('message.شروط الاستخدام')}}</a></h3>
-                                                                <p class="m_2">{{__('message.عنوان دقيق للشارع، الحي، المدينة، البلد.')}} <br>{{__('message.وصف العقار المعلن عنه.')}} </p>
-                                                                <a href="services.html" class="feature_btn">{{__('message.المزيد')}}</a> </div>
+                                                                <h3 class="m_1"><a href="#">شروط الاستخدام</a></h3>
+                                                                <p class="m_2">عنوان دقيق للشارع، الحي، المدينة، البلد. <br>وصف العقار المعلن عنه. </p>
+                                                                <a href="services.html" class="feature_btn">المزيد</a> </div>
                                                             <div class="col-lg-3 col-xs-3 feature_grid2"> <i class="fa fa-users fa-3x" aria-hidden="true"></i>
-                                                                <h3 class="m_1"><a href="#">{{__('message.من نحن')}}</a></h3>
-                                                                <p class="m_2">{{__('message.انسعى لنيل رضاكم، ونتمنى لكم الوصول الى عقاركم المستقبلي المناسب.')}}</p>
-                                                                <a href="services.html" class="feature_btn">{{__('message.المزيد')}}</a> </div>
+                                                                <h3 class="m_1"><a href="#">من نحن</a></h3>
+                                                                <p class="m_2">انسعى لنيل رضاكم، ونتمنى لكم الوصول الى عقاركم المستقبلي المناسب.</p>
+                                                                <a href="services.html" class="feature_btn">المزيد</a> </div>
                                                         </div>
                                                     </div>
                                                 </div> <br><br>
@@ -330,30 +330,30 @@
                                                 <div class="contact ">
                                                     <div class="col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1">
                                                         <div class="row">
-                                                            <h1>{{__('message.تواصل معنا')}}</h1>
+                                                            <h1>تواصل معنا</h1>
                                                             <form class="contact-form" method="post" action="{{route('contact.send')}}">
                             @csrf
 
                             <div class="col-lg-6 col-sm-6">
-                                <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="{{__('message.الرسالة')}}"></textarea>
+                                <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="الرسالة"></textarea>
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
-                                <label>{{__('message.الاسم')}}</label>
-                                    <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="{{__('message.الاسم')}}">
+                                <label>الاسم</label>
+                                    <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="الاسم">
                                 </div>
                                 <div class="form-group">
-                                <label>{{__('message.البريد الإلكتروني')}}</label>
-                                    <input name="email" type="email" class="form-control" id="email" required="required" placeholder="{{__('message.البريد الإلكتروني')}}">
+                                <label>البريد الإلكتروني</label>
+                                    <input name="email" type="email" class="form-control" id="email" required="required" placeholder="البريد الإلكتروني">
                                 </div>
                                 <div class="form-group">
-                                <label>{{__('message.رقم الهاتف')}}</label>
-                                    <input name="phone" type="text" class="form-control" id="phone" required="required" placeholder="{{__('message.رقم الهاتف')}} ">
+                                <label>رقم الهاتف</label>
+                                    <input name="phone" type="text" class="form-control" id="phone" required="required" placeholder="رقم الهاتف ">
                                 </div>
                                 <div class="form-group">
                                  
                                    
-                                <label>{{__('message.نوع الرسالة')}}</label>
+                                <label>نوع الرسالة</label>
                                 <?php use App\messageType;
                                 $messageType = messageType::all(); ?>
                                 <select name="messageType" class="form-control">
@@ -368,7 +368,7 @@
                             <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3">
                                 <div class="text-center">
                                   <!-- <button type="submit" id="submit" name="submit" class="btn btn-send">Send </button> -->
-                                    {!! Form::submit("{{__('message.إرسال')}}", ['class' =>'btn banner_btn']) !!}
+                                    {!! Form::submit("إرسال", ['class' =>'btn banner_btn']) !!}
                                 </div>
                             </div>
                         </form>

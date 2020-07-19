@@ -19,6 +19,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    @if(count($property) > 0) 
 
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -88,6 +89,11 @@
                             </tbody>
 
                         </table>
+                        @else
+                        <div class= 'alert alert-danger'>
+                            لا يوجد أي عقارات قد قمت  بإضافتها  
+                        </div>
+                    @endif
                     </div>
                     <!-- /.card-body -->
                 </div>

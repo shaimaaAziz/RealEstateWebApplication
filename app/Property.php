@@ -27,7 +27,7 @@ class Property extends Model
      }
 
      public  function mapLocation(){
-        return $this->belongsTo('App\mapLocation');
+        return $this->hasOne('App\mapLocation');
     }
 
 }

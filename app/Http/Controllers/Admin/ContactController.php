@@ -118,12 +118,11 @@ class ContactController extends Controller
        
       $user= Auth::user();
       $userEmail = $user->email;
-    //   dd($userEmail->email);
    
       $data = array("name"=>$contact->name,"body"=>$contact->message);
         Mail::send(['text'=>'mail'],$data,function($message) use ($toemail,$subject, $userEmail){
 
-            $message->to($toemail)->subject("  النظر في اقتراحاتكم على موقع عقارات ");
+            $message->to("sondos1751998@gmail.com")->subject("  النظر في اقتراحاتكم على موقع عقارات ");
             $message->from( $userEmail);
             
             });

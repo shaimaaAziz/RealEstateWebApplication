@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-
+                    @if(count($reservations) > 0) 
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="table" class="table table-bordered table-striped">
@@ -38,7 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
-
+                                
                             @foreach($reservations as $key=>$allReservations)
                                 <tr>
                                     <td>{{$key + 1}}</td>
@@ -85,9 +85,15 @@
                                     </td>
                                 </tr>
                             @endforeach
+                           
                             </tbody>
 
                         </table>
+                        @else
+                            <div class= 'alert alert-danger'>
+                                لا يوجد أي عقارات قد قمت  بحجزها  
+                            </div>
+                        @endif
                     </div>
                     <!-- /.card-body -->
                 </div>

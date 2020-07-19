@@ -6,6 +6,9 @@ use App\Property;
 use App\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Notifications\ReservationConfirmed;
+use Illuminate\Support\Facades\Notification;
 
 class ReservationController extends Controller
 {
@@ -29,6 +32,9 @@ class ReservationController extends Controller
     //     $property->delete();
         // $property->status = 1;  // unavailable
         }
+
+      
+
     $property->save();
     $reservations->save();
 

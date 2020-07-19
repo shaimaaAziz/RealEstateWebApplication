@@ -18,9 +18,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PropertyTableSeeder::class);
         $this->call(ContactsTableSeeder::class);
         $this->call(messageTypeTableSeeder::class);
+        $this->call(mapTableSeeder::class);
 
         
 
-
+        
     }
 }

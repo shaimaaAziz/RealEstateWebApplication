@@ -63,7 +63,7 @@
                                                 }"><i class="material-icons">done</i></button>
                                                 
                                     @elseif($allReservations->reservation == false && $allReservations->state == "بيع")
-                                    <form id="delete-form-{{ $allReservations->property_id }}" action="{{ route('reservations.destroy',$allReservations->property_id) }}" 
+                                    <form id="delete-form-{{ $allReservations->property_id }}" action="{{ route('reservationsOwner.destroy',$allReservations->property_id) }}" 
                                     style="display: none;" method="POST">
                                         @csrf
                                         @method('DELETE')

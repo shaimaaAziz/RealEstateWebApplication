@@ -17,6 +17,8 @@ Route::get('/AdminDashboard', 'HomeController@AdminDashboard')->name('adminHome'
 // for contact in welcome blade
 Route::post('/contact','ContactController@sendMessage')->name('contact.send');
 
+// Route::get('/mail','mailController@send')->name('send');
+
 //for user when he login
 Route::group(['middleware'=>['can:user'] , 'namespace' => 'User', 'prefix' => 'user'],function(){
      
@@ -86,7 +88,8 @@ Route::group(['middleware'=>['can:owner'] , 'namespace' => 'Owner', 'prefix' => 
     Route::resource('/Ownerpanel/Property','PropertyController');
     Route::get('/Ownerpanel/reservations','ReservationController@displayReservations')->name('displayReservation');
     Route::post('/Ownerpanel/reservations/{id}','ReservationController@agreeOnReservations')->name('reservation');
-    Route::resource('/reservations', 'ReservationController'); // this just to excute the destroy of property
+    Route::resource('/reservationsOwner', 'ReservationController'); // this just to excute the destroy of property
+   // Route::get('reservations/{id}','ReservationController@destroy')->name('destroyProperty');
 
     
 

@@ -6,9 +6,6 @@
 {{--  for datatable --}}
 {{!! Html::style('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css') !!}}
 
-{{-- <script src="/admin/plugins/datatables/jquery.dataTables.js"></script>
-<script src="/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<link media="all" type="text/css" rel="stylesheet" href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css"> --}}
   @endsection
 
 @section('content')
@@ -92,17 +89,23 @@
         </div>
         <!-- /.row -->
     <!-- /.content -->
-    <script type="text/javascript">
-        $('#table').DataTable({
-            "paging": true,
-            "lenghtChange":true,
-            "searching":true,
-            "ordring":true,
-            "info":true,
-            "autowidth":true
+ 
+@endsection
+@section('footer')
 
-        });
+{{!! Html::script('admin/plugins/datatables/jquery.dataTables.js') !!}}
+{{!! Html::script('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}}
 
-    </script>
+<script type="text/javascript">
+$('#table').DataTable({
+  "paging": true,
+  "lenghtChange":true,
+  "searching":true,
+  "ordring":true,
+  "info":true,
+  "autowidth":true
 
+});
+
+</script>
 @endsection

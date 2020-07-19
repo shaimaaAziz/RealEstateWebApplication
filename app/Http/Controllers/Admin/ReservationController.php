@@ -6,6 +6,8 @@ use App\Property;
 use App\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\ReservationConfirmed;
+use Illuminate\Support\Facades\Notification;
 
 class ReservationController extends Controller
 {
@@ -23,14 +25,15 @@ class ReservationController extends Controller
        $reservations->reservation = true;
 
        $property= Property::find($reservations->property_id);
-    if($property->state ==0){ //تأجير
-    $property->status = 1;  // unavailable
+        if($property->state ==0){ //تأجير
+            $property->status = 1;  // unavailable
     // }elseif($property->state ==1){ //بيع
     //     $property->delete();
         // $property->status = 1;  // unavailable
         }
-    $property->save();
-    $reservations->save();
+  
+     $property->save();
+     $reservations->save();
 
        toastr()->success( 'تمت الموافقة بنجاح');
 

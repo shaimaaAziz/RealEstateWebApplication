@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yoeunes\Toastr\Facades\Toastr;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+// use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -110,7 +113,21 @@ class ContactController extends Controller
         $contact = Contact::find($id);
         $contact->view = true;
         $contact->save();
+       $toemail =$contact->email;
+       $subject =$contact->message;
+       
+      $user= Auth::user();
+      $userEmail = $user->email;
+    //   dd($userEmail->email);
+   
+      $data = array("name"=>$contact->name,"body"=>$contact->message);
+        Mail::send(['text'=>'mail'],$data,function($message) use ($toemail,$subject, $userEmail){
 
+            $message->to($toemail)->subject("  النظر في اقتراحاتكم على موقع عقارات ");
+            $message->from( $userEmail);
+            
+            });
+            
         Toastr::success('تمت العملية بنجاح .','Success',["positionClass" => "toast-top-right"]);
         return redirect()->back();
     } 

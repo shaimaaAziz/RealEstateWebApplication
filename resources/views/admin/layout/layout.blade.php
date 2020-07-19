@@ -48,6 +48,9 @@ $countMessage= ContactController::countMessage();
 
     @toastr_css
 
+    <style>
+        .material-icons { font-size: 15px; }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

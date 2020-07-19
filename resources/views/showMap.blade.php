@@ -110,7 +110,6 @@
     function initMap() {
     
     //   var myLatlng = {lat: $mapLocation->Latitude , lng: $mapLocation->Longitude};
-    
     var latitude ={{$mapLocation->Latitude }};
     var longitude ={{$mapLocation->Longitude }};
 

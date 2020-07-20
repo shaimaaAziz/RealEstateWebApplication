@@ -37,7 +37,7 @@
         width: 100%;
         height:500px;
         background-color: grey;
-  
+
     }
 
         #no-background-hover::before {
@@ -47,14 +47,50 @@
 @endpush
 @section('content')
 
-    <div class="banner text-center">
-        <div class="container">
-            <div class="banner-info">
-                {{--                <h1>أهلا وسهلا بك زائرنا الكريم</h1>--}}
-                <p> </p>
+    <div id="myslide" class="carousel slide" data-ride="carousel">
+
+        <ol class="carousel-indicators hidden-xs">
+            <li data-target="#myslide" data-slide-to="0" class="active"></li>
+            <li data-target="#myslide" data-slide-to="1"></li>
+            <li data-target="#myslide" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+            <div class="item item1 active">
+                <div class="carousel-caption hidden-xs">
+                    <h2>
+                        دعنا نأخذك إلى منزل أحلامك</h2>
+                </div>
+            </div>
+
+            <div class="item item2">
+                <div class="carousel-caption hidden-xs">
+                    <h2>
+                        ستجد هنا كل شيء من بيوت حديثة </h2>
+
+                </div>
+            </div>
+
+            <div class="item item3">
+                <div class="carousel-caption hidden-xs">
+                    <h2>
+                        البيوت الحديثة تجعل الحياة أفضل </h2>
+                </div>
             </div>
         </div>
-    </div><br><br>
+
+        <a class="left carousel-control" href="#myslide" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myslide" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    {{--end slider--}}
+
+    <br><br>
 
     <div class="container">
         <div class="row profile">
@@ -79,10 +115,10 @@
                                     </div>
 
                                     <div class="pricetext"><i class="fa fa-usd" aria-hidden="true"></i> {{$properties->maxPrice}}</div>
-                                    <div class="productprice"><div class=""> 
+                                    <div class="productprice"><div class="">
                                         <form method="get" action="{{ route('showMap') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
                                             {{ csrf_field() }}
-                            
+
                                             <input type="hidden" name="property_id" value="{{$properties->id}}" >
                                             {{-- <input type="hidden" name="id" value="{{$properties->id}}" > --}}
 
@@ -90,7 +126,7 @@
                                                 <span class="fa fa-shopping-cart" aria-hidden="true"> </span></button>
                                         </form>  </div><br>
                                     </div>
-                                    <div>
+                                    <div><br>
 
 
                                                 <ul class="post-footer" style="list-style: none; padding:0px">
@@ -104,8 +140,8 @@
                                                             }
                                                             )"><i class="fas fa-heart" id="no-background-hover"></i></a>
                                                             {{ $properties->favorite_to_users->count() }}
-                                                            
-                                                                
+
+
                                                                 <a class="glyphicon glyphicon-shopping-cart" style="float:left; text-decoration: none;" href="javascript:void(0);"
                                                                 onclick="toastr.info('يجب عليك تسجيل الدخول قبل القيام بحجز العقار   .',
                                                                 '',{
@@ -117,8 +153,8 @@
                                                                 @elseif($properties->state ==1) بيع
                                                                 @endif
                                                                 </a>
-                                                                
-                                                            
+
+
 
                                                             <li  style="direction:ltr;">
                                                                 <input id="input-1-xs " name="rate" class="rating rating-loading " data-min="0"
@@ -156,11 +192,11 @@
                                                                 @csrf
                                                             </form>
 
-                                                           
+
                                                         @endguest
 
                                                     </li>
-                                                   
+
                                                 </ul>
 
                                                 {{-- <div class="details col-md-6"> --}}
@@ -212,7 +248,7 @@
 
             <div class="col-lg-3 fixed">
                 <div class="profile-sidebar">
-                    <h2 style="margin-right: 10px">البحث المتقدم </h2>
+                    <h2 class="head" style="margin-right: 10px">البحث المتقدم </h2>
                     <div class="profile-usermenu" style="padding: 10px">
                         {!! Form::open(['url' => 'search' , 'action' =>'post']) !!}
                         <ul class="nav" style="margin-right: 0px; padding-right: 0px;">
@@ -251,7 +287,7 @@
                 <br>
 
                 <div class="profile-sidebar fixed">
-                    <h2 style="margin-right: 10px">خيارات العقارات </h2>
+                    <h2 class="head" style="margin-right: 10px">خيارات العقارات </h2>
                     <div class="profile-usermenu">
                         <ul class="nav" style="margin-right: 0px; padding-right: 0px;">
                             <li class="active">
@@ -335,7 +371,7 @@
                             @csrf
 
                             <div class="col-lg-6 col-sm-6">
-                                <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="الرسالة"></textarea>
+                               <br> <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="الرسالة"></textarea>
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
@@ -351,8 +387,8 @@
                                     <input name="phone" type="text" class="form-control" id="phone" required="required" placeholder="رقم الهاتف ">
                                 </div>
                                 <div class="form-group">
-                                 
-                                   
+
+
                                 <label>نوع الرسالة</label>
                                 <?php use App\messageType;
                                 $messageType = messageType::all(); ?>
@@ -361,7 +397,7 @@
                                     <option value="{{ $types->id }}"> {{$types->name}}</option>
                                     @endforeach
                                 </select>
-                              
+
                                 </div>
                             </div>
 
@@ -375,7 +411,8 @@
                     </div>
                 </div>
             </div>
-           
+                                            </div><br><br><br>
+
 @endsection
 
 @section('footer')

@@ -22,7 +22,7 @@
 
 .productprice {
     border-top:1px solid #dadada ;
-    padding-top: 5px;
+    /*padding-top: 5px;*/
 }
 
 .pricetext {
@@ -40,9 +40,18 @@ body {
 }
 h1{
     text-align: center;
-    color: #22967c;
+    color: black;
     padding: 5px;
 }
+
+.row h1:hover{
+    color: #5b9bd1;
+}
+
+.head {
+    color: black;
+}
+
 /* Profile container */
 .profile {
     margin: 20px 0;
@@ -160,6 +169,7 @@ h1{
     margin-bottom: 30px;
     width: 100%;
 }
+
 .fa-info-circle:before {
     content: "\f05a";
     color: white;
@@ -182,21 +192,51 @@ h1{
 
 .sliderbtn a:hover {
     background-color: #ddd;
-    color: black;
+    color: #2e2b2bcc;
 }
 
 .sliderbtn .previous {
     background-color: #f1f1f1;
-    color: black;
+    color: #2e2b2bcc;
 }
 
 .sliderbtn .next {
-    background-color: #22967c;
+    background-color: #2e2b2bcc;;
     color: white;
 }
 
 .sliderbtn .round {
     border-radius: 50%;
+}
+
+/* Slider  */
+
+.img-responsive, .thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img{
+    width: 100%;
+}
+
+.carousel-caption{
+    bottom: 182px;
+    background: rgba(37,43,46,0.26);
+}
+
+.carousel-indicators{
+    bottom: 9px;
+}
+
+.carousel-indicators li{
+    height: 15px;
+    width: 15px;
+    border: 1px solid #eee;
+}
+
+.carousel-indicators .active{
+    height: 17px;
+    width: 17px;
+    background: #2e2b2bcc;
 }
 
 

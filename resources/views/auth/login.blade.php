@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    صفحه تسجيل الدخول
+    صفحة تسجيل الدخول
 @endsection
 @section('content')
 <div class="container">
 
     <div class="contact_bottom">
         <hr>
-        <h3>  صفحه تسجيل الدخول</h3>
+        <h2>  صفحة تسجيل الدخول</h2>
         <hr>
         <br>
         <form method="POST" action="{{ route('login') }}">
@@ -56,7 +56,7 @@
 
             <div class="text2  mb-0">
                 <div class="col-md-12">
-                    <button type="submit" class="btn-warning">
+                    <button type="submit" class="banner_btn ">
                         {{ __('تسجيل الدخول') }}
                     </button>
 

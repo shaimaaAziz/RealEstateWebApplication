@@ -46,9 +46,11 @@
             <ul class="nav" id="nav">
                 <li class="current"> <a class="glyphicon glyphicon-home" href="{{url('/')}}"> الرئيسية</a></li>
                 <li><a href="#">كل العقارات</a></li>
-                <li><a href="#"> مميزات الموقع</a></li>
                 <li><a href="#">من نحن </a></li>
                 <li><a href="#">شروط الاستخدام</a></li>
+                <li><a href="#"> مميزات الموقع</a></li>
+
+
 {{--                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)--}}
 
 {{--                    <li class="nav-item">--}}
@@ -109,10 +111,10 @@
 <div class="footer">
     <div class="footer_bottom">
         <div class="follow-us">
-             <a class="fab fa-facebook social-icon" href="https://www.facebook.com/"></a> 
+             <a class="fab fa-facebook social-icon" href="https://www.facebook.com/"></a>
             <a class="fab fa-twitter social-icon" href="https://twitter.com/"></a>
              <a class="fab fa-linkedin social-icon" href="https://linkedin.com/"></a>
-              <a class="fab fa-google-plus social-icon" href="https://plus.google.com/"></a> 
+              <a class="fab fa-google-plus social-icon" href="https://plus.google.com/"></a>
             </div>
         <div class="copy">
             <p>Copyright &copy; 2020  realestat website</p>

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title')
-     تسجيل عضويه جديده
+     تسجيل عضوية جديدة
 @endsection
 @section('content')
 <div class="container">
     <div class="contact_bottom">
         <hr>
-        <h3>  تسجيل عضويه جديده</h3>
+        <h2>  تسجيل عضوية جديدة</h2>
         <hr>
         <br>
         <form method="POST" action="{{ route('register') }}"  style="float: right; margin-left: 10px">
@@ -128,7 +128,7 @@
             </div>
             <div class="form-group row mb-0">
                 <div class="col-md-12">
-                    <button type="submit" class="btn-warning">
+                    <button type="submit" class="banner_btn">
                         {{ __(' تسجيل ') }}
                     </button>
                 </div>

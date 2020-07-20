@@ -20,11 +20,15 @@ class AdminController extends Controller
         }
 
         
-    public function index()
-    {
-        return view('admin.home.index') ;
+    // public function index()
+    // {
+    //     return view('admin.home.index') ;
 
-        //
+    //     //
+    // }
+
+    public function AdminDashboard(){
+        return view('admin/home/index');
     }
 
     /**

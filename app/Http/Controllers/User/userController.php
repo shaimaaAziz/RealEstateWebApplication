@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\User;
 use App\Property;
+use App\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,27 @@ class userController extends Controller
     {
         $property  =  Property::whereHas('favorite_to_users' )->get();
     return view('user/favorite',compact('property'));
+    }
+
+    public function showReservations()
+    {
+        $reservations = Reservation::all();
+        
+        return view('user/reservation',compact('reservations'));
+   }
+
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+         $reservation = Reservation::find($id);
+        $reservation->delete();
+    
+        return redirect()->route('showReservations');
     }
 
     /**
@@ -120,14 +142,5 @@ class userController extends Controller
         // return redirect()->action('userController@personalInfo');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+  
 }

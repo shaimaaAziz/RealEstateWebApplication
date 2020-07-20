@@ -11,7 +11,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/AdminDashboard', 'HomeController@AdminDashboard')->name('adminHome');
+
 
 
 // for contact in welcome blade
@@ -27,6 +27,9 @@ Route::group(['middleware'=>['can:user'] , 'namespace' => 'User', 'prefix' => 'u
    
    //for user to do reservation
    Route::post('/personalPage/reservation', 'PropertyReviewController@doReservation')->name('properties.reservation');
+   //for user to show reservations
+   Route::get('/AllMyReservations','userController@showReservations')->name('showReservations');
+   Route::resource('/reservationsUser','userController'); // for destroy
    // for user to rate a property 
   Route::post('/personalPage/properties', 'PropertyReviewController@postProperty')->name('properties.post');
   Route::post('/personalPage/propertiesPersonal', 'PropertyReviewController@postPropertyforPersonal')->name('propertiesPersonalRating');
@@ -50,7 +53,7 @@ Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'pref
     // Route::get('/Adminpanel/users/data' ,['as ' =>'Adminpanel.users.data' , 'uses' =>'UsersController@anyData']);
  // @admin
    //  Route::get('/Adminpanel','AdminController@index');
-
+   Route::get('/AdminDashboard', 'AdminController@AdminDashboard')->name('adminHome');
     // @users
     Route::resource('/Adminpanel/users','UsersController');
     Route::resource('/Adminpanel/Property','PropertyController');
@@ -74,6 +77,8 @@ Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'pref
 route::group(['middleware'=>['auth'] ,'namespace' => 'user', 'prefix' => 'user'],function(){
 
    Route::post('/favorite/{property}/add', 'favoriteController@add')->name('property.favorite');
+   
+
 });
 
 

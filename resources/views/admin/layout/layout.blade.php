@@ -188,7 +188,7 @@ $countMessage= ContactController::countMessage();
                 <img src="{{ Request::root() }}/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><p>{{Auth::user()->name}}</p></a>
+                <a href="#" class="d-block"><p>{{Auth::user()->firstName}}</p></a>
             </div>
         </div>
 

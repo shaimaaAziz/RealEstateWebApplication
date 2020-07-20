@@ -43,6 +43,9 @@
         <ul class="nav navbar-nav ">
           <li class="active"><a class="glyphicon glyphicon-star" href="{{ url('/user/personalPage/properties') }}"> التقيمات </a></li>
       </ul>
+      <ul class="nav navbar-nav ">
+        <li class="active"><a  href="{{ url('/user/AllMyReservations') }}"> الحجوزات </a></li>
+    </ul>
       <ul class="nav navbar-nav navbar-right">
           <li class="active"><a class="glyphicon glyphicon-home" href="/"> الرئيسية</a></li>
       </ul>

@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 
 @section('title')
-التحكم في الأعضاء 
+التحكم في الأعضاء
 
 @endsection
 
@@ -33,13 +33,13 @@
 
     <!-- Main content -->
     <section class="content">
-    
+
       @include('partials.alerts')
 
       <div class="row">
         <div class="col-12">
            <div class="card">
-           
+
             <!-- /.card-header -->
             <div class="card-body">
               <table id="table" class="table table-bordered table-striped">
@@ -53,13 +53,13 @@
                   <th>الصلاحيات</th>
                   <th>رقم الجوال</th>
                   <th>العنوان</th>
-                  <th>المدينة</th> 
+                  <th>المدينة</th>
                   <th>التحكم</th>
                 </tr>
                 </thead>
                 <tbody>
-              
-                    @foreach($user as $alluser)  
+
+                    @foreach($user as $alluser)
                          <tr>
                             <td>{{$alluser->id}}</td>
                             <td>{{$alluser->firstName}}</td>
@@ -78,8 +78,8 @@
                                             {{'خانيونس'}}
                                         @elseif($alluser->city==3)
                                             {{'دير البلح'}}
-                                       
-                                        @endif             
+
+                                        @endif
                             </td>
                             <td>
                                 <a href="{{ url('/admin/Adminpanel/user/'.$alluser->id.'/edit')}}"

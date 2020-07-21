@@ -6,24 +6,25 @@
 @csrf
 <label>صاحب العقار</label><br>
 <div class="form-group row">
-    <div class="col-md-6">
-     
+    <div class="col-md-12">
+
        <label>الاسم الأول</label>
         <select name="firstName" class="form-control">
            @foreach ($users as $user)
              <option value="{{ $user->id }}">{{ $user->firstName }}</option>
            @endforeach
             </select>
-            
+
         @error('firstName')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
-{{-- </div> --}}
-{{-- <div class="form-group row "> --}}
-    <div class="col-md-6 ">
+ </div>
+
+ <div class="form-group row ">
+    <div class="col-md-12 ">
         <label> اسم العائلة</label>
 
         <select name="lastName" class="form-control">
@@ -31,11 +32,11 @@
              <option value="{{ $user->id }}">{{ $user->lastName }}</option>
            @endforeach
             </select>
-            
+
         @error('lastName')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -51,8 +52,8 @@
 
         @error('type')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -63,11 +64,12 @@
         {!! Form::number('minPrice',null , ['class'=>'form-control'] )!!}
         @error('minPrice')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
+
 <div class="form-group row">
     <div class="col-md-12">
         <label>اعلى سعر </label>
@@ -76,8 +78,8 @@
 
         @error('maxPrice')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -90,8 +92,8 @@
 
         @error('roomNumbers')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -103,8 +105,8 @@
 
         @error('state')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -117,8 +119,8 @@
 
         @error('description')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -131,8 +133,8 @@
 
         @error('image')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -144,8 +146,8 @@
 
         @error('propertyPeriod')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -157,8 +159,8 @@
 
         @error('propertyPeriod')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -170,8 +172,8 @@
 
         @error('street')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
@@ -182,8 +184,8 @@
 
         @error('city')
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>

@@ -5,23 +5,38 @@
 @endsection
 @push('css')
      <style>
-        .favorite_properties{
-            color:rgb(192, 3, 3);
-        }
-        .favorite_properties:hover{
-            color:rgb(192, 3, 3);
-        }
-        .rating-xs {
-           font-size: 1.5em;
-        }
-
-        #map {
-        width: 100%;
-        height:500px;
-        background-color: grey;
-
-    }
-
+         .profile-content {
+             padding: 20px;
+             background: #eee;
+             min-height: 460px;
+         }
+         .fa{
+             padding: 5px 5px 5px 5px;
+         }
+         .fa-shopping-cart:before {
+             content: "\f07a";
+             color: white;
+         }
+         .sliderbtn a {
+             text-decoration: none;
+             display: inline-block;
+             padding: 8px 16px;
+         }
+         .sliderbtn a:hover {
+             background-color: #ddd;
+             color: #2e2b2bcc;
+         }
+         .productbox{
+             background-color: #ffffff;
+             padding: 10px;
+             margin: 5px 0;
+             border: 1px solid #cfcfcf;
+             -moz-box-shadow: 2px 2px 4px 0px #cfcfcf;
+             -webkit-box-shadow: 2px 2px 4px 0px #cfcfcf;
+             -o-box-shadow: 2px 2px 4px 0px #cfcfcf;
+             box-shadow: 2px 2px 4px 0px #cfcfcf;
+             filter: progid:DXImageTransform.Microsoft.shadow(color= #cfcfcf , Direction=134, Strength=4);
+         }
         #no-background-hover::before {
    background-color: transparent !important;
 }
@@ -29,14 +44,14 @@
 @endpush
 @section('content')
     <div class="  row profile">
-        <div class="col-md-9">
+        <div class="col-lg-12">
             <div class="  profile-content">
                 @if( count($property) > 0)
                     @foreach($property as $key => $properties)
                         @if($key % 3 == 0 && $key!= 0 )
                             <div class="clearfix"></div>
                         @endif
-                        <div class="col-md-4 pull-right">
+                        <div class="col-lg-4 pull-right">
                             <div class="productbox">
                                 <img src="http://lorempixel.com/468/258" class="img-responsive">
 
@@ -63,7 +78,7 @@
                                                 @endif
                                                </button>
                                             </form>
-                                            
+
                                            @endif
                                                 <a href="javascript:void(0);" style="text-decoration: none;"
                                                 onclick="document.getElementById('favorite-form-{{ $properties->id }}')
@@ -71,17 +86,17 @@
                                                 where('pivot.property_id',$properties->id)->count()  == 0 ?'favorite_properties' : ''}}">
                                                 <i class="fas fa-heart" id="no-background-hover"></i> </a>
                                                 {{ $properties->favorite_to_users->count() }}
-            
-            
+
+
                                                 <form id="favorite-form-{{ $properties->id }}" method="POST"
                                                 action="{{ route('property.favorite', $properties->id) }}
                                                     " style="display: none;">
                                                     @csrf
                                                 </form>
-            
+
                                         </li>
                                     </ul>
-                                   
+
                                     <div class="">
                                     <form method="get" action="{{ route('showMap') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
                                         {{ csrf_field() }}
@@ -91,13 +106,13 @@
 
                                     <button class="btn btn-primary" style="width:100%" role="button">اظهر التفاصيل
                                             <span class="fa fa-shopping-cart" aria-hidden="true"> </span></button>
-                                    </form> 
+                                    </form><br>
                                  </div><br>
                                 </div>
-                            </div>   
+                            </div>
                         </div>
 
-                      
+
                     @endforeach
 
 
@@ -106,7 +121,7 @@
 
                 @else
                     <div class= 'alert alert-danger'>
-                        لا يوجد أي عقارات قد قمت بوضعها في المفضلة 
+                        لا يوجد أي عقارات قد قمت بوضعها في المفضلة
                     </div>
                 @endif
 
@@ -114,7 +129,7 @@
             </div>
         </div>
     </div>
-    <div class=" text-center"> <a href="{{ route('personalPage.index') }}" style="margin-top:30px;" class="btn btn-success ">رجوع</a></div>
+    <div> <a href="{{ route('personalPage.index') }}"style="margin: 25px" class="btn btn-success ">رجوع</a></div>
 
 </div>
 @endsection

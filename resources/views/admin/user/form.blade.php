@@ -1,52 +1,48 @@
-
-            @csrf
-
-            <div class="form-group row">
+ @csrf
+ <div class="form-group row">
                 {{--  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>--}}
 
-                <div class="col-md-12">
-               <label>الاسم الاول</label>
-                    {!! Form::text('firstName',null , ['class'=>'form-control'] )!!}
+     <div class="col-md-12">
+         <label>الاسم الاول</label>
+         {!! Form::text('firstName',null , ['class'=>'form-control'] )!!}
 
-                    @error('firstName')
-                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                    @enderror
-                </div>
-            </div>
+         @error('firstName')
+         <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+         </span>
+         @enderror
+     </div>
+ </div>
 
-            <div class="form-group row">
+ <div class="form-group row">
                 {{--  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>--}}
 
-                <div class="col-md-12">
-                    <label>اسم الأب </label>
+     <div class="col-md-12">
+         <label>اسم الأب </label>
+         {!! Form::text('middleName',null , ['class'=>'form-control'] )!!}
 
-                    {!! Form::text('middleName',null , ['class'=>'form-control'] )!!}
+         @error('middleName')
+         <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+         </span>
+         @enderror
+     </div>
+ </div>
 
-                    @error('middleName')
-                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                    @enderror
-                </div>
-            </div>
-            <div class="form-group row">
+ <div class="form-group row">
                 {{--  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>--}}
 
-                <div class="col-md-12">
-                    <label>اسم العائلة</label>
+     <div class="col-md-12">
+         <label>اسم العائلة</label>
+         {!! Form::text('lastName',null , ['class'=>'form-control'] )!!}
+         @error('lastName')
+         <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+         </span>
+         @enderror
+     </div>
+ </div>
 
-                    {!! Form::text('lastName',null , ['class'=>'form-control'] )!!}
-
-                    @error('lastName')
-                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                    @enderror
-                </div>
-            </div>
-         
 
             <div class="form-group row">
                 {{--  <label for="admin" class="col-md-4 col-form-label text-md-right">{{ __('admin') }}</label>--}}
@@ -121,6 +117,7 @@
                     @enderror
                 </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-md-12">
                     <label>المدينة</label>
@@ -154,7 +151,7 @@
                 </div>
             </div>
 
-         
+
 
 
 

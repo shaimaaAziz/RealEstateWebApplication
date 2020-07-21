@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32d62d40-aa8f-46fc-913a-ac2f87ce8dff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/RealEstateWebApplication.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RealEstateWebApplication.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/cus/buall.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/cus/buall.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/website/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/website/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/property/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/property/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/property/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/property/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/property/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/property/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/owner/user/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/owner/user/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/showMap.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/showMap.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/favorite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/favorite.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/personalPage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/personalPage.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +147,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/IT/RealEstateWebApplication" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -207,6 +211,8 @@
       <workItem from="1595093166255" duration="1030000" />
       <workItem from="1595262264871" duration="431000" />
       <workItem from="1595262713222" duration="6451000" />
+      <workItem from="1595361551799" duration="46000" />
+      <workItem from="1595361603197" duration="8834000" />
     </task>
     <servers />
   </component>
@@ -218,18 +224,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="122" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1589031247078" />
-    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1595274642758">
+    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1595361596010">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595274642758" />
+    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595361596010" />
     <state x="366" y="198" key="NewPhpClassDialog" timestamp="1589032053906">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="366" y="198" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1589032053906" />
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1594295254482">
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1595361554573">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1594295254482" />
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595361554573" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1589033332535">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -13,20 +13,17 @@
 
      <style>
 
-
        span{
-        font-weight: bold;
         font-size: 25px;
         line-height: 2em;
-  
        }
+
        #title{
-           color: #24a19c;
-           font-weight: bold;
-           font-size: 27px;
+           color: #5b9bd1;
        }
+
        #property{
-        color:#4f8a8b ;
+        color:#64a0d5 ;
        }
 
         #map {
@@ -35,7 +32,7 @@
         background-color: grey;
         }
         #mapcolor{
-            color:#4f8a8b;
+            color:#5b9bd1;
         }
      #jumbotron{
         width: 60%;
@@ -46,13 +43,12 @@
 @endpush
 @section('content')
 <br />
-<h3 style="text-align:center" id="title">عرض تفاصيل العقار</h3>
+<h1 style="text-align:center" id="title">عرض تفاصيل العقار</h1>
 <br />
 
 <div  class="jumbotron" id="jumbotron" >
-    <br />
     <div class="row"  >
-    
+
         <div class="container" >
             <div class="product-info">
                 <ul class="list-inline" >
@@ -68,10 +64,10 @@
                             @elseif($property->type==4)
                                 {{'شاليه'}}
                             @endif</span></li><br />
-                    <li ><span id="property">وصف العقار:</span><span class="text">{{$property->description}}</span></li><br />
-                    <li ><span id="property">حالة العقار:</span><span class="text">{{$property->state==1 ?'ايجار' : 'بيع'}}</span></li><br />
-                    <li ><span id="property">العنوان:</span><span class="text">{{$property->street}}</span></li><br />
-                    <li ><span id="property"> المدينة:</span><span class="text">
+                    <li ><span id="property">وصف العقار : </span><span class="text">{{$property->description}}</span></li><br />
+                    <li ><span id="property">حالة العقار : </span><span class="text">{{$property->state==1 ?'ايجار' : 'بيع'}}</span></li><br />
+                    <li ><span id="property">العنوان : </span><span class="text">{{$property->street}}</span></li><br />
+                    <li ><span id="property"> المدينة : </span><span class="text">
 
                                     @if($property->city==0)
                                 {{'غزة'}}
@@ -84,9 +80,9 @@
                             @endif
 
                                 </span></li><br />
-                    <li ><span id="property"> أدنى سعر: $</span><span class="text">{{$property->minPrice}}</span></li><br />
-                    <li><span  id="property"> اعلى سعر: $   </span><span class="text">{{$property->maxPrice}}</span></li><br />
-                    <li ><span  id="property">عدد الغرف :$   </span><span class="text">{{$property->roomNumbers}}</span></li><br />
+{{--                    <li ><span id="property"> أدنى سعر: $</span><span class="text">{{$property->minPrice}}</span></li><br />--}}
+                    <li><span  id="property">  سعر العقار : $   </span><span class="text">{{$property->maxPrice}}</span></li><br />
+                    <li ><span  id="property">عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span></li><br />
                     <li ><span  id="property">مساحة العقار :   </span><span class="text">{{$property->area}}</span></li><br />
                    <br>
                     <li ><span  id="mapcolor"> موقع العقار على الخريطة</span></li>
@@ -97,7 +93,7 @@
     </div>
     <br>
     <div class = " text-center"> <a href="{{ route('home') }}" class="btn btn-primary btn-lg ">الخلف</a></div>
-</div>      
+</div><br><br>
 
 
 @endsection
@@ -108,7 +104,7 @@
 
 <script>
     function initMap() {
-    
+
     //   var myLatlng = {lat: $mapLocation->Latitude , lng: $mapLocation->Longitude};
     var latitude ={{$mapLocation->Latitude }};
     var longitude ={{$mapLocation->Longitude }};
@@ -119,9 +115,9 @@
           document.getElementById('map'), {zoom: 18, center: gaza});
       // The marker, positioned at Uluru
       var marker = new google.maps.Marker({position: gaza, map: map});
-    
-   
-   
+
+
+
    }
   </script>
 

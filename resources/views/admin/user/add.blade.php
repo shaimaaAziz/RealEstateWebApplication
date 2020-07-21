@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 
 @section('title')
-اضافة عضو 
+اضافة عضو
 
 @endsection
 
@@ -23,7 +23,7 @@
               <li class="breadcrumb-item"><a href="{{ url('/admin/Adminpanel')}}">الرئيسية</a></li>
               <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/user')}}">التحكم في الأعضاء</a></li>
               <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/user/create')}}">إضافة عضو </a></li>
-            </ol>         
+            </ol>
         </div>
       </div><!-- /.container-fluid -->
     </div>
@@ -37,7 +37,7 @@
               <h3 class="card-title">إضافة عضو</h3>
               </div>
               <div class="card-body">
-              <form method="POST" action="{{ route('user.store') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
+              <form method="POST" action="{{ route('user.store') }}"  enctype="multipart/form-data" style=" margin-left: 10px">
               @include('admin.user.form')
               </form>
             </div>
@@ -45,7 +45,7 @@
            </div>
           </div>
 </section>
-        
+
 
 
 

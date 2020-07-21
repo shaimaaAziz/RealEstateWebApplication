@@ -1,9 +1,9 @@
-    @extends('owner.layout')
+@extends('owner.layout')
 
     @section('title')
-    عرض بياناتي  
+    عرض بياناتي
     @endsection
-    
+
     @section('content')
             <br />
             <h3 align="center">عرض بياناتي</h3>
@@ -22,7 +22,7 @@
                                 <li class="author"><span> رقم الجوال:</span><span class="text">{{$user->mobile}}</span></li><br><br>
                                 <li class="author"><span> كلمة السر:</span><span class="text">{{$user->password}}</span></li><br><br>
                                 <li class="author"><span>العنوان:</span><span class="text">{{$user->street}}</span></li><br><br>
-                                <li class="author"><span> المدينة:</span><span class="text">      
+                                <li class="author"><span> المدينة:</span><span class="text">
 
                                                 @if($user->city==0)
                                             {{'غزة'}}
@@ -35,14 +35,14 @@
                                         @endif
 
                                             </span></li>
-                               
+
                             </ul>
                         </div>
                     </div>
                 </div>
                 <a style="margin-right: 30px;" href="{{ route('users.edit',$user->id) }}" class="btn btn-primary">تعديل</a>
 
-            </div>       
+            </div>
 
     <!-- /.content -->
 

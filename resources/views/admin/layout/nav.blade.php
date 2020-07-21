@@ -1,20 +1,20 @@
 
- 
+
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link active">
-               
-                        <p > <i class="nav-icon fas fa-tachometer-alt "></i>
-                        <span class="glyphicon glyphicon-home"  style="margin-right:10px;" >الرئيسية</span> 
-                       
+
+                        <p > <i class="fa fa-home" aria-hidden="true"></i>
+                        <span class="glyphicon glyphicon-home"  style="margin-right:10px;" >الرئيسية</span>
+
                             <i class="right fas fa-angle-left"></i>
-                        </p>     
+                        </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ url('/admin/AdminDashboard')}}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-tachometer-alt "></i>
                                 <p>لوحة التحكم </p>
                             </a>
                         </li>
@@ -24,38 +24,38 @@
                                 <p>Dashboard v2</p>
                             </a>
                         </li> --}}
-                       
+
                     </ul>
                 </li>
-              
+
 
 {{-- users--}}
 
                  <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link ">
-                       
+
                         <p>
                         <i class=" nav-icon fa fa-users  "></i>
-                           <span style="margin-right:10px;">التحكم في الأعضاء</span>  
+                           <span style="margin-right:10px;">التحكم في الأعضاء</span>
                            <i class="right fas fa-angle-left  "></i>
                         </p>
-                       
+
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ url('/admin/Adminpanel/user/create')}}" class="nav-link ">
-                            <i class="far fa-circle nav-icon"></i>
-                                <p> اضافة عضو </p>     
+                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                <p> اضافة عضو </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/admin/Adminpanel/user')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                                <i class="fa fa-globe" aria-hidden="true"></i>
                                 <p> كل الأعضاء </p>
-                               
+
                             </a>
                         </li>
-                       
+
                     </ul>
                 </li>
 
@@ -72,20 +72,20 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ url('/admin/Adminpanel/Properties/create')}}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fa fa-plus-square" aria-hidden="true"></i>
                                 <p> اضافة عقار </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/admin/Adminpanel/Properties')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fa fa-globe" aria-hidden="true"></i>
                                 <p> كل العقارات </p>
 
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/admin/Adminpanel/reservations')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fa fa-archive"  aria-hidden="true"></i>
                                 <p>  الحجوزات </p>
 
                             </a>
@@ -98,7 +98,7 @@
                     <i class="material-icons">favorite</i>
                     <p style="margin-right:10px;">المفضلة </p>
                 </a>
-   
+
             </li>
 
             <li class="nav-item {{ Request::is('admin/contact*') ? 'active': '' }}">
@@ -115,4 +115,3 @@
                 </a>
             </li>
             </ul>
-       

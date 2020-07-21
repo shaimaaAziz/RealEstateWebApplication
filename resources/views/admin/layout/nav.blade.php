@@ -13,7 +13,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/AdminDashboard" class="nav-link ">
+                            <a href="{{ url('/admin/AdminDashboard')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>لوحة التحكم </p>
                             </a>

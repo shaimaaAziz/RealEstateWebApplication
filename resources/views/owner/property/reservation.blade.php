@@ -51,7 +51,7 @@
                                     <td>
 
                                         @if($allReservations->reservation == false && $allReservations->state == "تأجير")
-                                        <form id="status-form-{{ $allReservations->id }}" action="{{ route('reservations',$allReservations->id) }}" 
+                                        <form id="status-form-{{ $allReservations->id }}" action="{{ route('reservation',$allReservations->id) }}" 
                                         style="display: none;" method="POST">
                                             @csrf
                                         </form>

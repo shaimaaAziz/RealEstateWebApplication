@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\User;
+use App\Contact;
+use App\Property;
+use App\Reservation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -28,7 +32,15 @@ class AdminController extends Controller
     // }
 
     public function AdminDashboard(){
-        return view('admin/home/index');
+        $user =  User::whereHas('roles', function ($query) {
+            $query->where('name', '!=', 'أدمن');  })->get();
+        $properties= Property::all();
+        $contacts =Contact::all();
+        $propertyFavorite=  Property::whereHas('favorite_to_users' )->get();
+        $reservation = Reservation::where('state','false')->get();
+
+
+        return view('admin/home/index',compact('reservation','properties','contacts','propertyFavorite','user'));
     }
 
     /**

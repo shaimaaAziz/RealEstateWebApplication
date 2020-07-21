@@ -47,7 +47,7 @@ class userController extends Controller
 
     public function showReservations()
     {
-        $reservations = Reservation::all();
+        $reservations = Reservation::where('reservation',false)->get();
         
         return view('user/reservation',compact('reservations'));
    }

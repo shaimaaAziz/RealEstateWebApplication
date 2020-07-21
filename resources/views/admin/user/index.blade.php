@@ -22,8 +22,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ url('/AdminDashboard')}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('/admin/AdminDashboard')}}">الرئيسية</a></li>
+              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/user')}}">التحكم في الأعضاء</a></li>
             </ol>
           </div>
         </div>
@@ -82,11 +82,11 @@
                                         @endif             
                             </td>
                             <td>
-                                <a href="{{ url('/admin/Adminpanel/users/'.$alluser->id.'/edit')}}"
-                                class="btn btn-info btn-sm"><i class="material-icons">تعديل </i></a>
+                                <a href="{{ url('/admin/Adminpanel/user/'.$alluser->id.'/edit')}}"
+                                class="btn btn-info btn-sm"><i class="material-icons">edit </i></a>
 
 
-                                <form id="delete-form-{{ $alluser->id }}" action="{{ route('users.destroy',$alluser->id) }}"
+                                <form id="delete-form-{{ $alluser->id }}" action="{{ route('user.destroy',$alluser->id) }}"
                                       style="display: none;" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -96,7 +96,7 @@
                                     document.getElementById('delete-form-{{ $alluser->id }}').submit();
                                     }else {
                                     event.preventDefault();
-                                    }"><i class="material-icons">حذف</i></button>
+                                    }"><i class="material-icons">delete</i></button>
 
                             </td>
                           </tr>

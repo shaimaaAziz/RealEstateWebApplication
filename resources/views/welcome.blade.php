@@ -105,7 +105,14 @@
                                 <div class="productbox">
                                     <img src="http://lorempixel.com/468/258" class="img-responsive">
 
-                                    <div class="producttitle">{{ $properties->type }}</div>
+                                    <div class="producttitle">
+                                        @if($properties->type == 1 )  فيلا
+                                        @elseif($properties->type == 2 ) أرض 
+                                        @elseif($properties->type == 3 ) شقة
+                                        @elseif($properties->type == 4 ) بيت
+                                        @elseif($properties->type == 5 ) شاليه
+                                        @endif
+                                    </div>
 
                                     <p class="text-justify"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{Str::limit($properties->description, 80)}}</p>
 
@@ -115,7 +122,8 @@
                                     </div>
 
                                     <div class="pricetext"><i class="fa fa-usd" aria-hidden="true"></i> {{$properties->maxPrice}}</div>
-                                    <div class="productprice"><div class="">
+                                    <div class="productprice">
+                                        <div class="">
                                         <form method="get" action="{{ route('showMap') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
                                             {{ csrf_field() }}
 
@@ -124,11 +132,11 @@
 
                                         <button class="btn btn-primary" style="width:100%" role="button">اظهر التفاصيل
                                                 <span class="fa fa-shopping-cart" aria-hidden="true"> </span></button>
-                                        </form>  </div><br>
+                                        </form>  
+                                    </div><br>
                                     </div>
+                                    
                                     <div><br>
-
-
                                                 <ul class="post-footer" style="list-style: none; padding:0px">
                                                     <li>
                                                         @guest
@@ -168,6 +176,7 @@
                                                             <div class="clearfix"></div>
                                                         @else
                                                         @can('user')
+                                                        @if(!(!empty($properties->reservation->property_id )))
                                                         <form action="{{ route('properties.reservation') }}" method="POST">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="id" required="" value="{{ $properties->id }}">
@@ -177,6 +186,7 @@
                                                             @endif
                                                            </button>
                                                         </form>
+                                                        @endif
                                                         @endcan
                                                             <a href="javascript:void(0);" style="text-decoration: none;"
                                                             onclick="document.getElementById('favorite-form-{{ $properties->id }}')
@@ -223,7 +233,7 @@
 
                                             </div>
 
-                                    </div>
+                                </div>
                                 </div>
                             @endforeach
 

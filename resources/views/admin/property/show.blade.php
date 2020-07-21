@@ -24,7 +24,7 @@
 
             <div class="jumbotron text-center">
                 <div align="right">
-                    <a href="{{ route('Property.index') }}" class="btn btn-default">الخلف</a>
+                    <a href="{{ route('Properties.index') }}" class="btn btn-default">الخلف</a>
                 </div>
                 <br />
                 <div class="row"  >

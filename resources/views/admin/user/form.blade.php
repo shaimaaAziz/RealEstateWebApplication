@@ -172,6 +172,6 @@
                         {{ __(' حفظ ') }}
                     </button>
 
-                    <a href="{{route('users.index')}}" style=" float:left;" class="btn btn-danger ">الرجوع </a>
+                    <a href="{{route('user.index')}}" style=" float:left;" class="btn btn-danger ">الرجوع </a>
                 </div>
             </div>

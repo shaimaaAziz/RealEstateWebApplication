@@ -67,9 +67,9 @@
 
                                     <td>
                                         <a href="{{ route('Property.edit',$allProperties->id)}}"
-                                           class="btn btn-info btn-sm"><i class="material-icons">تعديل </i></a>
+                                           class="btn btn-info btn-sm"><i class="material-icons">edit </i></a>
                                         <a href="{{ route('Property.show',$allProperties->id)}}"
-                                           class="btn btn-primary btn-sm"><i class="material-icons">عرض </i></a>
+                                           class="btn btn-primary btn-sm"><i class="material-icons">details </i></a>
 
                                         <form id="delete-form-{{ $allProperties->id }}" action="{{ route('Property.destroy',$allProperties->id) }}"
                                               style="display: none;" method="POST">
@@ -81,7 +81,7 @@
                                             document.getElementById('delete-form-{{ $allProperties->id }}').submit();
                                             }else {
                                             event.preventDefault();
-                                            }"><i class="material-icons">حذف</i></button>
+                                            }"><i class="material-icons">delete</i></button>
 
                                     </td>
                                 </tr>

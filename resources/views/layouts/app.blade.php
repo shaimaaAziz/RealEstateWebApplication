@@ -84,7 +84,7 @@
                             </form>
 
                             @can('manage-users')
-                            <a style="text-decoration: none; " class=" dropdown-item" href="/AdminDashboard"> الصفحة الشخصية</a>
+                            <a style="text-decoration: none; " class=" dropdown-item" href="/admin/AdminDashboard"> الصفحة الشخصية</a>
                             @endcan
                             @can('user')
                             <a style="text-decoration: none; " class="dropdown-item" href="/user/personalPage"> الصفحة الشخصية</a>

@@ -107,7 +107,7 @@ class UsersController extends Controller
 
             $user->roles()->attach($request->roles);
           
-            return redirect(route('users.index'));
+            return redirect(route('user.index'));
 
 
 
@@ -159,7 +159,7 @@ class UsersController extends Controller
        }
         // dd($request->roles);
         $user->roles()->sync($request->roles);
-        return redirect(route('users.index'));
+        return redirect(route('user.index'));
         // return redirect(route('users.index'))->withFlashMessage('تمت اضافة العضو بنجاح');
 
 
@@ -180,7 +180,7 @@ class UsersController extends Controller
         $user->roles()->detach();
         $user->delete();
         
-        return redirect()->route('users.index')->withFlashMessage('user  deleted successfully' );
+        return redirect()->route('user.index')->withFlashMessage('user  deleted successfully' );
      
 
     }

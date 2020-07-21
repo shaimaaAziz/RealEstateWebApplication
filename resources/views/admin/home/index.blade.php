@@ -32,7 +32,7 @@
           <div class="icon">
             <i class="ion ion-home " ></i>
           </div>
-          <a href="{{ url('/admin/Adminpanel/Property')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ url('/admin/Adminpanel/Properties')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -62,7 +62,7 @@
           <div class="icon">
             <i class="ion ion-person"></i>
           </div>
-          <a href="{{ url('/admin/Adminpanel/users')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ url('/admin/Adminpanel/user')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->

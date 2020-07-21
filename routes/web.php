@@ -55,8 +55,8 @@ Route::group(['middleware'=>['can:manage-users'] , 'namespace' => 'Admin', 'pref
    //  Route::get('/Adminpanel','AdminController@index');
    Route::get('/AdminDashboard', 'AdminController@AdminDashboard')->name('adminHome');
     // @users
-    Route::resource('/Adminpanel/users','UsersController');
-    Route::resource('/Adminpanel/Property','PropertyController');
+    Route::resource('/Adminpanel/user','UsersController');
+    Route::resource('/Adminpanel/Properties','PropertyController');
     // favorite property
     Route::resource('/favorite', 'favoriteController');
     // contact

@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                     <li class="breadcrumb-item"><a href="{{ url('/AdminDashboard')}}">الرئيسية</a></li>
+                     <li class="breadcrumb-item"><a href="{{ url('/admin/AdminDashboard')}}">الرئيسية</a></li>
                     <li class="breadcrumb-item active"><a href="{{ url('/admin/favorite')}}"> المفضلة </a></li>
                 </ol>
              </div>

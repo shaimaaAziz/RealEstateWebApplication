@@ -137,7 +137,7 @@ class userController extends Controller
         }else{
          $request->session()->flash('error',' يوجد هنالك مشكلة في تعديل العضو');
         }
-        return redirect('/user/personalPage/show');
+        return redirect('/user/personalPage');
         // return redirect(view('user/indexPersonalInfo'));
         // return redirect()->action('userController@personalInfo');
     }

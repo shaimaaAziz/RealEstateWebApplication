@@ -43,13 +43,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('/admin/Adminpanel/users/create')}}" class="nav-link ">
+                            <a href="{{ url('/admin/Adminpanel/user/create')}}" class="nav-link ">
                             <i class="far fa-circle nav-icon"></i>
                                 <p> اضافة عضو </p>     
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/admin/Adminpanel/users')}}" class="nav-link">
+                            <a href="{{ url('/admin/Adminpanel/user')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                                 <p> كل الأعضاء </p>
                                
@@ -71,13 +71,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('/admin/Adminpanel/Property/create')}}" class="nav-link ">
+                            <a href="{{ url('/admin/Adminpanel/Properties/create')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> اضافة عقار </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/admin/Adminpanel/Property')}}" class="nav-link">
+                            <a href="{{ url('/admin/Adminpanel/Properties')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> كل العقارات </p>
 

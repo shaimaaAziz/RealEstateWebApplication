@@ -66,9 +66,6 @@ $countMessage= ContactController::countMessage();
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/" class="nav-link">الرئيسية</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">اتصل بنا</a>
-        </li>
     </ul>
 
     <!-- SEARCH FORM -->

@@ -35,7 +35,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('Property.index') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
+                        <form method="POST" action="{{ route('Properties.index') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
                             @include('admin.property.form')
                         </form>
                     </div>

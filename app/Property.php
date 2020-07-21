@@ -29,5 +29,8 @@ class Property extends Model
      public  function mapLocation(){
         return $this->hasOne('App\mapLocation');
     }
-
+   
+    public function reservation(){
+        return $this->hasOne('App\Reservation');
+     }
 }

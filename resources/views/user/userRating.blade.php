@@ -35,20 +35,24 @@
                     <tbody>
 
                 
+                       
                         @foreach($property as $key => $properties)
                         <tr>
                             <td>{{$key + 1}}</td>
                             <td>{{ $properties->rateable->id}}</td>
                             <td>{{ $properties->rateable->description }}</td>
 
-                            <td>
-                        <input id="input-1" name="rate" class="rating rating-loading" data-min="0" 
-                        data-max="5" data-step="1" value="{{ $properties->rating}}" 
-                        data-size="xs">
-
-                        <input type="hidden" name="id" required="" value="{{ $properties->rateable->id }}">
-                        <button class="btn btn-success">إرسال المراجعة</button>
-
+                            <td style="list-style: none; padding:0px">
+                        
+                                <li  style="direction:ltr;">
+                                    <input id="input-1-xs " name="rate" class="rating rating-loading " data-min="0"
+                                    data-max="5" data-step="0.1"
+                                    data-show-clear="false" data-show-caption="false"
+                                    value="{{ $properties->rating }}"
+                                    data-size="xs" disabled>
+        
+        
+                                </li>
                             </td>
                         </tr>
                             @endforeach

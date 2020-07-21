@@ -110,7 +110,7 @@ class PropertyReviewController extends Controller
         }
          $reservation->save();
          Toastr::success( ' سيتم التواصل معك قريباً من قبل صاحب العقار'  );
-         return redirect()->route("home");
+         return redirect()->back();
             }
 
 

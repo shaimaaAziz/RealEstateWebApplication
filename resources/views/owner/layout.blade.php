@@ -6,11 +6,17 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @toastr_css
   <title>@yield('title')</title>
   @yield('header')
+
+  <style>
+    .material-icons { font-size: 13px; }
+</style>
 </head>
 
   <body  style="direction:rtl;">

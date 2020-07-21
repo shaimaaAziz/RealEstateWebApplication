@@ -20,8 +20,8 @@
                    </div>
                    <div class="col-sm-6">
                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/AdminDashboard')}}">الرئيسية</a></li>
-                           <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/Property')}}">التحكم في العقارات</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/AdminDashboard')}}">الرئيسية</a></li>
+                           <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/Properties')}}">التحكم في العقارات</a></li>
                        </ol>
                     </div>
 
@@ -87,12 +87,12 @@
                                     <td>{{$allProperties->user->firstName .' '.$allProperties->user->lastName }}</td>
 
                                     <td>
-                                        <a href="{{ route('Property.edit',$allProperties->id)}}"
-                                           class="btn btn-info btn-sm"><i class="material-icons">تعديل </i></a>
-                                        <a href="{{ route('Property.show',$allProperties->id)}}"
-                                           class="btn btn-primary btn-sm"><i class="material-icons">عرض </i></a>
+                                        <a href="{{ route('Properties.edit',$allProperties->id)}}"
+                                           class="btn btn-info btn-sm"><i class="material-icons">edit </i></a>
+                                        <a href="{{ route('Properties.show',$allProperties->id)}}"
+                                           class="btn btn-primary btn-sm"><i class="material-icons">details </i></a>
 
-                                        <form id="delete-form-{{ $allProperties->id }}" action="{{ route('Property.destroy',$allProperties->id) }}"
+                                        <form id="delete-form-{{ $allProperties->id }}" action="{{ route('Properties.destroy',$allProperties->id) }}"
                                               style="display: none;" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -102,7 +102,7 @@
                                             document.getElementById('delete-form-{{ $allProperties->id }}').submit();
                                             }else {
                                             event.preventDefault();
-                                            }"><i class="material-icons">حذف</i></button>
+                                            }"><i class="material-icons">delete</i></button>
 
                                     </td>
                                 </tr>

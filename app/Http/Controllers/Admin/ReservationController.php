@@ -48,8 +48,7 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        $reservation = Reservation::find($id);
-        // $property_status = Property::where('status','')->get();
+        $reservation = Reservation::where('property_id',$id)->first();
         $reservation->reservation = true;
         $reservation->save();
 

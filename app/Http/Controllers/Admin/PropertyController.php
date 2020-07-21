@@ -114,7 +114,7 @@ if($request->firstName ==$request->lastName){
 //        Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
         toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
 
-        return redirect('admin/Adminpanel/Property')->withFlashMessage('تمت اضافة العضو بنجاح');
+        return redirect('admin/Adminpanel/Properties')->withFlashMessage('تمت اضافة العضو بنجاح');
 
 
 
@@ -206,7 +206,7 @@ if($request->firstName ==$request->lastName){
         $property->save();
         toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
 
-        return redirect('admin/Adminpanel/Property');
+        return redirect('admin/Adminpanel/Properties');
 
 
     }
@@ -218,11 +218,11 @@ if($request->firstName ==$request->lastName){
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {dd('fffff');
+    {
         $property= Property::find($id);
         $property->delete();
 
-        return redirect()->route('Property.index');
+        return redirect()->route('Properties.index');
 
 
     }

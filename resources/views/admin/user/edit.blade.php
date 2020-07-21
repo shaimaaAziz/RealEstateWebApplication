@@ -23,8 +23,8 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin/Adminpanel')}}">الرئيسية</a></li>
-              <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
-              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/users/'.$user->id.'edit')}}">تعديل العضو {{$user->firstName}} </a></li>
+              <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/user')}}">التحكم في الأعضاء</a></li>
+              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/user/'.$user->id.'edit')}}">تعديل العضو {{$user->firstName}} </a></li>
             </ol>         
         </div>
       </div><!-- /.container-fluid -->
@@ -40,7 +40,7 @@
               </div>
               <div class="card-body">
 
-                     {!! Form::model($user ,['route' => ['users.update',$user], 'method'=>'PUT' ]  )  !!}
+                     {!! Form::model($user ,['route' => ['user.update',$user], 'method'=>'PUT' ]  )  !!}
 
                      @include('admin.user.form')
                      {!! Form::close() !!}

@@ -21,8 +21,8 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin/Adminpanel')}}">الرئيسية</a></li>
-              <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/users')}}">التحكم في الأعضاء</a></li>
-              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/users/create')}}">إضافة عضو </a></li>
+              <li class="breadcrumb-item "><a href="{{ url('/admin/Adminpanel/user')}}">التحكم في الأعضاء</a></li>
+              <li class="breadcrumb-item active"><a href="{{ url('/admin/Adminpanel/user/create')}}">إضافة عضو </a></li>
             </ol>         
         </div>
       </div><!-- /.container-fluid -->
@@ -37,7 +37,7 @@
               <h3 class="card-title">إضافة عضو</h3>
               </div>
               <div class="card-body">
-              <form method="POST" action="{{ route('users.store') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
+              <form method="POST" action="{{ route('user.store') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
               @include('admin.user.form')
               </form>
             </div>

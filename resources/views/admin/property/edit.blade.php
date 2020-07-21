@@ -52,7 +52,7 @@
                     @endif
 
 
-                    {!! Form::model($property ,['route' => ['Property.update',$property->id ], 'method'=>'PATCH' ]  )  !!}
+                    {!! Form::model($property ,['route' => ['Properties.update',$property->id ], 'method'=>'PATCH' ]  )  !!}
 
                     @csrf
 
@@ -228,10 +228,10 @@
                     <input type="hidden" name="adminId" value="{{Auth::user()->id}}" >
                     <div class="form-group row mb-0">
                         <div class="col-md-12">
-                            <a href="{{ route('Property.index') }}" class="btn btn-default">الخلف</a>
                             <button type="submit" class="btn btn-warning">
                                 {{ __(' تعديل ') }}
                             </button>
+                            <a href="{{ route('Properties.index') }}" class="btn btn-default">الخلف</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

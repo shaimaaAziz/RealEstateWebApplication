@@ -12,6 +12,7 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
    @yield('header')
   <!-- CSRF Token -->
@@ -27,6 +28,7 @@
       
           <ul class="nav navbar-nav"> 
               <li class="active dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ Auth::user()->firstName }} <span class="caret"></span></a>
+              
                 <ul class="dropdown-menu">
                   <li><a href="{{ route('logout') }}"  onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
@@ -36,7 +38,9 @@
                       </form>
                 </ul>
               </li>
+              <li style="margin-top:6px;"> <img src="{{ asset('images/' . Auth::user()->image) }}" height="36" width="40" class="img-circle elevation-2" alt="User Image" style="border-radius: 50%;"> </li>
             </ul>
+            
             <ul class="nav navbar-nav ">
               <li class="active"><a class="glyphicon glyphicon-user" href="{{ url('/user/personalPage') }}" > المعلومات الشخصية </a></li>
           </ul>

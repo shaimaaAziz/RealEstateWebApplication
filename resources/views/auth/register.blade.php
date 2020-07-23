@@ -9,7 +9,7 @@
         <h2>  تسجيل عضوية جديدة</h2>
         <hr>
         <br>
-        <form method="POST" action="{{ route('register') }}"  style="float: right; margin-left: 10px">
+        <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
             @csrf
 
             <div class="form-group row">
@@ -126,6 +126,14 @@
                     @enderror
                 </div>
             </div>
+           
+            <div class="form-group row ">
+                <div class="col-md-12">
+                    {!! Form::label('image',' الصورة الشخصية' )!!}
+                    {!! Form::file('image' )!!}
+                </div>
+            </div>
+
             <div class="form-group row mb-0">
                 <div class="col-md-12">
                     <button type="submit" class="banner_btn">

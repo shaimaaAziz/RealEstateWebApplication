@@ -40,7 +40,7 @@
               </div>
               <div class="card-body">
 
-                     {!! Form::model($user ,['route' => ['user.update',$user], 'method'=>'PUT' ]  )  !!}
+                     {!! Form::model($user ,['route' => ['user.update',$user], 'method'=>'PUT' ,'files' => true])  !!}
 
                      @include('admin.user.form')
                      {!! Form::close() !!}

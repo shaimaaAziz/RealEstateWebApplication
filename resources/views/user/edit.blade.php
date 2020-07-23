@@ -22,7 +22,7 @@
               </div>
               <div class="card-body">
 
-                     {!! Form::model($user ,['route' => ['personalPage.update',$user->id], 'method'=>'PUT' ]  )  !!}
+                     {!! Form::model($user ,['route' => ['personalPage.update',$user->id], 'method'=>'PUT','files' => true ]  )  !!}
 
                      @include('user.form')
                      {!! Form::close() !!}

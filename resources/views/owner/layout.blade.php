@@ -7,6 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -34,7 +35,9 @@
                       </form>
                 </ul>
               </li>
+              <li style="margin-top:6px;"> <img src="{{ asset('images/' . Auth::user()->image) }}" height="36" width="40" class="img-circle elevation-2" alt="User Image" style="border-radius: 50%;"> </li>
             </ul>
+            
             <ul class="nav navbar-nav ">
               <li class="active"><a class="glyphicon glyphicon-user" href="{{ url('/owner/Ownerpanel/users') }}" > المعلومات الشخصية</a></li>
           </ul>

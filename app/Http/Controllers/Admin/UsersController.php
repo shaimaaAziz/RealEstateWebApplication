@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Gate;
 use App\City;
 use App\Role;
 use app\User;
-use Gate;
-
-use Illuminate\Http\Request;
+use Image;
+use Storage;
 // use Yajra\DataTables\DataTables as DataTables;
+use Illuminate\Http\Request;
 use Faker\Provider\ar_JO\Company;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
@@ -63,32 +64,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'firstName'=>'required',
-        //     'middleName'=>'required',
-        //     'lastName'=>'required',
-        //     'mobile'=>'required',
-        //     'street'=>'required',
-        //     'city'=>'required',
-        //     'email'=>'required|email',
-        //     'password'=>['required', 'string', 'min:5'],
-            
-        // ]);
+        $this->validate($request,[
+            'firstName'=>'required',
+            'middleName'=>'required',
+            'lastName'=>'required',
+            'mobile'=>'required',
+            'street'=>'required',
+            'city'=>'required',
+            'email'=>'required|email',
+            'password'=>['required', 'string', 'min:8'],
+            'image' =>'sometimes|image',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        // $user = new User();
-        // $user->create([
-        //     'firstName' => $request->firstName,
-        //     'middleName' => $request->middleName,
-        //     'lastName' => $request->lastName,
-        //     'email' => $request->email,
-        //     'password' => bcrypt($request->password),
-        //     'admin' => $request->admin,
-        //    'mobile' =>$request->mobile,
-        //    'street' =>$request->street,
-        //    'city' => $request->city
+        ]);
 
-        //     ]);
-       
         $user= new User();
         $user->firstName=  $request->firstName;
         $user->middleName=  $request->middleName;
@@ -98,6 +87,15 @@ class UsersController extends Controller
         $user->mobile =$request->mobile;
         $user->street =$request->street;
         $user->city =$request->city;
+
+        if($request->hasFile('image')) {
+            //add the new photo
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $fileName);
+            Image::make($image)->resize(100, 200)->save($location);
+            $user->image = $fileName;
+        }
 
         if($user->save()){
         $request->session()->flash('success',$user->firstName.' تمت إضافته بنجاح');
@@ -150,9 +148,34 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->validate($request,[
+            'firstName'=>'required',
+            'middleName'=>'required',
+            'lastName'=>'required',
+            'mobile'=>'required',
+            'street'=>'required',
+            'city'=>'required',
+            'email'=>'required|email',
+            'password'=>['required', 'string', 'min:8'],
+            'image' =>'sometimes|image',
+        ]);
         // $user= User::find($id);
+        $user->password =bcrypt($request->password);
+        if($request->hasFile('image')) {
+            //add the new photo
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $fileName);
+            Image::make($image)->resize(100, 200)->save($location);
+            $oldFileName = $user->image;
+            //update the database
+            $user->image = $fileName;
+            //delete the old image
+            Storage::delete( $oldFileName);
+        }
 
-       if($user->fill($request->all())->save()){
+       
+       if($user->save()){
            $request->session()->flash('success',$user->firstName.'  تم تعديله بنجاح');
        }else{
         $request->session()->flash('error',' يوجد هنالك مشكلة في تعديل العضو');
@@ -178,6 +201,8 @@ class UsersController extends Controller
         //     return redirect(route('users.index'));
         // }
         $user->roles()->detach();
+         //delete the old image
+         Storage::delete( $user->image);
         $user->delete();
         
         return redirect()->route('user.index')->withFlashMessage('user  deleted successfully' );

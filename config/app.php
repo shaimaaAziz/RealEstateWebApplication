@@ -166,7 +166,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
@@ -179,6 +178,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
        
 
@@ -236,6 +236,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Datatables' => Yajra\DataTables\Facades\DataTables::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

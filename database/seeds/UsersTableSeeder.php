@@ -29,7 +29,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
            'mobile' =>'059912345',
            'street' =>'nasser',
-           'city' => 'Gaza'
+           'city' => 'Gaza',
+           'image' =>'1595425812.jpg'
         ]);
 
         $owner = User::create([
@@ -40,7 +41,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
            'mobile' =>'0599012345',
            'street' =>'النصر',
-           'city' => 'غزة'
+           'city' => 'غزة',
+           'image' =>'1595430914.jpg'
         ]); 
 
         $user = User::create([
@@ -51,7 +53,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
            'mobile' =>'0599012345',
            'street' =>'النصر',
-           'city' => 'غزة'
+           'city' => 'غزة',
+           'image' =>'1595427940.jpg'
         ]);
         $user2 = User::create([
             'firstName' => 'gg',

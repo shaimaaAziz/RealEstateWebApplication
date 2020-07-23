@@ -26,7 +26,7 @@
               </div>
               <div class="card-body">
 
-                     {!! Form::model($user ,['route' => ['users.update',$user->id ], 'method'=>'PATCH' ]  )  !!}
+                     {!! Form::model($user ,['route' => ['users.update',$user->id ], 'method'=>'PATCH','files' => true ]  )  !!}
 
                      @include('owner.user.form')
                      {!! Form::close() !!}

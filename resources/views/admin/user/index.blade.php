@@ -49,6 +49,7 @@
                   <th>الاسم الاول</th>
                   <th>اسم الأب </th>
                   <th>اسم العائلة</th>
+                  <th>الصورة الشخصية</th>
                   <th>البريد الالكتروني</th>
                   <th>الصلاحيات</th>
                   <th>رقم الجوال</th>
@@ -65,6 +66,9 @@
                             <td>{{$alluser->firstName}}</td>
                             <td>{{$alluser->middleName}}</td>
                             <td>{{$alluser->lastName}}</td>
+                            <td>
+                              <img src =" {{asset('images/' . $alluser->image)}}" height="100" width="100" style="border-radius: 50%;"/>
+                          </td>
                             <td>{{$alluser->email}}</td>
                             <td>{{ implode(',' ,$alluser->roles()->pluck('name')->toArray()) }}</td>
                             <td>{{$alluser->mobile}}</td>

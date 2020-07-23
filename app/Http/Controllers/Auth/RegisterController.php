@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Image;
 
 class RegisterController extends Controller
 {
@@ -59,7 +60,7 @@ class RegisterController extends Controller
             'mobile' => 'required',
             'street' => ['required', 'string', 'max:255'],
             'city' => 'required',
-
+            'image' =>'sometimes|image',
         ]);
     }
 
@@ -71,17 +72,37 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'firstName' => $data['firstName'],
-            'middleName' => $data['middleName'],
-            'lastName' => $data['lastName'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'mobile' => $data['mobile'],
-            'street' =>  $data['street'],
-            'city' => $data['city']       
-        ]);
-
+        $request = request();
+        $user= new User();
+        $user->firstName=  $request->firstName;
+        $user->middleName=  $request->middleName;
+        $user->lastName=  $request->lastName;
+        $user->email =$request->email;
+        $user->password =bcrypt($request->password);
+        $user->mobile =$request->mobile;
+        $user->street =$request->street;
+        $user->city =$request->city;
+       
+        if($request->hasFile('image')) {
+            //add the new photo
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $fileName);
+            Image::make($image)->resize(100, 200)->save($location);
+            $user->image = $fileName;
+        }
+            $user->save();
+        // $user = User::create([
+        //     'firstName' => $data['firstName'],
+        //     'middleName' => $data['middleName'],
+        //     'lastName' => $data['lastName'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        //     'mobile' => $data['mobile'],
+        //     'street' =>  $data['street'],
+        //     'city' => $data['city'],
+        //     'image' => $fileName,       
+        // ]);
             $role = Role::select('id')->where('name' , 'مستخدم')->first();
              $user->roles()->attach($role);
              return $user;

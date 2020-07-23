@@ -197,5 +197,6 @@
         <button type="submit" class="btn btn-warning">
             {{ __(' إضافة ') }}
         </button>
+        <a href="{{route('Properties.index')}}" style=" float:left;" class="btn btn-danger ">الرجوع </a>
     </div>
 </div>

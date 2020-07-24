@@ -19,6 +19,8 @@ class CreateReservationsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('state');
             $table->boolean('reservation');
+           $table->bigInteger('owner_id')->unsigned();
+         $table->foreign('owner_id')->references('id')->on('properties')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

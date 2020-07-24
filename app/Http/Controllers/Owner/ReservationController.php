@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\User;
 use App\Property;
 use App\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Notifications\ReservationConfirmed;
 use Illuminate\Support\Facades\Notification;
@@ -14,7 +16,7 @@ class ReservationController extends Controller
 {
     public function displayReservations()
     {
-        $reservations = Reservation::all();
+        $reservations = Reservation::where('owner_id', Auth::user()->id)->get();
         
         return view('owner/property/reservation',compact('reservations'));
    }
@@ -25,6 +27,24 @@ class ReservationController extends Controller
        $reservations = Reservation::find($id);
        $reservations->reservation = true;
 
+       $touser= $reservations->user->email;
+       $firstName= $reservations->user->firstName;
+       $lastName= $reservations->user->lastName;
+       $state= $reservations->state;
+       $description =$reservations->property->description;
+       $ownerId =$reservations->owner_id;
+       $owner = User::where('id',$ownerId)->first();
+
+       $data = array("name"=> $firstName,"lastName"=>$lastName,"state"=>$state ,"description"=>$description
+       ,"ownerFirstName" => $owner->firstName, "ownerLastName" => $owner->lastName );
+         
+       Mail::send(['html' => 'mailReservation'],$data,function($message) use ( $touser){
+   
+              $message->to( $touser);
+              $message->subject("   موقع عقارات ");
+              $message->from("shimaa1751998@gmail.com");
+
+       });		  
        $property= Property::find($reservations->property_id);
     if($property->state ==0){ //تأجير
     $property->status = 1;  // unavailable
@@ -33,10 +53,8 @@ class ReservationController extends Controller
         // $property->status = 1;  // unavailable
         }
 
-      
-
-    $property->save();
-    $reservations->save();
+        $property->save();
+        $reservations->save();
 
        toastr()->success( 'تمت الموافقة بنجاح');
 
@@ -53,10 +71,31 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::where('property_id',$id)->first();
         $reservation->reservation = true;
+
+        $touser= $reservation->user->email;
+        $firstName= $reservation->user->firstName;
+        $lastName= $reservation->user->lastName;
+        $state= $reservation->state;
+        $description =$reservation->property->description;
+        
+        $ownerId =$reservation->owner_id;
+        $owner = User::where('id',$ownerId)->first();
+
+        $data = array("name"=> $firstName,"lastName"=>$lastName,"state"=>$state,"description"=>$description
+    ,"ownerFirstName" => $owner->firstName, "ownerLastName" => $owner->lastName );
+          
+           Mail::send(['html' => 'mailReservation'],$data,function($message) use ( $touser){
+    
+               $message->to( $touser);
+               $message->subject("  النظر في اقتراحاتكم على موقع عقارات ");
+               $message->from("shimaa1751998@gmail.com");
+               });
+
         $reservation->save();
         $property= Property::find($id);
         $property->delete();
-    
+        toastr()->success( 'تمت الموافقة بنجاح');
+
         return redirect()->route('displayReservation');
     
     }

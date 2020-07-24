@@ -102,6 +102,7 @@ class PropertyReviewController extends Controller
          $reservation = new Reservation();
          $reservation->property_id = $request->id;
          $reservation->user_id =Auth::user()->id;
+         $reservation->owner_id = $property->user_id;
          $reservation->reservation = false;  // لم يتم قبول طلب الحجز بعد 
          if($property->state ==0){
          $reservation->state = 'تأجير';

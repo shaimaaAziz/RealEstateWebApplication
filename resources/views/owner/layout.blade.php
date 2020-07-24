@@ -8,6 +8,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+  {{-- <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script> --}}
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,6 +21,7 @@
 
   <style>
     .material-icons { font-size: 13px; }
+    
 </style>
 </head>
 
@@ -39,17 +44,18 @@
             </ul>
             
             <ul class="nav navbar-nav ">
-              <li class="active"><a class="glyphicon glyphicon-user" href="{{ url('/owner/Ownerpanel/users') }}" > المعلومات الشخصية</a></li>
+              <li class="active"><a class="glyphicon glyphicon-user" href="{{ url('/owner/Ownerpanel/users') }}" >المعلومات الشخصية</a></li>
           </ul>
           <ul class="nav navbar-nav ">
-            <li class="active dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> العقارات <span class="caret"></span></a>
+            <li class="active dropdown"><a class="dropdown-toggle icon ion ion-home" data-toggle="dropdown" href="#"> العقارات <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li ><a href="{{ route('Property.index') }}">  عقاراتي </a></li>
                 <li ><a href="{{ route('Property.create') }}"> إضافة عقار </a></li>
               </ul>
         </ul>
         <ul class="nav navbar-nav ">
-          <li class="active"><a href="{{ url('/owner/Ownerpanel/reservations') }}" > الحجوزات</a></li>
+          <li class="active ">  
+            <a href="{{ url('/owner/Ownerpanel/reservations') }}"class = "icon ion ion-clipboard ">  الحجوزات </a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li class="active"><a class="glyphicon glyphicon-home" href="/"> الرئيسية</a></li>

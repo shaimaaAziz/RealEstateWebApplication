@@ -37,7 +37,7 @@ class AdminController extends Controller
         $properties= Property::all();
         $contacts =Contact::all();
         $propertyFavorite=  Property::whereHas('favorite_to_users' )->get();
-        $reservation = Reservation::where('state','false')->get();
+        $reservation = Reservation::where('reservation',false)->get();
 
 
         return view('admin/home/index',compact('reservation','properties','contacts','propertyFavorite','user'));

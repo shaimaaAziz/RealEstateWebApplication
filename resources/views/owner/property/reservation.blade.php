@@ -91,7 +91,7 @@
                         </table>
                         @else
                             <div class= 'alert alert-danger'>
-                                لا يوجد أي عقارات قد قمت  بحجزها  
+                                لا يوجد أي عقارات محجوزة   
                             </div>
                         @endif
                     </div>

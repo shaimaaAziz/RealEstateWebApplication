@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use App\Property;
 use App\Reservation;
 use Illuminate\Http\Request;
@@ -32,18 +33,15 @@ class ReservationController extends Controller
     $lastName= $reservations->user->lastName;
     $state= $reservations->state;
     $description =$reservations->property->description;
-
-       $data = array("name"=> $firstName,"lastName"=>$lastName,"state"=>$state ,"description"=>$description);
-      
+       $ownerId =$reservation->owner_id;
+       $owner = User::where('id',$ownerId)->first();
+       $data = array("name"=> $firstName,"lastName"=>$lastName,"state"=>$state,"description"=>$description
+   ,"ownerFirstName" => $owner->firstName, "ownerLastName" => $owner->lastName );
+         
        Mail::send(['html' => 'mailReservation'],$data,function($message) use ( $touser){
-
            $message->to( $touser);
            $message->subject("  النظر في اقتراحاتكم على موقع عقارات ");
            $message->from("shimaa1751998@gmail.com");
-
-           // $message->to("shimaa1751998@gmail.com");
-           // $message->subject("  النظر في اقتراحاتكم على موقع عقارات ");
-           // $message->from("shimaa1751998@gmail.com");
            });
 
     $property= Property::find($reservations->property_id);
@@ -53,18 +51,10 @@ class ReservationController extends Controller
  //     $property->delete();
      // $property->status = 1;  // unavailable
      }
-     
- //     $user= Auth::user();
- //     $userEmail = $user->email;
- //   $user_id=  $reservations->user_id;
-
-
 
   $property->save();
   $reservations->save();
-
     toastr()->success( 'تمت الموافقة بنجاح');
-
     return redirect()->back();
     
  }
@@ -86,8 +76,11 @@ class ReservationController extends Controller
         $lastName= $reservation->user->lastName;
         $state= $reservation->state;
         $description =$reservation->property->description;
-
-        $data = array("name"=> $firstName,"lastName"=>$lastName,"state"=>$state,"description"=>$description);
+     
+        $ownerId =$reservation->owner_id;
+        $owner = User::where('id',$ownerId)->first();
+        $data = array("name"=> $firstName,"lastName"=>$lastName,"state"=>$state,"description"=>$description
+    ,"ownerFirstName" => $owner->firstName, "ownerLastName" => $owner->lastName );
           
            Mail::send(['html' => 'mailReservation'],$data,function($message) use ( $touser){
     

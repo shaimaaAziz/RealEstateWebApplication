@@ -55,7 +55,6 @@ class ReservationController extends Controller
 
         $property->save();
         $reservations->save();
-
        toastr()->success( 'تمت الموافقة بنجاح');
 
        return redirect()->route('displayReservation');

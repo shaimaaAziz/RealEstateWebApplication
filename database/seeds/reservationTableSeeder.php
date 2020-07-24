@@ -33,10 +33,28 @@ class reservationTableSeeder extends Seeder
         DB::table('reservations')->insert([
             'id'=> '102',
             'property_id' => '3',
-            'user_id' =>'3',
+            'user_id' =>'4',
             'state' => 'تأجير',
             'reservation' => '0',
-            'owner_id' => '2'
+            'owner_id' => '5'
+           
+        ]);
+        DB::table('reservations')->insert([
+            'id'=> '103',
+            'property_id' => '4',
+            'user_id' =>'3',
+            'state' => 'بيع',
+            'reservation' => '0',
+            'owner_id' => '5'
+           
+        ]);
+        DB::table('reservations')->insert([
+            'id'=> '104',
+            'property_id' => '5',
+            'user_id' =>'3',
+            'state' => 'بيع',
+            'reservation' => '0',
+            'owner_id' => '5'
            
         ]);
     }

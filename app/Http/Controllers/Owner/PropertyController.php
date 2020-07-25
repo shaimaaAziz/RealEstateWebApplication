@@ -51,8 +51,7 @@ class PropertyController extends Controller
     {
         $this->validate($request,[
             'type'=>'required',
-            'minPrice'=>'required',
-            'maxPrice'=>'required',
+            'price'=>'required',
             'roomNumbers'=>'required',
             'street'=>'required',
             'city'=>'required',
@@ -77,8 +76,7 @@ class PropertyController extends Controller
 
         ]);
         $property->type= $request->type;
-        $property->minPrice = $request->minPrice;
-        $property->maxPrice = $request->maxPrice;
+        $property->price = $request->price;
         $property->roomNumbers = $request->roomNumbers;
         $property->state =$request->state;
         $property->description = $request->description;
@@ -171,11 +169,11 @@ class PropertyController extends Controller
     public function update(Request $request, $id)
     {
         $property= Property::find($id);
-//        $property->fill($request->all())->save();
+        $property->fill($request->all())->save();
+
         $this->validate($request, [
             'type'=>'required',
-            'minPrice'=>'required',
-            'maxPrice'=>'required',
+            'price'=>'required',
             'roomNumbers'=>'required',
             'street'=>'required',
             'city'=>'required',

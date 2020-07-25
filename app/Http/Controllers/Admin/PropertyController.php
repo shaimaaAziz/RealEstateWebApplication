@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\mapLocation;
 use toastr;
 
 use App\City;
@@ -72,8 +73,7 @@ class PropertyController extends Controller
     {
         $this->validate($request,[
             'type'=>'required',
-            'minPrice'=>'required',
-            'maxPrice'=>'required',
+            'price'=>'required',
             'roomNumbers'=>'required',
             'street'=>'required',
             'city'=>'required',
@@ -82,37 +82,72 @@ class PropertyController extends Controller
             'propertyPeriod'=>'required',
             'image'=>'required',
             'area'=>'required',
-            'firstName' =>'required',   
-             'lastName' =>'required',
-            // 'user_id' =>'required',
         ]);
-
         $property = new Property();
+        $mapLocation= new  mapLocation();
         $photoName = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images',$photoName);
 
-if($request->firstName ==$request->lastName){
+        $mapLocation->create([
 
-        $property->create([
-            'type'=> $request->type,
-            'minPrice' => $request->minPrice,
-            'maxPrice' => $request->maxPrice,
-            'roomNumbers' => $request->roomNumbers,
-            'state' =>$request->state,
-            'description' => $request->description,
-            'propertyPeriod' =>$request->propertyPeriod,
-            'street' =>$request->street,
-            'image' =>$photoName,
-            'city' =>$request->city,
-            'status' =>'0',         //property is available
-            'area'=>$request->area,
-            'user_id' =>$request->firstName,
+            'property_id'=>$request->property_id,
+            'Longitude'=>$request->Longitude,
+            'Latitude'=>$request->Latitude
+
         ]);
-    }else{
-        echo" الاسم الأول واسم العائلة غير متطابقين";
-    }
-//        Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
-        toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
+        $property->type= $request->type;
+        $property->price = $request->price;
+        $property->roomNumbers = $request->roomNumbers;
+        $property->state =$request->state;
+        $property->description = $request->description;
+        $property->propertyPeriod =$request->propertyPeriod;
+        $property->street =$request->street;
+        $property->image =$photoName;
+        $property->status ='0';  // the property is available
+        $property->city =$request->city;
+        $property->area=$request->area;
+        $property->user_id =Auth::user()->id;
+//        $property = new Property();
+//        $photoName = $request->file('image')->getClientOriginalName();
+//        $request->file('image')->storeAs('public/images',$photoName);
+//
+//if($request->firstName ==$request->lastName){
+//
+//        $property->create([
+//            'type'=> $request->type,
+//            'minPrice' => $request->minPrice,
+//            'maxPrice' => $request->maxPrice,
+//            'roomNumbers' => $request->roomNumbers,
+//            'state' =>$request->state,
+//            'description' => $request->description,
+//            'propertyPeriod' =>$request->propertyPeriod,
+//            'street' =>$request->street,
+//            'image' =>$photoName,
+//            'city' =>$request->city,
+//            'status' =>'0',         //property is available
+//            'area'=>$request->area,
+//            'user_id' =>$request->firstName,
+//        ]);
+//    }else{
+//        echo" الاسم الأول واسم العائلة غير متطابقين";
+//    }
+////        Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
+//        toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
+
+        if($request->hasFile('image')) {
+            //add the new photo
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $fileName);
+            Image::make($image)->resize(100, 200)->save($location);
+            $property->image = $fileName;
+        }
+
+        if($property->save()){
+            toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
+        }else{
+            $request->session()->flash('error',' يوجد هنالك مشكلة في  عملية الإضافة');
+        }
 
         return redirect('admin/Adminpanel/Properties')->withFlashMessage('تمت اضافة العضو بنجاح');
 
@@ -162,8 +197,7 @@ if($request->firstName ==$request->lastName){
         $property->fill($request->all())->save();
         $this->validate($request, [
             'type'=>'required',
-            'minPrice'=>'required',
-            'maxPrice'=>'required',
+            'price'=>'required',
             'roomNumbers'=>'required',
             'street'=>'required',
             'city'=>'required',
@@ -180,20 +214,31 @@ if($request->firstName ==$request->lastName){
 
         // $photoName = $request->file('image')->getClientOriginalName();
         // $request->file('image')->storeAs('public/images',$photoName);
-      
+        if($request->hasFile('image')) {
+            //add the new photo
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $fileName);
+            Image::make($image)->resize(100, 200)->save($location);
+            $oldFileName = $property->image;
+            //update the database
+            $property->image = $fileName;
+            //delete the old image
+            Storage::delete( $oldFileName);
+        }
 
-        $property = Property::find($id);
-//        $property->type= $type->name;
-        $property->type= $request->type;
-        $property->minPrice= $request->minPrice;
-        $property->maxPrice= $request->maxPrice;
-        $property->roomNumbers= $request->roomNumbers;
-        $property->state =$request->state;
-        $property->description =$request->description;
-        $property->propertyPeriod =$request->propertyPeriod;
-        $property->street =$request->street;
-        $property->city =$request->city;
-        $property->area =$request->area;
+//        $property = Property::find($id);
+////        $property->type= $type->name;
+//        $property->type= $request->type;
+//        $property->minPrice= $request->minPrice;
+//        $property->maxPrice= $request->maxPrice;
+//        $property->roomNumbers= $request->roomNumbers;
+//        $property->state =$request->state;
+//        $property->description =$request->description;
+//        $property->propertyPeriod =$request->propertyPeriod;
+//        $property->street =$request->street;
+//        $property->city =$request->city;
+//        $property->area =$request->area;
 
 
 ////
@@ -203,8 +248,14 @@ if($request->firstName ==$request->lastName){
 //            File::delete(public_path('public/images/' ,$oldFileName));
 
 
+//        $property->save();
+//        toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
         $property->save();
-        toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
+        if($property->save()){
+            $request->session()->flash('success','  تم تعديله بنجاح');
+        }else{
+            $request->session()->flash('error',' يوجد هنالك مشكلة في تعديل العضو');
+        }
 
         return redirect('admin/Adminpanel/Properties');
 

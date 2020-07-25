@@ -47,7 +47,6 @@
                                 {{--                                <th>عدد الغرف</th>--}}
                                 <th>حالة العقار</th>
                                 {{--                                <th>وصف العقار</th>--}}
-                                <th>صورة العقار</th>
                                 {{--                                <th>العنوان</th>--}}
                                 <th>المدينة</th>
                                 <th>المالك</th>
@@ -72,9 +71,7 @@
                                             {{'شاليه'}}
                                         @endif                                    </td>
                                     <td>{{$allProperties->state ==0 ? 'ايجار' : 'بيع'}}</td>
-                                    <td>
-                                        <img src ="{{asset('storage/images/'.$allProperties->image)}}" height="100" width="100"/>
-                                    </td>
+
                                     <td> @if($allProperties->city==0)
                                             {{'غزة'}}
                                         @elseif($allProperties->city==1)

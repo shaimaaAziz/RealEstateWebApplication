@@ -263,13 +263,10 @@
                         {!! Form::open(['url' => 'search' , 'action' =>'post']) !!}
                         <ul class="nav" style="margin-right: 0px; padding-right: 0px;">
                             <li>
-                                <label>السعر الادنى العقار</label>
-                                {!! Form::number("minPrice", null, ['class' =>'form-control' , 'placeholder'=>"السعر الادنى العقار (رقم)"]) !!}
+                                <label>سعر  العقار</label>
+                                {!! Form::number("price", null, ['class' =>'form-control' , 'placeholder'=>"سعر  العقار (رقم)"]) !!}
                             </li>
-                            <li>
-                                <label>السعر الاعلى العقار</label>
-                                {!! Form::number("maxPrice"  , null, ['class' =>'form-control' , 'placeholder'=>"السعر الاعلى العقار (رقم)"]) !!}
-                            </li>
+
                             <li>
                                 <label>عدد الغرف</label>
                                 {!! Form::number("roomNumbers" , null, ['class' =>'form-control' , 'placeholder'=>"عدد الغرف (رقم)"]) !!}

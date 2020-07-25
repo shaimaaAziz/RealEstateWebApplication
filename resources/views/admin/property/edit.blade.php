@@ -91,29 +91,15 @@
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label> أدنى سعر </label>
-                            {!! Form::number('minPrice',null , ['class'=>'form-control'] )!!}
-                            @error('minPrice')
+                            <label>  سعر العقار</label>
+                            {!! Form::number('price',null , ['class'=>'form-control'] )!!}
+                            @error('price')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label>اعلى سعر </label>
-
-                            {!! Form::number('maxPrice',null , ['class'=>'form-control'] )!!}
-
-                            @error('maxPrice')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-                        </div>
-                    </div>
-
                     <div class="form-group row">
                         <div class="col-md-12">
                             <label>عدد الغرف</label>
@@ -165,7 +151,9 @@
                             {{--                                        value="{{asset('storage/images/'.$property->image)}}"--}}
                             {{--                                 >--}}
                             <br>
-                            <img src ="{{asset('storage/images/'.$property->image)}}" height="100" width="100"/>
+{{--                            <img src ="{{asset('storage/images/'.$property->image)}}" height="100" width="100"/>--}}
+                            <div id="panorama"></div>
+
                             <br>
 
                             @error('image')
@@ -194,7 +182,7 @@
 
                             {!! Form::number('area',null , ['class'=>'form-control'] )!!}
 
-                            @error('propertyPeriod')
+                            @error('area')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -242,4 +230,39 @@
     </section>
 @endsection
 @section('footer')
+    <script type="text/javascript">
+        var valueSelect = "Level 1";
+        // var setImage = "https://pannellum.org/images/alma.jpg";
+        var setImage = "{{$property->image}}";
+
+        $('#select-level').on('change', function() {
+            valueSelect = this.value;
+
+            // change your image base on value dropdown
+
+            setImage = "{{$property->image}}";
+
+            // and so on
+
+            // remove the pannellum
+            $('#panorama').html('');
+            // call the function
+            showPannellum(setImage, valueSelect);
+        });
+
+        // call the image for first time
+        showPannellum(setImage, valueSelect);
+
+        // function show pannellum
+        function showPannellum(image, value){
+            pannellum.viewer('panorama', {
+                "type": "equirectangular",
+                "panorama": image,
+                "autoLoad": true,
+                "autoRotate": -2,
+                "title": value
+            });
+        }
+    </script>
 @endsection
+

@@ -16,8 +16,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
-            $table->double('minPrice');
-            $table->double('maxPrice');
+            $table->double('price');
             $table->integer('roomNumbers');
             $table->integer('state');
             $table->string('description');

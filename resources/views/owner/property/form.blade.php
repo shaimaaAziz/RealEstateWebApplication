@@ -25,21 +25,8 @@
 <div class="form-group row">
     <div class="col-md-12">
         <label> أدنى سعر </label>
-        {!! Form::number('minPrice',null , ['class'=>'form-control'] )!!}
-        @error('minPrice')
-        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-        @enderror
-    </div>
-</div>
-<div class="form-group row">
-    <div class="col-md-12">
-        <label>اعلى سعر </label>
-
-        {!! Form::number('maxPrice',null , ['class'=>'form-control'] )!!}
-
-        @error('maxPrice')
+        {!! Form::number('price',null , ['class'=>'form-control'] )!!}
+        @error('price')
         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -120,7 +107,7 @@
 
         {!! Form::number('area',null , ['class'=>'form-control'] )!!}
 
-        @error('propertyPeriod')
+        @error('area')
         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

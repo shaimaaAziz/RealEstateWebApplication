@@ -41,7 +41,16 @@ $countMessage= ContactController::countMessage();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.pannellum.org/2.2/pannellum.js"></script>
+    <style type="text/css">
+        #panorama {
+            width: 600px;
+            height: 400px;
+            margin: 50px auto;
+        }
+    </style>
    
     @yield('header')
     {{-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">  --}}

@@ -64,7 +64,9 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
            'mobile' =>'0599012345',
            'street' =>'النصر',
-           'city' => 'غزة'
+           'city' => 'غزة',
+            'image' => '1595430914.jpg'
+
         ]);
         $owner2 = User::create([
             'firstName' => 'a',
@@ -74,7 +76,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
            'mobile' =>'0599012345',
            'street' =>'النصر',
-           'city' => 'غزة'
+           'city' => 'غزة',
+            'image' => '1595430914.jpg'
         ]);
    
         $admin->roles()->attach($adminRole) ; 

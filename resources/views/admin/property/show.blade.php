@@ -29,7 +29,8 @@
                 <br />
                 <div class="row"  >
                     <div class="block-img"  margin-right="auto">
-                        <img style="width: 269.844px;height: 254.984px " src ="{{asset('storage/images/'.$property->image)}}" alt="" class="img img-responsive">
+{{--                        <img style="width: 269.844px;height: 254.984px " src ="{{asset('storage/images/'.$property->image)}}" alt="" class="img img-responsive">--}}
+                        <div id="panorama"></div>
 
                     </div>
                     <div class="block-content" style=" direction: rtl;">
@@ -66,8 +67,7 @@
                                         @endif
 
                                             </span></li>
-                                <li class="author"><span> أدنى سعر: $</span><span class="text">{{$property->minPrice}}</span></li>
-                                <li class="author"><span> اعلى سعر: $   </span><span class="text">{{$property->maxPrice}}</span></li>
+                                <li class="author"><span> أدنى سعر: $</span><span class="text">{{$property->price}}</span></li>
                                 <li class="author"><span>عدد الغرف :$   </span><span class="text">{{$property->roomNumbers}}</span></li>
                                 <li class="author"><span>مساحة العقار :   </span><span class="text">{{$property->area}}</span></li>
                                 <li class="rating"><a href="" tabindex="0"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></a></li>
@@ -89,5 +89,41 @@
 
 @endsection
 
+@section('footer')
+    <script type="text/javascript">
+        var valueSelect = "Level 1";
+        // var setImage = "https://pannellum.org/images/alma.jpg";
+        var setImage = "{{$property->image}}";
+
+        $('#select-level').on('change', function() {
+            valueSelect = this.value;
+
+            // change your image base on value dropdown
+
+            setImage = "{{$property->image}}";
+
+            // and so on
+
+            // remove the pannellum
+            $('#panorama').html('');
+            // call the function
+            showPannellum(setImage, valueSelect);
+        });
+
+        // call the image for first time
+        showPannellum(setImage, valueSelect);
+
+        // function show pannellum
+        function showPannellum(image, value){
+            pannellum.viewer('panorama', {
+                "type": "equirectangular",
+                "panorama": image,
+                "autoLoad": true,
+                "autoRotate": -2,
+                "title": value
+            });
+        }
+    </script>
+@endsection
 
 

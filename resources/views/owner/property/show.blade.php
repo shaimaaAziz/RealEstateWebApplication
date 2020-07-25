@@ -47,8 +47,7 @@
                                 @endif
 
                                             </span></li><br />
-                        <li class="author"><span> أدنى سعر: $</span><span class="text">{{$property->minPrice}}</span></li><br />
-                        <li class="author"><span> اعلى سعر: $   </span><span class="text">{{$property->maxPrice}}</span></li><br />
+                        <li class="author"><span>  سعر: $</span><span class="text">{{$property->price}}</span></li><br />
                         <li class="author"><span>عدد الغرف :$   </span><span class="text">{{$property->roomNumbers}}</span></li><br />
                         <li class="author"><span>مساحة العقار :   </span><span class="text">{{$property->area}}</span></li><br />
 
@@ -66,7 +65,8 @@
 @section('footer')
     <script type="text/javascript">
         var valueSelect = "Level 1";
-        var setImage = "https://pannellum.org/images/alma.jpg";
+        // var setImage = "https://pannellum.org/images/alma.jpg";
+        var setImage = "{{$property->image}}";
 
         $('#select-level').on('change', function() {
             valueSelect = this.value;

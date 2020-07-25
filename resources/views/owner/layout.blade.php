@@ -12,7 +12,16 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
   <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.pannellum.org/2.2/pannellum.js"></script>
+    <style type="text/css">
+        #panorama {
+            width: 600px;
+            height: 400px;
+            margin: 50px auto;
+        }
+    </style>
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @toastr_css

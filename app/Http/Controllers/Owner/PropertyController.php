@@ -88,26 +88,6 @@ class PropertyController extends Controller
         $property->area=$request->area;
         $property->user_id =Auth::user()->id;
 
-//        $property->create([
-//            'type'=> $request->type,
-//            'minPrice' => $request->minPrice,
-//            'maxPrice' => $request->maxPrice,
-//            'roomNumbers' => $request->roomNumbers,
-//            'state' =>$request->state,
-//            'description' => $request->description,
-//            'propertyPeriod' =>$request->propertyPeriod,
-//            'street' =>$request->street,
-//            'image' =>$photoName,
-//            'status' =>'0',  // the property is available
-//            'city' =>$request->city,
-//            'area'=>$request->area,
-//            'user_id' =>Auth::user()->id,
-//
-//
-//        ]);
-
-        //  dd($request->property_id);
-
         if($request->hasFile('image')) {
             //add the new photo
             $image = $request->file('image');
@@ -168,7 +148,6 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $property= Property::find($id);
 
         $this->validate($request, [
             'type'=>'required',
@@ -184,38 +163,63 @@ class PropertyController extends Controller
 
 
         ]);
+
+        $property= Property::find($id);
+        $property->update($request->all());
+
         if($request->hasFile('image')) {
-            //add the new photo
             $image = $request->file('image');
             $fileName = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $fileName);
             Image::make($image)->resize(100, 200)->save($location);
             $oldFileName = $property->image;
-            //update the database
             $property->image = $fileName;
             //delete the old image
             Storage::delete( $oldFileName);
         }
-//
-//
-//        $property = Property::find($id);
-//        $property->type= $type->name;
-        $property->type= $request->type;
-        $property->price= $request->price;
-        $property->roomNumbers= $request->roomNumbers;
-        $property->state =$request->state;
-        $property->description =$request->description;
-        $property->propertyPeriod =$request->propertyPeriod;
-        $property->street =$request->street;
-        $property->city =$request->city;
-        $property->area =$request->area;
 
-//        $property->save();
-        if($property->save()){
-            $request->session()->flash('success','  تم تعديله بنجاح');
-        }else{
-            $request->session()->flash('error',' يوجد هنالك مشكلة في تعديل العضو');
-        }
+
+//        $this->validate($request, [
+//            'type'=>'required',
+//            'price'=>'required',
+//            'roomNumbers'=>'required',
+//            'street'=>'required',
+//            'city'=>'required',
+//            'state'=>'required',
+//            'description'=>'required',
+//            'propertyPeriod'=>'required',
+//            'image'=>'required',
+//            'area'=>'required',
+//
+//
+//        ]);
+//        $property= Property::find($id);
+//        $property->type= $request->type;
+//        $property->price= $request->price;
+//        $property->roomNumbers= $request->roomNumbers;
+//        $property->state =$request->state;
+//        $property->description =$request->description;
+//        $property->propertyPeriod =$request->propertyPeriod;
+//        $property->street =$request->street;
+//        $property->city =$request->city;
+//        $property->area =$request->area;
+//        if($request->hasFile('image')) {
+//            //add the new photo
+//            $image = $request->file('image');
+//            $fileName = time() . '.' . $image->getClientOriginalExtension();
+//            $location = public_path('images/' . $fileName);
+//            Image::make($image)->resize(100, 200)->save($location);
+//            $oldFileName = $property->image;
+//            //update the database
+//            $property->image = $fileName;
+//            //delete the old image
+//            Storage::delete( $oldFileName);
+//        }
+//        if($property->save()){
+//            $request->session()->flash('success','  تم تعديله بنجاح');
+//        }else{
+//            $request->session()->flash('error',' يوجد هنالك مشكلة في تعديل ');
+//        }
 
         return redirect()->route('Property.index');
 

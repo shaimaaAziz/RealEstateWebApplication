@@ -107,32 +107,6 @@ class PropertyController extends Controller
         $property->city =$request->city;
         $property->area=$request->area;
         $property->user_id =Auth::user()->id;
-//        $property = new Property();
-//        $photoName = $request->file('image')->getClientOriginalName();
-//        $request->file('image')->storeAs('public/images',$photoName);
-//
-//if($request->firstName ==$request->lastName){
-//
-//        $property->create([
-//            'type'=> $request->type,
-//            'minPrice' => $request->minPrice,
-//            'maxPrice' => $request->maxPrice,
-//            'roomNumbers' => $request->roomNumbers,
-//            'state' =>$request->state,
-//            'description' => $request->description,
-//            'propertyPeriod' =>$request->propertyPeriod,
-//            'street' =>$request->street,
-//            'image' =>$photoName,
-//            'city' =>$request->city,
-//            'status' =>'0',         //property is available
-//            'area'=>$request->area,
-//            'user_id' =>$request->firstName,
-//        ]);
-//    }else{
-//        echo" الاسم الأول واسم العائلة غير متطابقين";
-//    }
-////        Session::flash('flash_message', 'تمت اضافة العضو بنجاح');
-//        toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
 
         if($request->hasFile('image')) {
             //add the new photo

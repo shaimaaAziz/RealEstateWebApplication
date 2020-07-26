@@ -15,10 +15,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.pannellum.org/2.2/pannellum.js"></script>
+
+{{--    <script src="js/three.min.js"></script>--}}
+{{--    <script src="js/panolens.min.js"></script>--}}
     <style type="text/css">
         #panorama {
-            width: 600px;
-            height: 400px;
+            width: 900px;
+            height: 600px;
             margin: 50px auto;
         }
     </style>

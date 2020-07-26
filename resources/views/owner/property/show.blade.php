@@ -100,7 +100,9 @@
             });
         }
 
-
+        {{--const panorama = new PANOLENS.ImagePanorama( "{{asset('images/'.$property->image)}}" );--}}
+        {{--const viewer = new PANOLENS.Viewer();--}}
+        {{--viewer.add( panorama );--}}
 
 {{--pannellum.viewer('panorama', {--}}
 {{--    "type": "equirectangular",--}}

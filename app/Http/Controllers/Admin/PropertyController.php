@@ -142,7 +142,6 @@ class PropertyController extends Controller
             Image::make($image)->resize(100, 200)->save($location);
             $property->image = $fileName;
         }
-
         if($property->save()){
             toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
         }else{
@@ -194,7 +193,7 @@ class PropertyController extends Controller
     public function update(Request $request, $id)
     {
         $property= Property::find($id);
-        $property->fill($request->all())->save();
+//        $property->fill($request->all())->save();
         $this->validate($request, [
             'type'=>'required',
             'price'=>'required',
@@ -228,17 +227,16 @@ class PropertyController extends Controller
         }
 
 //        $property = Property::find($id);
-////        $property->type= $type->name;
-//        $property->type= $request->type;
-//        $property->minPrice= $request->minPrice;
-//        $property->maxPrice= $request->maxPrice;
-//        $property->roomNumbers= $request->roomNumbers;
-//        $property->state =$request->state;
-//        $property->description =$request->description;
-//        $property->propertyPeriod =$request->propertyPeriod;
-//        $property->street =$request->street;
-//        $property->city =$request->city;
-//        $property->area =$request->area;
+//        $property->type= $type->name;
+        $property->type= $request->type;
+        $property->price= $request->price;
+        $property->roomNumbers= $request->roomNumbers;
+        $property->state =$request->state;
+        $property->description =$request->description;
+        $property->propertyPeriod =$request->propertyPeriod;
+        $property->street =$request->street;
+        $property->city =$request->city;
+        $property->area =$request->area;
 
 
 ////
@@ -250,7 +248,7 @@ class PropertyController extends Controller
 
 //        $property->save();
 //        toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
-        $property->save();
+//        $property->save();
         if($property->save()){
             $request->session()->flash('success','  تم تعديله بنجاح');
         }else{

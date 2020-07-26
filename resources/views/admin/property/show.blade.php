@@ -67,8 +67,8 @@
                                         @endif
 
                                             </span></li>
-                                <li class="author"><span> أدنى سعر: $</span><span class="text">{{$property->price}}</span></li>
-                                <li class="author"><span>عدد الغرف :$   </span><span class="text">{{$property->roomNumbers}}</span></li>
+                                <li class="author"><span>  سعر العقار : $</span><span class="text">{{$property->price}}</span></li>
+                                <li class="author"><span>عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span></li>
                                 <li class="author"><span>مساحة العقار :   </span><span class="text">{{$property->area}}</span></li>
                                 <li class="rating"><a href="" tabindex="0"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></a></li>
 

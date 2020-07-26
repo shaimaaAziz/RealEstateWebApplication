@@ -24,7 +24,7 @@
 
 <div class="form-group row">
     <div class="col-md-12">
-        <label> أدنى سعر </label>
+        <label>  سعر </label>
         {!! Form::number('price',null , ['class'=>'form-control'] )!!}
         @error('price')
         <span class="invalid-feedback" role="alert">

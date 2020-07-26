@@ -14,8 +14,11 @@
                 <img style="width: 269.844px;height: 254.984px " src ="{{asset('storage/images/'.$property->image)}}" alt="" class="img img-responsive">
 
             </div> --}}
-
+{{--            <iframe width="600" height="400" allowfullscreen style="border-style:none;" src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://pannellum.org/images/{{$property->image}}"></iframe>--}}
             <div id="panorama"></div>
+
+{{--            <img id="panorama" src ='https://pannellum.org/images/alma.jpg' />--}}
+
             <div class="block-content" >
                 <div class="product-info">
                     <ul class="list-inline" >
@@ -47,8 +50,8 @@
                                 @endif
 
                                             </span></li><br />
-                        <li class="author"><span>  سعر: $</span><span class="text">{{$property->price}}</span></li><br />
-                        <li class="author"><span>عدد الغرف :$   </span><span class="text">{{$property->roomNumbers}}</span></li><br />
+                        <li class="author"><span>  سعر العقار: $</span><span class="text">{{$property->price}}</span></li><br />
+                        <li class="author"><span>عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span></li><br />
                         <li class="author"><span>مساحة العقار :   </span><span class="text">{{$property->area}}</span></li><br />
 
                     </ul>
@@ -66,14 +69,14 @@
     <script type="text/javascript">
         var valueSelect = "Level 1";
         // var setImage = "https://pannellum.org/images/alma.jpg";
-        var setImage = "{{$property->image}}";
+        var setImage = "{{asset('images/'.$property->image)}}";
 
         $('#select-level').on('change', function() {
             valueSelect = this.value;
 
             // change your image base on value dropdown
 
-            setImage = "{{$property->image}}";
+            setImage = "{{asset('images/'.$property->image)}}";
 
             // and so on
 
@@ -96,5 +99,16 @@
                 "title": value
             });
         }
+
+
+
+{{--pannellum.viewer('panorama', {--}}
+{{--    "type": "equirectangular",--}}
+{{--    "panorama":  src ="{{asset('images/'.$property->image)}}" ,--}}
+{{--    "autoLoad": true,--}}
+{{--    "autoRotate": -2,--}}
+{{--    "title": '',--}}
+{{--});--}}
+
     </script>
 @endsection

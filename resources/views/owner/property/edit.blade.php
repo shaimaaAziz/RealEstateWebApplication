@@ -64,7 +64,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label> أدنى سعر </label>
+                            <label>  سعر العقار </label>
                             {!! Form::number('price',null , ['class'=>'form-control'] )!!}
                             @error('price')
                             <span class="invalid-feedback" role="alert">
@@ -202,7 +202,7 @@
     <script type="text/javascript">
         var valueSelect = "Level 1";
         // var setImage = "https://pannellum.org/images/alma.jpg";
-        var setImage = "{{$property->image}}";
+        var setImage = "{{asset('images/'.$property->image)}}";
 
 
         $('#select-level').on('change', function() {
@@ -210,7 +210,7 @@
 
             // change your image base on value dropdown
 
-            setImage = "{{$property->image}}";
+            setImage = "{{asset('images/'.$property->image)}}";
 
             // and so on
 

@@ -81,12 +81,14 @@
 
                                 </span></li><br />
 {{--                    <li ><span id="property"> أدنى سعر: $</span><span class="text">{{$property->minPrice}}</span></li><br />--}}
-                    <li><span  id="property">  سعر العقار : $   </span><span class="text">{{$property->maxPrice}}</span></li><br />
+                    <li><span  id="property">  سعر العقار : $   </span><span class="text">{{$property->price}}</span></li><br />
                     <li ><span  id="property">عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span></li><br />
                     <li ><span  id="property">مساحة العقار :   </span><span class="text">{{$property->area}}</span></li><br />
                    <br>
                     <li ><span  id="mapcolor"> موقع العقار على الخريطة</span></li>
                     <div id="map"> </div>
+                    <li ><span  id="mapcolor"> صورة العقار</span></li>
+                    <div id="panorama"></div>
                 </ul>
             </div>
         </div>
@@ -126,4 +128,40 @@
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8EKP73TK6UVkBWNOeRcyQDOvDzvAUla4&callback=initMap">
         </script>
+    <script type="text/javascript">
+        var valueSelect = "Level 1";
+        // var setImage = "https://pannellum.org/images/alma.jpg";
+        var setImage = "{{asset('propertyImages/'.$property->image)}}";
+
+
+        $('#select-level').on('change', function() {
+            valueSelect = this.value;
+
+            // change your image base on value dropdown
+
+            setImage = "{{asset('propertyImages/'.$property->image)}}";
+
+            // and so on
+
+            // remove the pannellum
+            $('#panorama').html('');
+            // call the function
+            showPannellum(setImage, valueSelect);
+        });
+
+        // call the image for first time
+        showPannellum(setImage, valueSelect);
+
+        // function show pannellum
+        function showPannellum(image, value){
+            pannellum.viewer('panorama', {
+                "type": "equirectangular",
+                "panorama": image,
+                "autoLoad": true,
+                "autoRotate": -2,
+                "title": value
+            });
+        }
+    </script>
+
 @endsection

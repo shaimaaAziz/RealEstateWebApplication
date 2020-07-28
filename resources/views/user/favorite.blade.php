@@ -53,7 +53,8 @@
                         @endif
                         <div class="col-lg-4 pull-right">
                             <div class="productbox">
-                                <img src="http://lorempixel.com/468/258" class="img-responsive">
+{{--                                <img src="http://lorempixel.com/468/258" class="img-responsive">--}}
+                                <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive">
 
                                 <div class="producttitle">{{ $properties->type }}</div>
 

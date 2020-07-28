@@ -27,6 +27,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.pannellum.org/2.2/pannellum.js"></script>
+
+    {{--    <script src="js/three.min.js"></script>--}}
+    {{--    <script src="js/panolens.min.js"></script>--}}
+    <style type="text/css">
+        #panorama {
+            width: 100%;
+            height:300px;
+            background-color: grey;
+            margin: 50px auto;
+        }
+    </style>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <!-- CSRF Token --> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @toastr_css

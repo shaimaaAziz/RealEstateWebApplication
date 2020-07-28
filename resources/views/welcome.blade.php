@@ -103,7 +103,7 @@
                             @endif
                             <div class="col-lg-4 pull-right">
                                 <div class="productbox">
-                                    <img src="http://lorempixel.com/468/258" class="img-responsive">
+                                    <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive">
 
                                     <div class="producttitle">
                                         @if($properties->type == 0 )  فيلا
@@ -121,7 +121,7 @@
                                         <div style="display: inline-block;width: 49%;"><i class="fa fa-object-group" aria-hidden="true"></i> {{ $properties->area }} متر</div>
                                     </div>
 
-                                    <div class="pricetext"><i class="fa fa-usd" aria-hidden="true"></i> {{$properties->maxPrice}}</div>
+                                    <div class="pricetext"><i class="fa fa-usd" aria-hidden="true"></i> {{$properties->price}}</div>
                                     <div class="productprice">
                                         <div class="">
                                         <form method="get" action="{{ route('showMap') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">

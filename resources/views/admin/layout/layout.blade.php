@@ -161,12 +161,11 @@ $countMessage= ContactController::countMessage();
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('images/' . Auth::user()->image) }}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('images/' . Auth::user()->image) }}" style="width:70px;height:60px" class="img-circle elevation-2" alt="User Image">
+<span style="color:white; margin-right:10px;">{{Auth::user()->firstName}}</span>
             </div>
         
-            <div class="info">
-                <a href="#" class="d-block"><p>{{Auth::user()->firstName}}</p></a>
-            </div>
+           
         </div>
 
         <!-- Sidebar Menu -->

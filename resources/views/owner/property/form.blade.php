@@ -25,7 +25,7 @@
 <div class="form-group row">
     <div class="col-md-12">
         <label>  سعر </label>
-        {!! Form::number('price',null , ['class'=>'form-control'] )!!}
+        {!! Form::number('price',null , ['placeholder '=>'أدخل السعر بالدولار','class'=>'form-control','min'=>'0'] )!!}
         @error('price')
         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -38,7 +38,7 @@
     <div class="col-md-12">
         <label>عدد الغرف</label>
 
-        {!! Form::number('roomNumbers',null , ['class'=>'form-control'] )!!}
+        {!! Form::number('roomNumbers',null , ['class'=>'form-control' ,'min'=>'0'] )!!}
 
         @error('roomNumbers')
         <span class="invalid-feedback" role="alert">
@@ -76,9 +76,7 @@
 </div>
 <div class="form-group row">
     <div class="col-md-12">
-        <label>صورة العقار </label>
-
-        {{Form::label('image', null,['class' => 'control-label'])}}
+        {!! Form::label('image',' الصورة الشخصية',['class' => 'control-label'] )!!}
         {{Form::file('image')}}
 
         @error('image')
@@ -92,7 +90,7 @@
     <div class="col-md-12">
         <label>مدة العقار</label>
 
-        {!! Form::number('propertyPeriod',null , ['class'=>'form-control'] )!!}
+        {!! Form::number('propertyPeriod',null , ['class'=>'form-control','min'=>'0'] )!!}
 
         @error('propertyPeriod')
         <span class="invalid-feedback" role="alert">
@@ -105,7 +103,7 @@
     <div class="col-md-12">
         <label>مساحة العقار</label>
 
-        {!! Form::number('area',null , ['class'=>'form-control'] )!!}
+        {!! Form::number('area',null , ['class'=>'form-control','min'=>'0'] )!!}
 
         @error('area')
         <span class="invalid-feedback" role="alert">
@@ -145,24 +143,19 @@
     <div class="col-md-12">
         <br>
         <label>خط الطول</label>
-        <input type="text" name="Longitude" id="lon">
+        <input type="text" name="Longitude" id="lon" >
     
         <label>خط العرض</label>
         <input type="text" name="Latitude" id="lat">
-
-        <label>العنوان بالتفصيل </label>
-        <input type="text" name="location" id="location">
-
     </div>
 </div>
 <br>
 
-<input id="searchInput" class="mapControls" type="text" placeholder="Enter a location">
+{{-- <input id="searchInput" class="mapControls" type="text" placeholder="Enter a location"> --}}
 
 <div id="map"></div> <br>
 
 
-<input type="hidden" name="adminId" value="{{Auth::user()->id}}" >
 <div class="form-group row mb-0">
     <div class="col-md-12">
         <button type="submit" class="btn btn-warning">

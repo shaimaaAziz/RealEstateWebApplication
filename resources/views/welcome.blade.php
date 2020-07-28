@@ -106,11 +106,11 @@
                                     <img src="http://lorempixel.com/468/258" class="img-responsive">
 
                                     <div class="producttitle">
-                                        @if($properties->type == 1 )  فيلا
-                                        @elseif($properties->type == 2 ) أرض 
-                                        @elseif($properties->type == 3 ) شقة
-                                        @elseif($properties->type == 4 ) بيت
-                                        @elseif($properties->type == 5 ) شاليه
+                                        @if($properties->type == 0 )  فيلا
+                                        @elseif($properties->type == 1 ) أرض 
+                                        @elseif($properties->type == 2 ) شقة
+                                        @elseif($properties->type == 3 ) بيت
+                                        @elseif($properties->type == 4 ) شاليه
                                         @endif
                                     </div>
 

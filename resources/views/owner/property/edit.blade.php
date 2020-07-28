@@ -44,7 +44,7 @@
                     @endif
 
 
-                    {!! Form::model($property ,['route' => ['Property.update',$property->id ], 'method'=>'PATCH' ]  )  !!}
+                    {!! Form::model($property ,['route' => ['Property.update',$property->id ], 'method'=>'PATCH' ,'files' => true]  )  !!}
 
                     @csrf
 
@@ -115,12 +115,9 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label>صورة العقار </label>
-
-                            {{Form::label('image', null,['class' => 'control-label'])}}
+                            {{Form::label('image', 'صورة العقار',['class' => 'control-label'])}}
                             {{Form::file('image')}}
                             <br>
-{{--                            <img src ="{{asset('storage/images/'.$property->image)}}" height="100" width="100"/>--}}
                             <div id="panorama"></div>
 
                             <br>
@@ -136,7 +133,7 @@
                         <div class="col-md-12">
                             <label>مدة العقار</label>
 
-                            {!! Form::number('propertyPeriod',null , ['class'=>'form-control'] )!!}
+                            {!! Form::number('propertyPeriod',null , ['class'=>'form-control','min'=>'0'] )!!}
 
                             @error('propertyPeriod')
                             <span class="invalid-feedback" role="alert">
@@ -149,7 +146,7 @@
                         <div class="col-md-12">
                             <label>مساحة العقار</label>
 
-                            {!! Form::number('area',null , ['class'=>'form-control'] )!!}
+                            {!! Form::number('area',null , ['class'=>'form-control','min'=>'0'] )!!}
 
                             @error('area')
                             <span class="invalid-feedback" role="alert">
@@ -202,7 +199,7 @@
     <script type="text/javascript">
         var valueSelect = "Level 1";
         // var setImage = "https://pannellum.org/images/alma.jpg";
-        var setImage = "{{asset('images/'.$property->image)}}";
+        var setImage = "{{asset('propertyImages/'.$property->image)}}";
 
 
         $('#select-level').on('change', function() {
@@ -210,7 +207,7 @@
 
             // change your image base on value dropdown
 
-            setImage = "{{asset('images/'.$property->image)}}";
+            setImage = "{{asset('propertyImages/'.$property->image)}}";
 
             // and so on
 

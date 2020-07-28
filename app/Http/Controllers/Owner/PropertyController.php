@@ -92,7 +92,7 @@ class PropertyController extends Controller
             //add the new photo
             $image = $request->file('image');
             $fileName = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $fileName);
+            $location = public_path('propertyImages/' . $fileName);
             Image::make($image)->resize(100, 200)->save($location);
             $property->image = $fileName;
         }
@@ -160,66 +160,35 @@ class PropertyController extends Controller
             'propertyPeriod'=>'required',
             'image'=>'required',
             'area'=>'required',
-
-
         ]);
 
-        $property= Property::find($id);
-        $property->update($request->all());
-
-        if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $fileName = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $fileName);
-            Image::make($image)->resize(100, 200)->save($location);
-            $oldFileName = $property->image;
-            $property->image = $fileName;
-            //delete the old image
-            Storage::delete( $oldFileName);
-        }
-
-
-//        $this->validate($request, [
-//            'type'=>'required',
-//            'price'=>'required',
-//            'roomNumbers'=>'required',
-//            'street'=>'required',
-//            'city'=>'required',
-//            'state'=>'required',
-//            'description'=>'required',
-//            'propertyPeriod'=>'required',
-//            'image'=>'required',
-//            'area'=>'required',
-//
-//
-//        ]);
-//        $property= Property::find($id);
-//        $property->type= $request->type;
-//        $property->price= $request->price;
-//        $property->roomNumbers= $request->roomNumbers;
-//        $property->state =$request->state;
-//        $property->description =$request->description;
-//        $property->propertyPeriod =$request->propertyPeriod;
-//        $property->street =$request->street;
-//        $property->city =$request->city;
-//        $property->area =$request->area;
-//        if($request->hasFile('image')) {
-//            //add the new photo
-//            $image = $request->file('image');
-//            $fileName = time() . '.' . $image->getClientOriginalExtension();
-//            $location = public_path('images/' . $fileName);
-//            Image::make($image)->resize(100, 200)->save($location);
-//            $oldFileName = $property->image;
-//            //update the database
-//            $property->image = $fileName;
-//            //delete the old image
-//            Storage::delete( $oldFileName);
-//        }
-//        if($property->save()){
-//            $request->session()->flash('success','  تم تعديله بنجاح');
-//        }else{
-//            $request->session()->flash('error',' يوجد هنالك مشكلة في تعديل ');
-//        }
+       $property= Property::find($id);
+       $property->type= $request->type;
+       $property->price= $request->price;
+       $property->roomNumbers= $request->roomNumbers;
+       $property->state =$request->state;
+       $property->description =$request->description;
+       $property->propertyPeriod =$request->propertyPeriod;
+       $property->street =$request->street;
+       $property->city =$request->city;
+       $property->area =$request->area;
+       if($request->hasFile('image')) {
+           //add the new photo
+           $image = $request->file('image');
+           $fileName = time() . '.' . $image->getClientOriginalExtension();
+           $location = public_path('propertyImages/' . $fileName);
+           Image::make($image)->resize(100, 200)->save($location);
+           $oldFileName = $property->image;
+           //update the database
+           $property->image = $fileName;
+           //delete the old image
+           Storage::delete( $oldFileName);
+       }
+       if($property->save()){
+           $request->session()->flash('success','  تم تعديله بنجاح');
+       }else{
+           $request->session()->flash('error',' يوجد هنالك مشكلة في تعديل ');
+       }
 
         return redirect()->route('Property.index');
 

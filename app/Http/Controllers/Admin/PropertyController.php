@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\mapLocation;
 use toastr;
-
+use Image;
+use Storage;
 use App\City;
 use App\type;
 use App\User;
@@ -16,10 +17,8 @@ use Illuminate\Http\Request;
 use yajra\Datatables\Datables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Session\Session;
-use League\CommonMark\Inline\Element\Image;
 
 class PropertyController extends Controller
 {
@@ -83,18 +82,14 @@ class PropertyController extends Controller
             'image'=>'required',
             'area'=>'required',
         ]);
-        $property = new Property();
         $mapLocation= new  mapLocation();
-        $photoName = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images',$photoName);
-
         $mapLocation->create([
-
             'property_id'=>$request->property_id,
             'Longitude'=>$request->Longitude,
             'Latitude'=>$request->Latitude
-
         ]);
+
+        $property = new Property();
         $property->type= $request->type;
         $property->price = $request->price;
         $property->roomNumbers = $request->roomNumbers;
@@ -102,26 +97,28 @@ class PropertyController extends Controller
         $property->description = $request->description;
         $property->propertyPeriod =$request->propertyPeriod;
         $property->street =$request->street;
-        $property->image =$photoName;
         $property->status ='0';  // the property is available
         $property->city =$request->city;
         $property->area=$request->area;
-        $property->user_id =Auth::user()->id;
+        // $user =  User::where('firstName',$request->firstName and 
+        // 'lastName',$request->lastName)->first();
+        $property->user_id =$request->firstName;
 
         if($request->hasFile('image')) {
             //add the new photo
             $image = $request->file('image');
             $fileName = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $fileName);
+            $location = public_path('propertyImages/' . $fileName);
             Image::make($image)->resize(100, 200)->save($location);
             $property->image = $fileName;
         }
+        if($request->firstName == $request->lastName){
         if($property->save()){
             toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
         }else{
             $request->session()->flash('error',' يوجد هنالك مشكلة في  عملية الإضافة');
         }
-
+    }else("the name doesn't match ");
         return redirect('admin/Adminpanel/Properties')->withFlashMessage('تمت اضافة العضو بنجاح');
 
 
@@ -191,7 +188,7 @@ class PropertyController extends Controller
             //add the new photo
             $image = $request->file('image');
             $fileName = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $fileName);
+            $location = public_path('propertyImages/' . $fileName);
             Image::make($image)->resize(100, 200)->save($location);
             $oldFileName = $property->image;
             //update the database

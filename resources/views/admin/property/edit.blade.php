@@ -52,7 +52,7 @@
                     @endif
 
 
-                    {!! Form::model($property ,['route' => ['Properties.update',$property->id ], 'method'=>'PATCH' ]  )  !!}
+                    {!! Form::model($property ,['route' => ['Properties.update',$property->id ], 'method'=>'PATCH','files' => true ]  )  !!}
 
                     @csrf
 
@@ -92,7 +92,7 @@
                     <div class="form-group row">
                         <div class="col-md-12">
                             <label>  سعر العقار</label>
-                            {!! Form::number('price',null , ['class'=>'form-control'] )!!}
+                            {!! Form::number('price',null , ['class'=>'form-control','min'=>'0'] )!!}
                             @error('price')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -104,7 +104,7 @@
                         <div class="col-md-12">
                             <label>عدد الغرف</label>
 
-                            {!! Form::number('roomNumbers',null , ['class'=>'form-control'] )!!}
+                            {!! Form::number('roomNumbers',null , ['class'=>'form-control','min'=>'0'] )!!}
 
                             @error('roomNumbers')
                             <span class="invalid-feedback" role="alert">
@@ -142,16 +142,9 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label>صورة العقار </label>
-
-                            {{Form::label('image', null,['class' => 'control-label'])}}
+                            {{Form::label('image', 'صورة العقار',['class' => 'control-label'])}}
                             {{Form::file('image')}}
-                            {{--                                {{$property->image}}--}}
-                            {{--                                 <input type="file"--}}
-                            {{--                                        value="{{asset('storage/images/'.$property->image)}}"--}}
-                            {{--                                 >--}}
-                            <br>
-{{--                            <img src ="{{asset('storage/images/'.$property->image)}}" height="100" width="100"/>--}}
+                          <br>
                             <div id="panorama"></div>
 
                             <br>
@@ -167,7 +160,7 @@
                         <div class="col-md-12">
                             <label>مدة العقار</label>
 
-                            {!! Form::number('propertyPeriod',null , ['class'=>'form-control'] )!!}
+                            {!! Form::number('propertyPeriod',null , ['class'=>'form-control','min'=>'0'] )!!}
 
                             @error('propertyPeriod')
                             <span class="invalid-feedback" role="alert">
@@ -180,7 +173,7 @@
                         <div class="col-md-12">
                             <label>مساحة العقار</label>
 
-                            {!! Form::number('area',null , ['class'=>'form-control'] )!!}
+                            {!! Form::number('area',null , ['class'=>'form-control','min'=>'0'] )!!}
 
                             @error('area')
                             <span class="invalid-feedback" role="alert">
@@ -213,7 +206,6 @@
                             @enderror
                         </div>
                     </div>
-                    <input type="hidden" name="adminId" value="{{Auth::user()->id}}" >
                     <div class="form-group row mb-0">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-warning">
@@ -233,14 +225,14 @@
     <script type="text/javascript">
         var valueSelect = "Level 1";
         // var setImage = "https://pannellum.org/images/alma.jpg";
-        var setImage = "{{asset('images/'.$property->image)}}";
+        var setImage = "{{asset('propertyImages/'.$property->image)}}";
 
         $('#select-level').on('change', function() {
             valueSelect = this.value;
 
             // change your image base on value dropdown
 
-            setImage = "{{asset('images/'.$property->image)}}";
+            setImage = "{{asset('propertyImages/'.$property->image)}}";
 
             // and so on
 

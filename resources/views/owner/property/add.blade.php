@@ -11,12 +11,12 @@
      * element that contains the map. */
    
         #map {
-        width: 50%;
+        width: 100%;
         height: 400px;
         background-color: grey;
   
     }
-    #searchInput {
+    /* #searchInput {
             background-color: #fff;
             font-family: Roboto;
             font-size: 15px;
@@ -28,7 +28,7 @@
         }
         #searchInput:focus {
             border-color: #4d90fe;
-        }
+        } */
        
     
   </style>

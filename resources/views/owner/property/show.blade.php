@@ -69,14 +69,14 @@
     <script type="text/javascript">
         var valueSelect = "Level 1";
         // var setImage = "https://pannellum.org/images/alma.jpg";
-        var setImage = "{{asset('images/'.$property->image)}}";
+        var setImage = "{{asset('propertyImages/'.$property->image)}}";
 
         $('#select-level').on('change', function() {
             valueSelect = this.value;
 
             // change your image base on value dropdown
 
-            setImage = "{{asset('images/'.$property->image)}}";
+            setImage = "{{asset('propertyImages/'.$property->image)}}";
 
             // and so on
 

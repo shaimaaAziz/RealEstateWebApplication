@@ -58,10 +58,11 @@
         <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{ Request::root() }}/website/images/nav_icon.png" alt="" /> </a>
             <ul class="nav" id="nav">
                 <li class="current"> <a class="glyphicon glyphicon-home" href="{{url('/')}}"> الرئيسية</a></li>
-                <li><a href="#">كل العقارات</a></li>
-                <li><a href="#">من نحن </a></li>
-                <li><a href="#">شروط الاستخدام</a></li>
-                <li><a href="#"> مميزات الموقع</a></li>
+                <li><a href="#showAll">كل العقارات</a></li>
+                <li><a href="#contact">اتصل بنا </a></li>
+                <li><a href="#Features">من نحن </a></li>
+                <li><a href="#Features">شروط الاستخدام</a></li>
+                <li><a href="#Features"> مميزات الموقع</a></li>
 
 
 {{--                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)--}}

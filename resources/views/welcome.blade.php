@@ -39,8 +39,17 @@
         background-color: grey;
 
     }
-
-        #no-background-hover::before {
+ 
+    .grid1 {
+        margin-right: 2em;
+        border-right: 1px solid #2e2b2bcc;
+        padding: 4em 2em 4em 1em;
+    }
+    .grid2 {
+    width: 21%;
+    padding: 4em 0;
+}
+         #no-background-hover::before {
    background-color: transparent !important;
 }
     </style>
@@ -79,12 +88,12 @@
             </div>
         </div>
 
-        <a class="left carousel-control" href="#myslide" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <a class="right carousel-control" href="#myslide" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#myslide" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <a class="left carousel-control" href="#myslide" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
     </div>
@@ -92,7 +101,7 @@
 
     <br><br>
 
-    <div class="container">
+    <div class="container" id="showAll">
         <div class="row profile">
             <div class="col-lg-9">
                 <div class="profile-content">
@@ -130,15 +139,16 @@
                                             <input type="hidden" name="property_id" value="{{$properties->id}}" >
                                             {{-- <input type="hidden" name="id" value="{{$properties->id}}" > --}}
 
-                                        <button class="btn btn-primary" style="width:100%" role="button">اظهر التفاصيل
+                                        <button class="btn btn-primary" style="width:100% ;" role="button">اظهر التفاصيل
                                                 <span class="fa fa-shopping-cart" aria-hidden="true"> </span></button>
+                                                
                                         </form>  
                                     </div><br>
                                     </div>
                                     
                                     <div><br>
-                                                <ul class="post-footer" style="list-style: none; padding:0px">
-                                                    <li>
+                                                <ul class="post-footer" style="list-style: none; padding-top:10px ;padding-right: 0 ">
+                                                    <li style=" width: 100px; ">
                                                         @guest
                                                             <a style="text-decoration: none;" href="javascript:void(0);"
                                                             onclick="toastr.info('يجب عليك تسجيل الدخول قبل القيام باضافة العقار الي المفضلة .',
@@ -284,7 +294,7 @@
                                 {!! Form::text("area", null, ['class' =>'form-control' , 'placeholder'=>"مساحة العقار"]) !!}
                             </li>
                             <li>
-                                <label></label>
+                               
                                 {!! Form::submit("ابحث", ['class' =>'banner_btn']) !!}
                             </li>
                         </ul>
@@ -343,38 +353,35 @@
                                                 </div>
                                             </div> <br><br>
 
-                                            <div class="main ">
-                                                <div class="featured_content" id="feature">
-                                                    <div class="container">
-                                                        <div class="row text-center">
-                                                            <div class="col-mg-3 col-xs-3 feature_grid1"> <i class="fa fa-television fa-3x" aria-hidden="true"></i>
-                                                                <h3 class="m_1"><a href="#">الاعلانات </a></h3>
-                                                                <p class="m_2">عليك نشر اعلان لعقار حقيقي.<br>عليك ازالة عقارك بعد بيعه او تأجيره.</p>
-                                                                <a href="services.html" class="feature_btn">المزيد</a> </div>
-                                                            <div class="col-mg-3 col-xs-3 feature_grid1"> <i class="fa fa-key fa-3x" aria-hidden="true"></i>
-                                                                <h3 class="m_1"><a href="#">مميزات الموقع</a></h3>
-                                                                <p class="m_2">تتبع القيمة المقدرة لمنزلك و البقاء على اتصال مع السوق المحلي.</p>
-                                                                <a href="services.html" class="feature_btn">المزيد</a> </div>
-                                                            <div class="col-lg-3 col-xs-3 feature_grid1"> <i class="fa fa-check-circle fa-3x"></i>
-                                                                <h3 class="m_1"><a href="#">شروط الاستخدام</a></h3>
-                                                                <p class="m_2">عنوان دقيق للشارع، الحي، المدينة، البلد. <br>وصف العقار المعلن عنه. </p>
-                                                                <a href="services.html" class="feature_btn">المزيد</a> </div>
-                                                            <div class="col-lg-3 col-xs-3 feature_grid2"> <i class="fa fa-users fa-3x" aria-hidden="true"></i>
-                                                                <h3 class="m_1"><a href="#">من نحن</a></h3>
-                                                                <p class="m_2">انسعى لنيل رضاكم، ونتمنى لكم الوصول الى عقاركم المستقبلي المناسب.</p>
-                                                                <a href="services.html" class="feature_btn">المزيد</a> </div>
-                                                        </div>
-                                                    </div>
-                                                </div> <br><br>
+            <div class="main ">
+                <div class=" featured_content" id="feature" >
+                    <div class="container" >
+                        <div class="row text-center" id="Features" >
+                          
+                            <div class="col-mg-4 col-xs-4 grid1" > <i class="fa fa-key fa-3x" style="color: #337ab7"  aria-hidden="true"></i>
+                                <h3 class="m_1"><a href="#">مميزات الموقع</a></h3>
+                                <p class="m_2">تتبع القيمة المقدرة لمنزلك و البقاء على اتصال مع السوق المحلي.</p>
+                                </div>
+                            <div class="col-lg-4 col-xs-4 grid1"  > <i class="fa fa-check-circle fa-3x" style="color: #337ab7"></i>
+                                <h3 class="m_1"><a href="#">شروط الاستخدام</a></h3>
+                                <p class="m_2">عنوان دقيق للشارع، الحي، المدينة، البلد. <br>وصف العقار المعلن عنه. </p>
+                                </div>
+                            <div class="col-lg-4 col-xs-4 grid2"> <i class="fa fa-users fa-3x" style="color: #337ab7" aria-hidden="true"></i>
+                                <h3 class="m_1"><a href="#">من نحن</a></h3>
+                                <p class="m_2">نسعى لنيل رضاكم، ونتمنى لكم الوصول الى عقاركم المستقبلي المناسب.</p>
+                                 </div>
+                        </div>
+                    </div>
+                </div> <br><br>
 
 
 
 
-                                                <div class="contact ">
-                                                    <div class="col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1">
-                                                        <div class="row">
-                                                            <h1>تواصل معنا</h1>
-                                                            <form class="contact-form" method="post" action="{{route('contact.send')}}">
+        <div class="contact" id="contact">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1">
+                <div class="row">
+                    <h1>تواصل معنا</h1>
+                    <form class="contact-form" method="post" action="{{route('contact.send')}}">
                             @csrf
 
                             <div class="col-lg-6 col-sm-6">

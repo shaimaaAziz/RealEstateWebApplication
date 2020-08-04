@@ -29,7 +29,7 @@
                                 <th class="text-center"># </th>
                                 <th class="text-center">نوع العقار </th>
                                 <th class="text-center">حالة العقار</th>
-                                {{-- <th>صورة العقار</th> --}}
+                                <th>توفر العقار</th>
                                 <th class="text-center">المدينة</th>
                                 <th class="text-center">التحكم</th>
                             </tr>
@@ -52,9 +52,8 @@
                                             {{'شاليه'}}
                                         @endif                                    </td>
                                     <td>{{$allProperties->state ==0 ? 'ايجار' : 'بيع'}}</td>
-                                    {{-- <td>
-                                        <img src ="{{asset('storage/images/'.$allProperties->image)}}" height="100" width="100"/>
-                                    </td> --}}
+                                    <td>{{$allProperties->status ==0 ? ' متاح' : 'غير متاح'}}</td>
+
                                     <td> @if($allProperties->city==0)
                                             {{'غزة'}}
                                         @elseif($allProperties->city==1)

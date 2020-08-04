@@ -48,7 +48,7 @@
         {{--        {!! Form::text('type',null , ['class'=>'form-control'] )!!}--}}
         {{--        {!! Form::select('type',['0'=>'فيلا' , '1'=>'ارض','3'=>'شقة' , '4'=>'بيت', '5'=>'شاليه'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}--}}
         {{--        {!! Form::select('type', $type->pluck('name'), $city->pluck('id'), ['optional' => 'Select a city...','class'=>'form-control']) !!}--}}
-        {!! Form::select('type',['0'=>'فيلا' , '1'=>'ارض', '2'=>'شقة', '3'=>'بيت', '4'=>'شاليه'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}
+        {!! Form::select('type',['0'=>'فيلا' , '1'=>'ارض', '2'=>'شقة', '3'=>'بيت', '4'=>'شاليه'] ,null , ['class'=>'form-control','id'=>'type'],['optional' => 'Select a city...'] )!!}
 
         @error('type')
         <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<div class="form-group row">
+<div class="form-group row" id="roomNo">
     <div class="col-md-12">
         <label>عدد الغرف</label>
 
@@ -87,7 +87,7 @@
     <div class="col-md-12">
         <label>حالة العقار </label>
 
-        {!! Form::select('state',['0'=>'ايجار' , '1'=>'بيع'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}
+        {!! Form::select('state',['0'=>'ايجار' , '1'=>'بيع'] ,null , ['class'=>'form-control','id'=>'state'],['optional' => 'Select a city...'] )!!}
 
         @error('state')
         <span class="invalid-feedback" role="alert">
@@ -122,11 +122,11 @@
         @enderror
     </div>
 </div>
-<div class="form-group row">
+<div class="form-group row" id="rent">
     <div class="col-md-12">
         <label>مدة العقار</label>
 
-        {!! Form::number('propertyPeriod',null , ['class'=>'form-control','min'=>'0'] )!!}
+        {!! Form::number('propertyPeriod',null , ['placeholder '=>'أدخل المدة بالشهر','class'=>'form-control','min'=>'0'] )!!}
 
         @error('propertyPeriod')
         <span class="invalid-feedback" role="alert">
@@ -202,3 +202,24 @@
         <a href="{{route('Properties.index')}}" style=" float:left;" class="btn btn-danger ">الرجوع </a>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#rent").hide();
+        $("#roomNo").hide();
+
+        $('#state').click(function ( ) {
+            if( $(this).val() == 0) {
+            $("#rent").show();
+            }else if( $(this).val() == 1) {
+            $("#rent").hide();
+            }
+        });
+        $('#type').click(function ( ) {
+            if( $(this).val() == 1) {
+            $("#roomNo").hide();
+            }else
+            $("#roomNo").show();
+        });
+    });
+</script>

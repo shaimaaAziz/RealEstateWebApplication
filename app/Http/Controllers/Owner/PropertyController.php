@@ -172,6 +172,7 @@ class PropertyController extends Controller
        $property->street =$request->street;
        $property->city =$request->city;
        $property->area =$request->area;
+       $property->status =$request->status;
        if($request->hasFile('image')) {
            //add the new photo
            $image = $request->file('image');

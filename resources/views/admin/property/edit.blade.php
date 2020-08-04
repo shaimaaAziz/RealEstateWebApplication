@@ -60,7 +60,7 @@
                         <div class="col-md-12">
                             <label>نوع العقار</label>
                             <br>
-                            {!! Form::select('type',['0'=>'فيلا' , '1'=>'ارض', '2'=>'شقة', '3'=>'بيت', '4'=>'شاليه'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}
+                            {!! Form::select('type',['0'=>'فيلا' , '1'=>'ارض', '2'=>'شقة', '3'=>'بيت', '4'=>'شاليه'] ,null , ['class'=>'form-control','id'=>'type'],['optional' => 'Select a city...'] )!!}
 
                             {{--                                {!! Form::select('type', $type->pluck('name'), $city->pluck('id'), ['optional' => 'Select a city...','class'=>'form-control']) !!}--}}
                             {{--                                <select name="type" style="display: block;--}}
@@ -100,7 +100,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" id="roomNo">
                         <div class="col-md-12">
                             <label>عدد الغرف</label>
 
@@ -117,7 +117,7 @@
                         <div class="col-md-12">
                             <label>حالة العقار </label>
 
-                            {!! Form::select('state',['0'=>'ايجار' , '1'=>'بيع'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}
+                            {!! Form::select('state',['0'=>'ايجار' , '1'=>'بيع'] ,null , ['class'=>'form-control','id'=>'state'],['optional' => 'Select a city...'] )!!}
 
                             @error('state')
                             <span class="invalid-feedback" role="alert">
@@ -156,7 +156,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" id="rent">
                         <div class="col-md-12">
                             <label>مدة العقار</label>
 
@@ -176,6 +176,19 @@
                             {!! Form::number('area',null , ['class'=>'form-control','min'=>'0'] )!!}
 
                             @error('area')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label>توفر العقار </label>
+
+                            {!! Form::select('status',['0'=>'متاح','1'=>'غير متاح'] ,null , ['class'=>'form-control'])!!}
+
+                            @error('status')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -255,6 +268,24 @@
                 "title": value
             });
         }
+        $(document).ready(function () {
+        $("#rent").hide();
+        $("#roomNo").hide();
+
+            $('#state').click(function ( ) {
+                if( $(this).val() == 0) {
+                $("#rent").show();
+                }else if( $(this).val() == 1) {
+                $("#rent").hide();
+                }
+            });
+            $('#type').click(function ( ) {
+                if( $(this).val() == 1) {
+                $("#roomNo").hide();
+                }else
+                $("#roomNo").show();
+            });
+        });
     </script>
 @endsection
 

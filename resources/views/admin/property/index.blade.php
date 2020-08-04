@@ -46,6 +46,7 @@
                                 {{--                                <th>اعلى سعر</th>--}}
                                 {{--                                <th>عدد الغرف</th>--}}
                                 <th>حالة العقار</th>
+                                <th>توفر العقار</th>
                                 {{--                                <th>وصف العقار</th>--}}
                                 {{--                                <th>العنوان</th>--}}
                                 <th>المدينة</th>
@@ -71,7 +72,7 @@
                                             {{'شاليه'}}
                                         @endif                                    </td>
                                     <td>{{$allProperties->state ==0 ? 'ايجار' : 'بيع'}}</td>
-
+                                    <td>{{$allProperties->status ==0 ? ' متاح' : 'غير متاح'}}</td>
                                     <td> @if($allProperties->city==0)
                                             {{'غزة'}}
                                         @elseif($allProperties->city==1)

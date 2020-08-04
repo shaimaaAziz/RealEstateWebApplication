@@ -35,8 +35,8 @@ class PropertyController extends Controller
         
     public function index()
     {
-        $pro= Property::all();
-         $property  = $pro->where('status' , 0);
+        $property= Property::all();
+        //  $property  = $pro->where('status' , 0);
 //        $city=cities::all();
 //        $type=type::all();
 
@@ -179,11 +179,6 @@ class PropertyController extends Controller
             
         ]);
 
-//        $input = $request->all();
-//        $property->fill($input)->save();
-
-        // $photoName = $request->file('image')->getClientOriginalName();
-        // $request->file('image')->storeAs('public/images',$photoName);
         if($request->hasFile('image')) {
             //add the new photo
             $image = $request->file('image');
@@ -197,8 +192,6 @@ class PropertyController extends Controller
             Storage::delete( $oldFileName);
         }
 
-//        $property = Property::find($id);
-//        $property->type= $type->name;
         $property->type= $request->type;
         $property->price= $request->price;
         $property->roomNumbers= $request->roomNumbers;
@@ -208,8 +201,7 @@ class PropertyController extends Controller
         $property->street =$request->street;
         $property->city =$request->city;
         $property->area =$request->area;
-
-
+        $property->status =$request->status;
 ////
             // $oldFileName = $property->image;
             // $property->image = $photoName;            

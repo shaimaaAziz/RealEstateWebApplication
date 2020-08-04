@@ -158,7 +158,7 @@ class PropertyController extends Controller
             'state'=>'required',
             'description'=>'required',
             'propertyPeriod'=>'required',
-            'image'=>'required',
+//            'image'=>'required',
             'area'=>'required',
         ]);
 

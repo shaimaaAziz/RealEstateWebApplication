@@ -79,11 +79,11 @@
         {!! Form::label('image',' الصورة الشخصية',['class' => 'control-label'] )!!}
         {{Form::file('image')}}
 
-        @error('image')
-        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-        @enderror
+{{--        @error('image')--}}
+{{--        <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--        @enderror--}}
     </div>
 </div>
 <div class="form-group row" id="rent">

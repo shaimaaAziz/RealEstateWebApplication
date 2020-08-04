@@ -50,7 +50,7 @@
                                         @elseif($property->type==4)
                                             {{'شاليه'}}
                                         @endif</span></li>
-                                <li class="author"><span>وصف العقار:</span><span class="text">{{$property->description}}</span></li>
+                                <li class="author" style="width: 35%"><span>وصف العقار:</span><span class="text">{{$property->description}}</span></li>
                                 <li class="author"><span>مالك العقار:</span><span class="text">{{Auth::user()->firstName .' '.Auth::user()->lastName}}</span></li>
                                 <li class="author"><span>حالة العقار:</span><span class="text">{{$property->state==1 ?'ايجار' : 'بيع'}}</span></li>
                                 <li class="author"><span>العنوان:</span><span class="text">{{$property->street}}</span></li>
@@ -67,9 +67,22 @@
                                         @endif
 
                                             </span></li>
-                                <li class="author"><span>  سعر العقار : $</span><span class="text">{{$property->price}}</span></li>
-                                <li class="author"><span>عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span></li>
-                                <li class="author"><span>مساحة العقار :   </span><span class="text">{{$property->area}}</span></li>
+                                @if($property->price == null)
+                                    <li class="author" disabled>
+                                @else
+                                    <li class="author" >
+
+                                        سعر العقار: $</span><span class="text">{{$property->price}}</span>
+                                        @endif
+                                    </li>
+                                    @if($property->roomNumbers == null)
+                                        <li class="author" disabled>
+                                    @else
+                                        <li class="author" >
+                                            <span>عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span>
+                                            @endif
+                                        </li>
+                                        <li class="author"><span>مساحة العقار :   </span><span class="text">{{$property->area}}</span></li>
                                 <li class="rating"><a href="" tabindex="0"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></a></li>
 
                             </ul>

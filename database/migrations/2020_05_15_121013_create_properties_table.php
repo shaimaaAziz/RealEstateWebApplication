@@ -16,11 +16,11 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
-            $table->double('price');
-            $table->integer('roomNumbers');
+            $table->double('price')->nullable();
+            $table->integer('roomNumbers')->nullable();
             $table->integer('state');
-            $table->string('description');
-            $table->integer('propertyPeriod');
+            $table->text('description');
+            $table->integer('propertyPeriod')->nullable();
             $table->string('street');
             $table->string('image');
             $table->string('city');

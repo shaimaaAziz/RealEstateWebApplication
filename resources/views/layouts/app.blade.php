@@ -32,13 +32,26 @@
 
     {{--    <script src="js/three.min.js"></script>--}}
     {{--    <script src="js/panolens.min.js"></script>--}}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css"/>
+
+<script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uevent@2/browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+
     <style type="text/css">
-        #panorama {
+       
+        #viewer {
+      width: 52vw;
+      height: 60vh;
+  }
+   
+        /* #panorama {
             width: 100%;
             height:300px;
             background-color: grey;
             margin: 50px auto;
-        }
+        } */
     </style>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <!-- CSRF Token --> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">

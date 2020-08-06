@@ -86,21 +86,21 @@
                     @else
                         <li class="author" >
 
-                            سعر العقار: $</span><span class="text">{{$property->price}}</span>
+                            <span id="property"> سعر العقار: $ </span><span class="text">{{$property->price}}</span>
                             @endif
                         </li><br />
                         @if($property->roomNumbers == null)
                             <li class="author" disabled>
                         @else
                             <li class="author" >
-                                <span>عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span>
+                                <span id="property">عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span>
                                 @endif
                             </li><br /><li ><span  id="property">مساحة العقار :   </span><span class="text">{{$property->area}}</span></li><br />
                    <br>
                     <li ><span  id="mapcolor"> موقع العقار على الخريطة</span></li>
                     <div id="map"> </div>
                     <li ><span  id="mapcolor"> صورة العقار</span></li>
-                    <div id="panorama"></div>
+                    <div id="viewer"></div>
                 </ul>
             </div>
         </div>
@@ -134,8 +134,14 @@
 
    }
   </script>
+<script>
+var viewer = new PhotoSphereViewer.Viewer({
+    container: document.querySelector('#viewer'),
+    panorama: '{{asset('propertyImages/'.$property->image)}}',
+});
+</script>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+{{-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8EKP73TK6UVkBWNOeRcyQDOvDzvAUla4&callback=initMap">
@@ -173,7 +179,7 @@
                 "autoRotate": -2,
                 "title": value
             });
-        }
-    </script>
+        } --}}
+    
 
 @endsection

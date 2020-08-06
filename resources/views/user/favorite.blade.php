@@ -43,9 +43,10 @@
     </style>
 @endpush
 @section('content')
-    <div class="  row profile">
-        <div class="col-lg-12">
-            <div class="  profile-content">
+<div class="container">
+    <div class="row profile">
+        <div class="col-lg-9">
+            <div class="profile-content">
                 @if( count($property) > 0)
                     @foreach($property as $key => $properties)
                         @if($key % 3 == 0 && $key!= 0 )
@@ -54,7 +55,8 @@
                         <div class="col-lg-4 pull-right">
                             <div class="productbox">
 {{--                                <img src="http://lorempixel.com/468/258" class="img-responsive">--}}
-                                <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive">
+                                <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive" 
+                                style="height: 150px; width: 210px;">
 
                                 <div class="producttitle">{{ $properties->type }}</div>
 
@@ -128,9 +130,10 @@
 
 
             </div>
+            <div> <a href="{{ route('personalPage.index') }}"style="margin: 25px" class="btn btn-success ">رجوع</a></div>
+
         </div>
     </div>
-    <div> <a href="{{ route('personalPage.index') }}"style="margin: 25px" class="btn btn-success ">رجوع</a></div>
-
 </div>
+
 @endsection

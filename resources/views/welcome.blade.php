@@ -112,7 +112,7 @@
                             @endif
                             <div class="col-lg-4 pull-right">
                                 <div class="productbox">
-                                    <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive">
+                                    <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive" style="height: 150px">
 
                                     <div class="producttitle">
                                         @if($properties->type == 0 )  فيلا

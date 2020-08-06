@@ -64,7 +64,7 @@
                             @elseif($property->type==4)
                                 {{'شاليه'}}
                             @endif</span></li><br />
-                    <li style="width: 45%"><span id="property">وصف العقار : </span><span class="text">{{$property->description}}</span></li><br />
+                    <li style="width: 50%"><span id="property">وصف العقار : </span><span class="text">{{$property->description}}</span></li><br />
                     <li ><span id="property">حالة العقار : </span><span class="text">{{$property->state==1 ?'ايجار' : 'بيع'}}</span></li><br />
                     <li ><span id="property">العنوان : </span><span class="text">{{$property->street}}</span></li><br />
                     <li ><span id="property"> المدينة : </span><span class="text">
@@ -80,23 +80,25 @@
                             @endif
 
                                 </span></li><br />
-{{--                    <li ><span id="property"> أدنى سعر: $</span><span class="text">{{$property->minPrice}}</span></li><br />--}}
                     @if($property->price == null)
-                        <li class="author" disabled>
+                        <li disabled>
                     @else
-                        <li class="author" >
+                        <li>
 
-                            <span id="property"> سعر العقار: $ </span><span class="text">{{$property->price}}</span>
-                            @endif
+                            <span id="property"> سعر العقار: </span><span class="text">{{$property->price}}$</span>
                         </li><br />
-                        @if($property->roomNumbers == null)
-                            <li class="author" disabled>
-                        @else
-                            <li class="author" >
-                                <span id="property">عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span>
-                                @endif
-                            </li><br /><li ><span  id="property">مساحة العقار :   </span><span class="text">{{$property->area}}</span></li><br />
-                   <br>
+                    @endif
+
+                    @if($property->roomNumbers == null)
+                        <li disabled>
+                    @else
+                        <li >
+                            <span id="property">عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span>
+                        </li><br />
+
+                        @endif
+                        <li ><span  id="property">مساحة العقار : </span><span class="text">{{$property->area}}</span></li><br />
+
                     <li ><span  id="mapcolor"> موقع العقار على الخريطة</span></li>
                     <div id="map"> </div>
                     <li ><span  id="mapcolor"> صورة العقار</span></li>

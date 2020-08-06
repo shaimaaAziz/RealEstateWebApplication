@@ -55,7 +55,7 @@
                                         @endif</span></li>
                                 <li class="author"><span class="showSize">وصف العقار:</span><span class="text" >{{$property->description}}</span></li>
                                 <li class="author"><span class="showSize">مالك العقار:</span><span class="text">{{Auth::user()->firstName .' '.Auth::user()->lastName}}</span></li>
-                                <li class="author"><span class="showSize">حالة العقار:</span><span class="text">{{$property->state==1 ?'ايجار' : 'بيع'}}</span></li>
+                                <li class="author"><span class="showSize">حالة العقار:</span><span class="text">{{$property->state==0 ?'ايجار' : 'بيع'}}</span></li>
                                 <li class="author"><span class="showSize">العنوان:</span><span class="text">{{$property->street}}</span></li>
                                 <li class="author"><span class="showSize"> المدينة:</span><span class="text">
 
@@ -76,15 +76,17 @@
                                     <li class="author" >
 
                                         <span class="showSize"> سعر العقار: $</span><span class="text">{{$property->price}}</span>
-                                        @endif
                                     </li>
+
+                                @endif
                                     @if($property->roomNumbers == null)
                                         <li class="author" disabled>
                                     @else
                                         <li class="author" >
                                             <span class="showSize">عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span>
-                                            @endif
                                         </li>
+
+                                            @endif
                                         <li class="author"><span class="showSize">مساحة العقار :   </span><span class="text">{{$property->area}}</span></li>
 
                             </ul>

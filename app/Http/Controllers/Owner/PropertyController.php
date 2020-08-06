@@ -51,13 +51,13 @@ class PropertyController extends Controller
     {
         $this->validate($request,[
             'type'=>'required',
-            'price'=>'required',
-            'roomNumbers'=>'required',
+//            'price'=>'required',
+//            'roomNumbers'=>'required',
             'street'=>'required',
             'city'=>'required',
             'state'=>'required',
             'description'=>'required',
-            'propertyPeriod'=>'required',
+//            'propertyPeriod'=>'required',
             'image'=>'required',
             'area'=>'required',
 
@@ -151,13 +151,13 @@ class PropertyController extends Controller
 
         $this->validate($request, [
             'type'=>'required',
-            'price'=>'required',
-            'roomNumbers'=>'required',
+//            'price'=>'required',
+//            'roomNumbers'=>'required',
             'street'=>'required',
             'city'=>'required',
             'state'=>'required',
             'description'=>'required',
-            'propertyPeriod'=>'required',
+//            'propertyPeriod'=>'required',
 //            'image'=>'required',
             'area'=>'required',
         ]);

@@ -52,7 +52,7 @@
                         <div class="col-md-12">
                             <label>نوع العقار</label>
                             <br>
-                            {!! Form::select('type',['0'=>'فيلا' , '1'=>'ارض', '2'=>'شقة', '3'=>'بيت', '4'=>'شاليه'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}
+                            {!! Form::select('type',['0'=>'فيلا' , '1'=>'ارض', '2'=>'شقة', '3'=>'بيت', '4'=>'شاليه'] ,null , ['class'=>'form-control','id' =>'type'],['optional' => 'Select a city...'] )!!}
 
                             @error('type')
                             <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" id="roomNo">
                         <div class="col-md-12">
                             <label>عدد الغرف</label>
 
@@ -90,7 +90,7 @@
                         <div class="col-md-12">
                             <label>حالة العقار </label>
 
-                            {!! Form::select('state',['0'=>'ايجار' , '1'=>'بيع'] ,null , ['class'=>'form-control'],['optional' => 'Select a city...'] )!!}
+                            {!! Form::select('state',['0'=>'ايجار' , '1'=>'بيع'] ,null , ['class'=>'form-control','id'=>'state'],['optional' => 'Select a city...'] )!!}
 
                             @error('state')
                             <span class="invalid-feedback" role="alert">
@@ -130,8 +130,8 @@
                             {{Form::label('image', 'صورة العقار',['class' => 'control-label'])}}
                             {{Form::file('image')}}
                             <br>
-                            <div id="panorama"></div>
-
+                            <li ><span  id="mapcolor"> صورة العقار</span></li>
+                            <div id="viewer"></div>
                             <br>
 
 {{--                            @error('image')--}}
@@ -141,7 +141,7 @@
 {{--                            @enderror--}}
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" id="rent">
                         <div class="col-md-12">
                             <label>مدة العقار</label>
 
@@ -208,39 +208,66 @@
     </section>
 @endsection
 @section('footer')
-    <script type="text/javascript">
-        var valueSelect = "Level 1";
-        // var setImage = "https://pannellum.org/images/alma.jpg";
-        var setImage = "{{asset('propertyImages/'.$property->image)}}";
-
-
-        $('#select-level').on('change', function() {
-            valueSelect = this.value;
-
-            // change your image base on value dropdown
-
-            setImage = "{{asset('propertyImages/'.$property->image)}}";
-
-            // and so on
-
-            // remove the pannellum
-            $('#panorama').html('');
-            // call the function
-            showPannellum(setImage, valueSelect);
+    <script>
+        var viewer = new PhotoSphereViewer.Viewer({
+            container: document.querySelector('#viewer'),
+            panorama: '{{asset('propertyImages/'.$property->image)}}',
         });
-
-        // call the image for first time
-        showPannellum(setImage, valueSelect);
-
-        // function show pannellum
-        function showPannellum(image, value){
-            pannellum.viewer('panorama', {
-                "type": "equirectangular",
-                "panorama": image,
-                "autoLoad": true,
-                "autoRotate": -2,
-                "title": value
-            });
-        }
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#rent").hide();
+            $("#roomNo").hide();
+
+            $('#state').click(function ( ) {
+                if( $(this).val() == 0) {
+                    $("#rent").show();
+                }else if( $(this).val() == 1) {
+                    $("#rent").hide();
+                }
+            });
+            $('#type').click(function ( ) {
+                if( $(this).val() == 1) {
+                    $("#roomNo").hide();
+                }else
+                    $("#roomNo").show();
+            });
+        });
+    </script>
+{{--    <script type="text/javascript">--}}
+{{--        var valueSelect = "Level 1";--}}
+{{--        // var setImage = "https://pannellum.org/images/alma.jpg";--}}
+{{--        var setImage = "{{asset('propertyImages/'.$property->image)}}";--}}
+
+
+{{--        $('#select-level').on('change', function() {--}}
+{{--            valueSelect = this.value;--}}
+
+{{--            // change your image base on value dropdown--}}
+
+{{--            setImage = "{{asset('propertyImages/'.$property->image)}}";--}}
+
+{{--            // and so on--}}
+
+{{--            // remove the pannellum--}}
+{{--            $('#panorama').html('');--}}
+{{--            // call the function--}}
+{{--            showPannellum(setImage, valueSelect);--}}
+{{--        });--}}
+
+{{--        // call the image for first time--}}
+{{--        showPannellum(setImage, valueSelect);--}}
+
+{{--        // function show pannellum--}}
+{{--        function showPannellum(image, value){--}}
+{{--            pannellum.viewer('panorama', {--}}
+{{--                "type": "equirectangular",--}}
+{{--                "panorama": image,--}}
+{{--                "autoLoad": true,--}}
+{{--                "autoRotate": -2,--}}
+{{--                "title": value--}}
+{{--            });--}}
+{{--        }--}}
+{{--    </script>--}}
 @endsection

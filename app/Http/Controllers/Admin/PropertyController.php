@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\mapLocation;
 use toastr;
-use Image;
-use Storage;
 use App\City;
 use App\type;
 use App\User;
 use App\Property;
-
+use App\mapLocation;
 use App\Http\Requests;
 use Illuminate\Support\Arr;
+
 use Illuminate\Http\Request;
 use yajra\Datatables\Datables;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Session\Session;
 
@@ -55,9 +56,7 @@ class PropertyController extends Controller
         $users =  User::whereHas('roles', function ($query) {
             $query->where('name', '!=', 'أدمن');
         })->get();
-//        $type=type::all();
 
-//        $city=cities::lists('name', 'id');
 
         return view('admin/property/add',compact('property','users'));
     }
@@ -86,7 +85,8 @@ class PropertyController extends Controller
         $mapLocation->create([
             'property_id'=>$request->property_id,
             'Longitude'=>$request->Longitude,
-            'Latitude'=>$request->Latitude
+            'Latitude'=>$request->Latitude,
+
         ]);
 
         $property = new Property();
@@ -135,8 +135,10 @@ class PropertyController extends Controller
     public function show($id)
     {
         $property= Property::find($id);
-
-        return view('admin/property/show',compact('property'));    }
+        $mapLocation= DB::table('map_locations')->where('property_id' ,$id)->first();
+// dd($mapLocation);
+        return view('admin/property/show',compact('property','mapLocation'));   
+     }
 
     /**
      * Show the form for editing the specified resource.

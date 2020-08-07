@@ -112,7 +112,8 @@
                             @endif
                             <div class="col-lg-4 pull-right">
                                 <div class="productbox">
-                                    <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive" style="height: 150px">
+                                    <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive" 
+                                    style="height: 150px; width: 200px">
 
                                     <div class="producttitle">
                                         @if($properties->type == 0 )  فيلا
@@ -126,11 +127,17 @@
                                     <p class="text-justify"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{Str::limit($properties->description, 80)}}</p>
 
                                     <div style="margin: 10px 0;">
+                                        @if($properties->roomNumbers!= null)
+
                                         <div style="display: inline-block;width: 49%;"><i class="fa fa-bed" aria-hidden="true"></i> {{ $properties->roomNumbers }} غرف</div>
+                                        @endif
                                         <div style="display: inline-block;width: 49%;"><i class="fa fa-object-group" aria-hidden="true"></i> {{ $properties->area }} متر</div>
                                     </div>
-
+                                    @if($properties->price >0)
                                     <div class="pricetext"><i class="fa fa-usd" aria-hidden="true"></i> {{$properties->price}}</div>
+                                    @else
+                                    <br>
+                                    @endif
                                     <div class="productprice">
                                         <div class="">
                                         <form method="get" action="{{ route('showMap') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">

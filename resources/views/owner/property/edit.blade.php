@@ -4,6 +4,9 @@
 @endsection
 @section('content')
 
+<style>
+   
+</style>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -228,7 +231,7 @@
                 }
             });
             $('#type').click(function ( ) {
-                if( $(this).val() == 1) {
+                if( $(this).val() == 1 || $(this).val() == 4) {
                     $("#roomNo").hide();
                 }else
                     $("#roomNo").show();

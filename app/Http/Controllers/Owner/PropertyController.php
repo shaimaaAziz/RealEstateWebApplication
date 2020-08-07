@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Owner;
 
 use toastr;
-use Image;
-use Storage;
 use App\User;
 use App\Property;
+use App\mapLocation;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use yajra\Datatables\Datables;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\mapLocation;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class PropertyController extends Controller
 {
@@ -72,7 +73,8 @@ class PropertyController extends Controller
 
             'property_id'=>$request->property_id,
             'Longitude'=>$request->Longitude,
-            'Latitude'=>$request->Latitude
+            'Latitude'=>$request->Latitude,
+
 
         ]);
         $property->type= $request->type;
@@ -122,8 +124,9 @@ class PropertyController extends Controller
     public function show($id)
     {
         $property= Property::find($id);
+        $mapLocation= DB::table('map_locations')->where('property_id' ,$id)->first();
 
-        return view('owner/property/show',compact('property'));    }
+        return view('owner/property/show',compact('property','mapLocation'));    }
 
     /**
      * Show the form for editing the specified resource.

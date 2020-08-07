@@ -94,4 +94,6 @@ if ( $property = $bu->where('status' , 0)) {
     $property  = DB::table('properties')->where('id' ,$request->property_id)->first();
        return view('showMap',compact('mapLocation','property'));
     }
+
+    
 }

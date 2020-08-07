@@ -7,8 +7,13 @@
 @endsection
 
 @section('header')
-
-
+<style>
+#panorama {
+    width: 100%;
+    height: 400px;
+    margin: 50px auto;
+}
+</style>
 @endsection
 
 @section('content')
@@ -280,7 +285,7 @@
                 }
             });
             $('#type').click(function ( ) {
-                if( $(this).val() == 1) {
+                if( $(this).val() == 1 || $(this).val() == 4) {
                 $("#roomNo").hide();
                 }else
                 $("#roomNo").show();

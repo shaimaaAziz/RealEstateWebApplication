@@ -39,23 +39,23 @@ class reservationTableSeeder extends Seeder
             'owner_id' => '5'
            
         ]);
-        DB::table('reservations')->insert([
-            'id'=> '103',
-            'property_id' => '4',
-            'user_id' =>'3',
-            'state' => 'بيع',
-            'reservation' => '0',
-            'owner_id' => '5'
+        // DB::table('reservations')->insert([
+        //     'id'=> '103',
+        //     'property_id' => '4',
+        //     'user_id' =>'3',
+        //     'state' => 'بيع',
+        //     'reservation' => '0',
+        //     'owner_id' => '5'
            
-        ]);
-        DB::table('reservations')->insert([
-            'id'=> '104',
-            'property_id' => '5',
-            'user_id' =>'3',
-            'state' => 'بيع',
-            'reservation' => '0',
-            'owner_id' => '5'
+        // ]);
+        // DB::table('reservations')->insert([
+        //     'id'=> '104',
+        //     'property_id' => '5',
+        //     'user_id' =>'3',
+        //     'state' => 'بيع',
+        //     'reservation' => '0',
+        //     'owner_id' => '5'
            
-        ]);
+        // ]);
     }
 }

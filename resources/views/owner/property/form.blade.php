@@ -178,7 +178,7 @@
             }
         });
         $('#type').click(function ( ) {
-            if( $(this).val() == 1) {
+            if( $(this).val() == 1 || $(this).val() == 4) {
             $("#roomNo").hide();
             }else
             $("#roomNo").show();

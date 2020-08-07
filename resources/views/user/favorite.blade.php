@@ -43,33 +43,47 @@
     </style>
 @endpush
 @section('content')
-<div class="container">
-    <div class="row profile">
-        <div class="col-lg-9">
-            <div class="profile-content">
+
+    <div class="row"  >
+        <div class="col-lg-12">
+            <div class=""  >
                 @if( count($property) > 0)
                     @foreach($property as $key => $properties)
                         @if($key % 3 == 0 && $key!= 0 )
                             <div class="clearfix"></div>
                         @endif
                         <div class="col-lg-4 pull-right">
-                            <div class="productbox">
+                            <div class="productbox" >
 {{--                                <img src="http://lorempixel.com/468/258" class="img-responsive">--}}
-                                <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive" 
-                                style="height: 150px; width: 210px;">
+                            <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive" 
+                            style="height: 150px; width: 300px;" >
 
-                                <div class="producttitle">{{ $properties->type }}</div>
-
-                                <p class="text-justify"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{Str::limit($properties->description, 80)}}</p>
-
-                                <div style="margin: 10px 0;">
-                                    <div style="display: inline-block;width: 49%;"><i class="fa fa-bed" aria-hidden="true"></i> {{ $properties->roomNumbers }} غرف</div>
-                                    <div style="display: inline-block;width: 49%;"><i class="fa fa-object-group" aria-hidden="true"></i> {{ $properties->area }} متر</div>
+                                <div class="producttitle">
+                                    @if($properties->type == 0 )  فيلا
+                                    @elseif($properties->type == 1 ) أرض 
+                                    @elseif($properties->type == 2 ) شقة
+                                    @elseif($properties->type == 3 ) بيت
+                                    @elseif($properties->type == 4 ) شاليه
+                                    @endif
                                 </div>
 
-                                <div class="pricetext"><i class="fa fa-usd" aria-hidden="true"></i> {{$properties->maxPrice}}</div>
+                                <p class="text-justify" ><i class="fa fa-location-arrow" aria-hidden="true"></i> {{Str::limit($properties->description, 80)}}</p>
+
+                                <div style="margin: 10px 0;">
+                                    @if($properties->roomNumbers!= null)
+
+                                    <div style="display: inline-block;width: 49%;"><i class="fa fa-bed" aria-hidden="true"></i> {{ $properties->roomNumbers }} غرف</div>
+                                    @endif
+                                    <div style="display: inline-block;width: 49%;"><i class="fa fa-object-group" aria-hidden="true"></i> {{ $properties->area }} متر</div>
+                                </div>
+                                @if($properties->price >0)
+                                <div class="pricetext"><i class="fa fa-usd" aria-hidden="true"></i> {{$properties->price}}</div>
+                                @else
+                                <br>
+                                @endif
+
                                 <div class="productprice">
-                                    <ul class="post-footer" style="list-style: none; padding:0px">
+                                <ul class="post-footer" style="list-style: none; padding:0px">
                                         <li>
                                             @if(!(!empty($properties->reservation->property_id )))
                                             <form action="{{ route('properties.reservation') }}" method="POST">
@@ -133,7 +147,7 @@
             <div> <a href="{{ route('personalPage.index') }}"style="margin: 25px" class="btn btn-success ">رجوع</a></div>
 
         </div>
-    </div>
+
 </div>
 
 @endsection

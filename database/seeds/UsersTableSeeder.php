@@ -22,26 +22,26 @@ class UsersTableSeeder extends Seeder
         $userRole =Role::where('name','مستخدم')->first();
 
         $admin = User::create([
-            'firstName' => 'shaimaa',
-            'middleName' => 'aziz',
-            'lastName' => 'abu Harb',
+            'firstName' => 'شيماء',
+            'middleName' => 'عبد العزيز',
+            'lastName' => 'أبو حرب',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'),
             'mobile' =>'059912345',
             'street' =>'nasser',
             'city' => 'Gaza',
-            'image' =>'1595425812.jpg'
+            'image' =>'1.jpg'
         ]);
         $owner1 = User::create([
             'firstName' => 'عبد العزيز',
-            'middleName' => 'عبد العزيز',
+            'middleName' => 'محمد',
             'lastName' => 'أبو حرب',
             'email' => 'azizmh66@hotmail.com',
             'password' => bcrypt('admin'),
             'mobile' =>'0599866351',
             'street' =>'النصر',
             'city' => 'غزة',
-            'image' => '1.png'
+            'image' => '1.jpg'
         ]);
 
         $owner2 = User::create([
@@ -53,51 +53,51 @@ class UsersTableSeeder extends Seeder
             'mobile' =>'0599893457',
             'street' =>'النصر',
             'city' => 'غزة',
-            'image' => '1.png'
+            'image' => '1.jpg'
         ]);
         $owner3 = User::create([
-            'firstName' => 'Abo Ahmed',
-            'middleName' => 'Ahmed',
-            'lastName' => 'Hamdan',
+            'firstName' => ' محمد',
+            'middleName' => 'أحمد',
+            'lastName' => 'حمدان',
             'email' => 'owner2@gmail.com',
             'password' => bcrypt('admin'),
             'mobile' =>'0592230728',
             'street' =>'النصر',
             'city' => 'غزة',
-            'image' =>'1.png'
+            'image' =>'1.jpg'
         ]);
         $owner4 = User::create([
-            'firstName' => 'Ahmed  ',
-            'middleName' => 'Ahmed',
-            'lastName' => 'Swilem',
+            'firstName' => 'محمد  ',
+            'middleName' => 'أحمد',
+            'lastName' => 'سليم',
             'email' => 'owner3@gmail.com',
             'password' => bcrypt('admin'),
             'mobile' =>'0597106483',
             'street' =>'تل الهوا',
             'city' => 'غزة',
-            'image' => '1.png'
+            'image' => '1.jpg'
         ]);
         $owner5 = User::create([
-            'firstName' => 'Hijjo Noor',
-            'middleName' => 'Noor',
-            'lastName' => 'Noor',
+            'firstName' => ' محمد',
+            'middleName' => 'نور',
+            'lastName' => 'نور',
             'email' => 'owner4@gmail.com',
             'password' => bcrypt('admin'),
             'mobile' =>'0598152153',
             'street' =>'النصر',
             'city' => 'غزة',
-            'image' =>'1.png'
+            'image' =>'1.jpg'
         ]);
         $owner6 = User::create([
-            'firstName' => 'Ramy ',
-            'middleName' => 'Ahmed',
-            'lastName' => 'Mahfouz',
+            'firstName' => 'رامي ',
+            'middleName' => 'أحمد',
+            'lastName' => 'محفوظ',
             'email' => 'owner5@gmail.com',
             'password' => bcrypt('admin'),
             'mobile' =>'0595261177',
             'street' =>'تل الهوا',
             'city' => 'غزة',
-            'image' => '1.png'
+            'image' => '1.jpg'
         ]);
         $owner7 = User::create([
             'firstName' => 'عثمان',
@@ -108,18 +108,18 @@ class UsersTableSeeder extends Seeder
             'mobile' =>'0598152153',
             'street' =>'النصر',
             'city' => 'غزة',
-            'image' =>'1.png'
+            'image' =>'1.jpg'
         ]);
         $owner8 = User::create([
-            'firstName' => 'Mohammad  ',
-            'middleName' => 'Mohammad',
-            'lastName' => 'Arafat',
+            'firstName' => 'محمد',
+            'middleName' => 'محمد',
+            'lastName' => 'عرفات',
             'email' => 'owner7@gmail.com',
             'password' => bcrypt('admin'),
             'mobile' =>'0594133303',
             'street' =>'تل الهوا',
             'city' => 'غزة',
-            'image' => '1.png'
+            'image' => '1.jpg'
         ]);
         $owner9 = User::create([
             'firstName' => 'كريم ',
@@ -130,7 +130,7 @@ class UsersTableSeeder extends Seeder
             'mobile' =>'0599396942',
             'street' =>'النصر',
             'city' => 'غزة',
-            'image' =>'1.png'
+            'image' =>'1.jpg'
         ]);
         $owner10 = User::create([
             'firstName' => 'ابو عيسى',
@@ -141,7 +141,7 @@ class UsersTableSeeder extends Seeder
             'mobile' =>'0599760017',
             'street' =>'تل الهوا',
             'city' => 'غزة',
-            'image' => '1.png'
+            'image' => '1.jpg'
         ]);
         $user = User::create([
             'firstName' => 'سندس',
@@ -152,7 +152,7 @@ class UsersTableSeeder extends Seeder
             'mobile' =>'0599012345',
             'street' =>'النصر',
             'city' => 'غزة',
-            'image' =>'1.png'
+            'image' =>'1.jpg'
         ]);
         $user2 = User::create([
             'firstName' => 'سمر',
@@ -163,7 +163,7 @@ class UsersTableSeeder extends Seeder
             'mobile' =>'0592095768',
             'street' =>'اخر الشمالي',
             'city' => 'غزة',
-            'image' => '1595430914.jpg'
+            'image' => '1.jpg'
 
         ]);
 

@@ -45,7 +45,7 @@ class mapTableSeeder extends Seeder
             'id'=> '5',
             'Latitude' => ' 31.501479761333698',
             'Longitude' =>'34.46636478406145',
-            'property_id' => '5',
+            'property_id' => '3',
         ]);
         DB::table('map_locations')->insert([
             'id'=> '6',

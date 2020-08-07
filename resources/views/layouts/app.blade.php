@@ -30,9 +30,6 @@
     <link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.pannellum.org/2.2/pannellum.js"></script>
 
-    {{--    <script src="js/three.min.js"></script>--}}
-    {{--    <script src="js/panolens.min.js"></script>--}}
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css"/>
 
 <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
@@ -44,21 +41,19 @@
         #viewer {
       width: 52vw;
       height: 60vh;
-  }
+        }
    
-        /* #panorama {
+        #panorama {
             width: 100%;
             height:300px;
             background-color: grey;
             margin: 50px auto;
-        } */
+        } 
     </style>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <!-- CSRF Token --> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @toastr_css
     <title>       موقع عقارات
-
-        {{-- {{ config('app.name', 'موقع عقارات') }} --}}
 
     @yield('title')</title>
     @stack('css')
@@ -101,15 +96,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a style="text-decoration: none;" class=" dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{__('تسجيل خروج') }}                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-
+                           
                             @can('manage-users')
                             <a style="text-decoration: none; " class=" dropdown-item" href="/admin/AdminDashboard"> الصفحة الشخصية</a>
                             @endcan
@@ -119,6 +106,16 @@
                             @can('owner')
                             <a style="text-decoration: none; " class="dropdown-item" href="/owner/Ownerpanel/users"> الصفحة الشخصية</a>
                             @endcan
+
+                            <a style="text-decoration: none;" class=" dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                             {{__('تسجيل خروج') }}                            </a>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                             @csrf
+                         </form>
+
                         </div>
 
                     </li>

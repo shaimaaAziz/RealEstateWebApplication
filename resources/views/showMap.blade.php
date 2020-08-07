@@ -65,7 +65,7 @@
                                 {{'شاليه'}}
                             @endif</span></li><br />
                     <li style="width: 50%"><span id="property">وصف العقار : </span><span class="text">{{$property->description}}</span></li><br />
-                    <li ><span id="property">حالة العقار : </span><span class="text">{{$property->state==1 ?'ايجار' : 'بيع'}}</span></li><br />
+                    <li ><span id="property">حالة العقار : </span><span class="text">{{$property->state==0 ?'ايجار' : 'بيع'}}</span></li><br />
                     <li ><span id="property">العنوان : </span><span class="text">{{$property->street}}</span></li><br />
                     <li ><span id="property"> المدينة : </span><span class="text">
 
@@ -80,18 +80,15 @@
                             @endif
 
                                 </span></li><br />
-                    @if($property->price == null)
-                        <li disabled>
-                    @else
+                    @if($property->price != null)
+                      
                         <li>
-
                             <span id="property"> سعر العقار: </span><span class="text">{{$property->price}}$</span>
                         </li><br />
                     @endif
 
-                    @if($property->roomNumbers == null)
-                        <li disabled>
-                    @else
+                    @if($property->roomNumbers != null)
+                      
                         <li >
                             <span id="property">عدد الغرف :   </span><span class="text">{{$property->roomNumbers}}</span>
                         </li><br />
@@ -120,7 +117,7 @@
 
 <script>
     function initMap() {
-
+     
     //   var myLatlng = {lat: $mapLocation->Latitude , lng: $mapLocation->Longitude};
     var latitude ={{$mapLocation->Latitude }};
     var longitude ={{$mapLocation->Longitude }};
@@ -136,19 +133,21 @@
 
    }
   </script>
-<script>
-var viewer = new PhotoSphereViewer.Viewer({
-    container: document.querySelector('#viewer'),
-    panorama: '{{asset('propertyImages/'.$property->image)}}',
-});
-</script>
 
-{{-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8EKP73TK6UVkBWNOeRcyQDOvDzvAUla4&callback=initMap">
         </script>
-    <script type="text/javascript">
+        
+<script>
+    var viewer = new PhotoSphereViewer.Viewer({
+        container: document.querySelector('#viewer'),
+        panorama: '{{asset('propertyImages/'.$property->image)}}',
+    });
+    </script>
+    {{-- <script type="text/javascript">
         var valueSelect = "Level 1";
         // var setImage = "https://pannellum.org/images/alma.jpg";
         var setImage = "{{asset('propertyImages/'.$property->image)}}";
@@ -181,7 +180,7 @@ var viewer = new PhotoSphereViewer.Viewer({
                 "autoRotate": -2,
                 "title": value
             });
-        } --}}
+        } --}} 
     
 
 @endsection

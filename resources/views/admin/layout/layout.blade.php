@@ -55,14 +55,20 @@ $countMessage= ContactController::countMessage();
     
 
     <style type="text/css">
-        /* #panorama {
+        #panorama {
             width: 600px;
             height: 400px;
             margin: 50px auto;
-        } */
+        }
         #viewer {
       width: 30vw;
       height: 60vh;
+  }
+
+  #map {
+        width: 75%;
+        height:400px;
+        background-color: grey;
   }
     </style>
    

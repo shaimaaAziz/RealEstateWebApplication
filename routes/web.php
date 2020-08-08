@@ -95,6 +95,7 @@ Route::group(['middleware'=>['can:owner'] , 'namespace' => 'Owner', 'prefix' => 
     Route::post('/Ownerpanel/reservations/{id}','ReservationController@agreeOnReservations')->name('reservation');
     Route::resource('/reservationsOwner', 'ReservationController'); // this just to excute the destroy of property
    // Route::get('reservations/{id}','ReservationController@destroy')->name('destroyProperty');
+   Route::get('/Ownerpanel/favorite','PropertyController@favorite');
 
     
 

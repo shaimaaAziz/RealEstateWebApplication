@@ -1,4 +1,4 @@
-@extends('user.layout')
+@extends('owner.layout')
 
 @section('title')
 المفضلة
@@ -54,6 +54,7 @@
                         @endif
                         <div class="col-lg-4 pull-right">
                             <div class="productbox" >
+{{--                                <img src="http://lorempixel.com/468/258" class="img-responsive">--}}
                             <img src="{{asset('propertyImages/'.$properties->image)}}" class="img-responsive" 
                             style="height: 150px; width: 300px;" >
 
@@ -66,7 +67,8 @@
                                     @endif
                                 </div>
 
-                                <p class="text-justify" ><i class="fa fa-location-arrow" aria-hidden="true"></i> {{Str::limit($properties->description, 80)}}</p>
+                                <p class="text-justify" style=" width: 290px; ">
+                                    <i class="fa fa-location-arrow" aria-hidden="true"></i> {{Str::limit($properties->description, 80)}}</p>
 
                                 <div style="margin: 10px 0;">
                                     @if($properties->roomNumbers!= null)
@@ -84,18 +86,7 @@
                                 <div class="productprice">
                                 <ul class="post-footer" style="list-style: none; padding:0px">
                                         <li>
-                                            @if(!(!empty($properties->reservation->property_id )))
-                                            <form action="{{ route('properties.reservation') }}" method="POST">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="id" required="" value="{{ $properties->id }}">
-                                                <button class="  glyphicon glyphicon-shopping-cart" style="float:left; text-decoration: none;">
-                                                @if ($properties->state ==0)  تأجير
-                                                @elseif($properties->state ==1) بيع
-                                                @endif
-                                               </button>
-                                            </form>
-
-                                           @endif
+                                      
                                                 <a href="javascript:void(0);" style="text-decoration: none;"
                                                 onclick="document.getElementById('favorite-form-{{ $properties->id }}')
                                                 .submit();"  class="{{ !Auth::user()->favorite_properties->
@@ -143,7 +134,7 @@
 
 
             </div>
-            <div> <a href="{{ route('personalPage.index') }}"style="margin: 25px" class="btn btn-success ">رجوع</a></div>
+            <div> <a href="{{ route('users.index') }}"style="margin: 25px" class="btn btn-success ">رجوع</a></div>
 
         </div>
 

@@ -290,11 +290,27 @@
                             </li>
                             <li>
                                 <label>نوع العقار</label>
-                                {!! Form::select("type"  ,['0'=>"فيلا" , '1'=>"شاليه",'2'=>"ارض" , '3'=>"شقة",'4'=>"بيت"], null, ['class' =>'form-control']) !!}
+                                {{-- {!! Form::select("type"  ,[ '1'=>"فيلا" , '2'=>"شاليه",'3'=>"ارض" , '4'=>"شقة",'5'=>"بيت"], null, ['class' =>'form-control'] ) !!} --}}
+                                <select name="type" class="form-control">
+                                    <option value="" disabled selected>اختر نوع العقار</option>
+                                    <option value="0">فيلا</option>
+                                    <option value="1">ارض</option>
+                                    <option value="2">شقة</option>
+                                    <option value="3">بيت</option>
+                                    <option value="4">شاليه</option>
+                                </select>
+                             
                             </li>
                             <li>
                                 <label>نوع العملية</label>
-                                {!! Form::select("state" , ['0'=>"ايجار" , '1'=>"بيع"],null, ['class' =>'form-control']) !!}
+                                {{-- {!! Form::select("state" , ['1'=>"ايجار" , '2'=>"بيع"],null, ['class' =>'form-control']) !!} --}}
+                                <select name="state" class="form-control">
+                                    <option value="" disabled selected>اختر نوع العملية</option>
+                                    <option value="0">إيجار</option>
+                                    <option value="1">بيع</option>
+                                  
+                                </select>
+                             
                             </li>
                             <li>
                                 <label>مساحة العقار</label>

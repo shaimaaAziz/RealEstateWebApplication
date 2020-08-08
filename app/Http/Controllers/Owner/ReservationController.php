@@ -17,7 +17,6 @@ class ReservationController extends Controller
     public function displayReservations()
     {
         $reservations = Reservation::where('owner_id', Auth::user()->id)->get();
-        
         return view('owner/property/reservation',compact('reservations'));
    }
 

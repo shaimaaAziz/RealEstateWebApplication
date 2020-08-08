@@ -214,5 +214,16 @@ class PropertyController extends Controller
 
     }
 
+    public function favorite()
+    {
+        // $property= DB::table('property_user')->where('user_id' ,Auth::user()->id)->get();
+       $user= Auth::user()->id;
+
+        $property=  Property::whereHas('favorite_to_users' ,function($query) use ($user){
+            $query->where('user_id', $user);
+        })->get();
+       
+    return view('owner.property.favorite',compact('property'));
+    }
 }
 //            php artisan storage:link

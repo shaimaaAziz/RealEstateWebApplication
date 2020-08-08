@@ -33,7 +33,7 @@ class ReservationController extends Controller
     $lastName= $reservations->user->lastName;
     $state= $reservations->state;
     $description =$reservations->property->description;
-       $ownerId =$reservation->owner_id;
+       $ownerId =$reservations->owner_id;
        $owner = User::where('id',$ownerId)->first();
        $data = array("name"=> $firstName,"lastName"=>$lastName,"state"=>$state,"description"=>$description
    ,"ownerFirstName" => $owner->firstName, "ownerLastName" => $owner->lastName );

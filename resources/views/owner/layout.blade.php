@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
   {{-- <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script> --}}
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
   <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -80,6 +81,10 @@
           <li class="active ">  
             <a href="{{ url('/owner/Ownerpanel/reservations') }}"class = "icon ion ion-clipboard ">  الحجوزات </a></li>
       </ul>
+      <ul class="nav navbar-nav ">
+        <li class="active ">  
+          <a href="{{ url('/owner/Ownerpanel/favorite') }}"class = "glyphicon glyphicon-heart">  المفضلة </a></li>
+    </ul>
       <ul class="nav navbar-nav navbar-right">
           <li class="active"><a class="glyphicon glyphicon-home" href="/"> الرئيسية</a></li>
       </ul>

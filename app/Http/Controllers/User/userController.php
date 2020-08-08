@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Image;
-use Storage;
+use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class userController extends Controller
 {
@@ -43,14 +44,20 @@ class userController extends Controller
 
     public function favorite()
     {
-        $property  =  Property::whereHas('favorite_to_users' )->get();
+        // $property= DB::table('property_user')->where('user_id' ,Auth::user()->id)->get();
+       $user= Auth::user()->id;
+
+        $property=  Property::whereHas('favorite_to_users' ,function($query) use ($user){
+            $query->where('user_id', $user);
+        })->get();
+       
     return view('user/favorite',compact('property'));
     }
 
     public function showReservations()
     {
-        $reservations = Reservation::where('reservation',false)->get();
-        
+        $reservations = Reservation::where( 'reservation',false)->where(   'user_id', Auth::user()->id )->get();
+        // dd($reservations);
         return view('user/reservation',compact('reservations'));
    }
 

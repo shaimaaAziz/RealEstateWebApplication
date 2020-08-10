@@ -76,7 +76,7 @@
 </div>
 <div class="form-group row">
     <div class="col-md-12">
-        {!! Form::label('image',' الصورة الشخصية',['class' => 'control-label'] )!!}
+        {!! Form::label('image',' الصورة',['class' => 'control-label'] )!!}
         {{Form::file('image')}}
 
 {{--        @error('image')--}}

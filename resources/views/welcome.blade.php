@@ -348,22 +348,22 @@
                              <li>
                                  <a href="{{url('/type/0')}}">
                                     <i class="fa fa-check" aria-hidden="true"></i>
-                                   الشقق </a>
+                                    الفلل </a>
                             </li>
                             <li>
                                 <a href="{{url('/type/1')}}">
                                     <i class="fa fa-check" aria-hidden="true"></i>
-                                    الفلل</a>
+                                    أراضي</a>
                             </li>
                             <li>
                                 <a href="{{url('/type/2')}}">
                                     <i class="fa fa-check" aria-hidden="true"></i>
-                                  الشاليهات </a>
+                                  شقق </a>
                              </li>
                              <li>
-                                 <a href="{{url('/type/3')}}">
+                                 <a href="{{url('/type/4')}}">
                                     <i class="fa fa-check" aria-hidden="true"></i>
-                                    الأراضي</a>
+                                    الشاليهات</a>
                                                                 </li>
                                                             </ul>
                                                         </div>

@@ -32,7 +32,7 @@ class operationForProperty extends Controller
     }
 
     public function showByType($type , Property $bu){
-        if(in_array($type, ['0' , '1' , '2'])){
+        if(in_array($type, ['0' , '1' , '2','4'])){
             $property = $bu->where('status' , 0)->where('type' , $type)->orderBy('id' , 'desc')->paginate(15);
             return view('welcome' , compact('property'));
         }else{

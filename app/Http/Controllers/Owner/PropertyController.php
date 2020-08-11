@@ -38,7 +38,6 @@ class PropertyController extends Controller
      */
     public function create(){
         $property= Property::all();
-
         return view('owner/property/add',compact('property'));
     }
 
@@ -65,9 +64,10 @@ class PropertyController extends Controller
         ]);
 
         $property = new Property();
-        $mapLocation= new  mapLocation();
         $photoName = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images',$photoName);
+
+        $mapLocation= new  mapLocation();
 
         $mapLocation->create([
 
@@ -77,6 +77,7 @@ class PropertyController extends Controller
 
 
         ]);
+
         $property->type= $request->type;
         $property->price = $request->price;
         $property->roomNumbers = $request->roomNumbers;
@@ -101,6 +102,7 @@ class PropertyController extends Controller
 
         if($property->save()){
             toastr()->success('flash_message', 'تمت اضافة العضو بنجاح');
+
         }else{
             $request->session()->flash('error',' يوجد هنالك مشكلة في  عملية الإضافة');
         }
@@ -124,8 +126,8 @@ class PropertyController extends Controller
     public function show($id)
     {
         $property= Property::find($id);
-        $mapLocation= DB::table('map_locations')->where('property_id' ,$id)->first();
-
+        // dd(   $property->id);
+        $mapLocation= DB::table('map_locations')->where('id' ,$id)->first();
         return view('owner/property/show',compact('property','mapLocation'));    }
 
     /**

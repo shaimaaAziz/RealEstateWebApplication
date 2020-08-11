@@ -56,15 +56,14 @@
 
                         <form method="POST" action="{{ route('Property.index') }}"  enctype="multipart/form-data" style="float: right; margin-left: 10px">
                             {{ csrf_field() }}
+                            @include('owner.property.form');
 
                             @foreach($property as $allProperties)
-                            
                             <input type="hidden" name="property_id" value="{{$allProperties->id}}" >
                           
                            @endforeach
                          
 
-                          @include('owner.property.form');
                          
                         </form>
 
